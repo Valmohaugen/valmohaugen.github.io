@@ -1,1 +1,0 @@
-# valmohaugen.github.io
