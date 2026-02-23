@@ -30,6 +30,7 @@ valmohaugen.github.io/
 ## Design
 
 - **Tech:** Plain HTML/CSS, no build tools, no frameworks
+- **Max width:** 1060px container, left-aligned content (not centered headers)
 - **Fonts:** Inter (body) + Source Serif 4 (headings) via Google Fonts CDN
 - **Colors:** CSS custom properties in `:root` of `style.css`
 
