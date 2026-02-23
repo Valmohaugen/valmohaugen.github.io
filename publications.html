@@ -3,29 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Publications</title>
+  <meta name="description" content="Publications — Valentine Mohaugen, Clemson University.">
+  <title>Publications — Valentine Mohaugen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">About</a>
-      <a href="projects-research/projects.html">Projects & Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="teaching-outreach/outreach.html">Teaching & Outreach</a>
-      <a href="cv.html">CV</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Publications</h1>
-    <p>Under construction 🛠️🚧</p>
-  </main>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-brand">Valentine Mohaugen</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="research.html" class="nav-link">Research</a></li>
+        <li><a href="publications.html" class="nav-link active">Publications</a></li>
+        <li><a href="cv.html" class="nav-link">CV</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <footer>
-    <p>&copy; Valentine Mohaugen <span id="year"></span></p>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Publications</h1>
+      <p>Papers, preprints, and conference contributions</p>
+    </div>
+  </section>
+
+  <!-- Publications Content -->
+  <section class="section">
+    <div class="container">
+      <div class="pub-placeholder">
+        <h2>Coming Soon</h2>
+        <p>
+          Publications are being prepared. In the meantime, please visit my Google Scholar
+          profile for the latest.
+        </p>
+        <a href="https://scholar.google.com/" class="btn btn-primary" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
+          Google Scholar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-copy">&copy; Valentine Mohaugen <script>document.write(new Date().getFullYear())</script></span>
+      <div class="footer-links">
+        <a href="https://github.com/valmohaugen" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="mailto:vmohau@clemson.edu">Email</a>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
