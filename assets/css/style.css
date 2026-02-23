@@ -17,7 +17,7 @@
   --color-footer-text: #cbd5e1;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Source Serif 4', 'Georgia', serif;
-  --max-width: 900px;
+  --max-width: 1060px;
   --nav-height: 64px;
 }
 
@@ -162,7 +162,7 @@ p:last-child {
    Hero Section (Home)
    ============================================================ */
 .hero {
-  padding: 5rem 0 4rem;
+  padding: 4rem 0 3.5rem;
 }
 
 .hero .container {
@@ -237,7 +237,7 @@ p:last-child {
    Sections
    ============================================================ */
 .section {
-  padding: 4rem 0;
+  padding: 3.5rem 0;
 }
 
 .section-alt {
@@ -245,15 +245,13 @@ p:last-child {
 }
 
 .section-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .section-header p {
   color: var(--color-text-light);
   font-size: 1.05rem;
-  max-width: 600px;
-  margin: 0.5rem auto 0;
+  margin-top: 0.25rem;
 }
 
 /* Page header (for inner pages) */
@@ -618,11 +616,7 @@ p:last-child {
    Publications
    ============================================================ */
 .pub-placeholder {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: var(--color-bg-alt);
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
+  padding: 3rem 0;
 }
 
 .pub-placeholder p {
@@ -726,7 +720,7 @@ p:last-child {
   h2 { font-size: 1.5rem; }
 
   .section {
-    padding: 3rem 0;
+    padding: 2.5rem 0;
   }
 
   .card-grid {
