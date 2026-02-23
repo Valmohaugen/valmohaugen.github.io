@@ -3,29 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Curriculum Vitae</title>
+  <meta name="description" content="Curriculum Vitae — Valentine Mohaugen, Clemson University.">
+  <title>CV — Valentine Mohaugen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">About</a>
-      <a href="projects-research/projects.html">Projects & Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="teaching-outreach/outreach.html">Teaching & Outreach</a>
-      <a href="cv.html">CV</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Curriculum Vitae</h1>
-    <p>Under construction 🛠️🚧</p>
-  </main>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-brand">Valentine Mohaugen</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="research.html" class="nav-link">Research</a></li>
+        <li><a href="publications.html" class="nav-link">Publications</a></li>
+        <li><a href="cv.html" class="nav-link active">CV</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <footer>
-    <p>&copy; Valentine Mohaugen <span id="year"></span></p>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Curriculum Vitae</h1>
+      <p>Education, research experience, and skills</p>
+      <!-- Uncomment when you have a PDF:
+      <a href="assets/cv.pdf" class="btn btn-primary btn-sm" style="margin-top: 1rem;" target="_blank" rel="noopener">Download PDF</a>
+      -->
+    </div>
+  </section>
+
+  <!-- CV Content -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Education -->
+      <div class="cv-section">
+        <h2>Education</h2>
+        <div class="timeline-item">
+          <div class="timeline-date">2023 &mdash; Present</div>
+          <div class="timeline-title">Ph.D. in Physics</div>
+          <div class="timeline-subtitle">Clemson University, Clemson, SC</div>
+          <div class="timeline-desc">
+            Clemson Quantum Group. Research focus on quantum computing, topological condensed matter,
+            and quantum machine learning.
+          </div>
+        </div>
+        <!-- Add additional education entries here -->
+      </div>
+
+      <!-- Research Experience -->
+      <div class="cv-section">
+        <h2>Research Experience</h2>
+        <div class="timeline-item">
+          <div class="timeline-date">2023 &mdash; Present</div>
+          <div class="timeline-title">Graduate Research Assistant</div>
+          <div class="timeline-subtitle">Clemson Quantum Group, Clemson University</div>
+          <div class="timeline-desc">
+            Developing VQE frameworks for topological superconductor identification.
+            Building CNN and quantum ML pipelines for Majorana zero mode prediction.
+            Contributing to the group website and educational outreach materials.
+          </div>
+        </div>
+      </div>
+
+      <!-- Hackathons & Competitions -->
+      <div class="cv-section">
+        <h2>Hackathons &amp; Competitions</h2>
+        <div class="timeline-item">
+          <div class="timeline-date">January 2026</div>
+          <div class="timeline-title">iQuHACK 2026 &mdash; MIT</div>
+          <div class="timeline-desc">
+            Reed-Muller decoding-based Clifford+T circuit optimizer (rmsynth).
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-title">NYUAD Quantum Hackathon 2025</div>
+          <div class="timeline-desc">
+            NeurotiQ: hybrid QNN/QSVM for EEG analysis with PennyLane and Streamlit.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-title">SC Quantathon v2 &mdash; SRNL Challenge</div>
+          <div class="timeline-desc">
+            Quantum kernels (QSVM, QNN, Cirq) for tornado prediction.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">January 2025</div>
+          <div class="timeline-title">iQuHACK 2025 &mdash; MIT</div>
+          <div class="timeline-desc">
+            Cat qubit simulation for Alice &amp; Bob open quantum systems challenge.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-title">SC Quantathon v1</div>
+          <div class="timeline-desc">
+            Quantum system simulation scripts and tools at scale.
+          </div>
+        </div>
+      </div>
+
+      <!-- Teaching & Outreach -->
+      <div class="cv-section">
+        <h2>Teaching &amp; Outreach</h2>
+        <div class="timeline-item">
+          <div class="timeline-date">2024 &mdash; Present</div>
+          <div class="timeline-title">Qoffee Maker Activity</div>
+          <div class="timeline-desc">
+            Designed and maintain an educational quantum circuit simulation activity to introduce
+            quantum computing concepts to new learners.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2024 &mdash; Present</div>
+          <div class="timeline-title">Clemson Quantum Group Website</div>
+          <div class="timeline-desc">
+            Develop and maintain the group website (Next.js, React, TypeScript) to share research,
+            member profiles, and news.
+          </div>
+        </div>
+        <!-- Add TA positions, workshops, etc. here -->
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="cv-section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Quantum Frameworks</h4>
+            <p>Qiskit 2.x, PennyLane, Cirq, Dynamiqs</p>
+          </div>
+          <div class="skill-category">
+            <h4>ML / Deep Learning</h4>
+            <p>PyTorch, scikit-learn, XGBoost, TensorFlow</p>
+          </div>
+          <div class="skill-category">
+            <h4>Scientific Computing</h4>
+            <p>NumPy, SciPy, Pandas, Matplotlib, h5py</p>
+          </div>
+          <div class="skill-category">
+            <h4>Languages</h4>
+            <p>Python, JavaScript/TypeScript, LaTeX</p>
+          </div>
+          <div class="skill-category">
+            <h4>Web Development</h4>
+            <p>Next.js, React, HTML/CSS, Streamlit</p>
+          </div>
+          <div class="skill-category">
+            <h4>Infrastructure</h4>
+            <p>SLURM/HPC, Git, Conda, GitHub Actions</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-copy">&copy; Valentine Mohaugen <script>document.write(new Date().getFullYear())</script></span>
+      <div class="footer-links">
+        <a href="https://github.com/valmohaugen" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="mailto:vmohau@clemson.edu">Email</a>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>

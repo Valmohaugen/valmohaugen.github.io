@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:mhjgit.github.io)",
+      "WebFetch(domain:sites.google.com)"
+    ]
+  }
+}
