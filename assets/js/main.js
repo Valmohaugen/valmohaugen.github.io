@@ -108,7 +108,7 @@
   function initResearchEntryToggle() {
     var entries = document.querySelectorAll('.research-entry');
     entries.forEach(function (entry) {
-      var heading = entry.querySelector('.research-entry__header-row h3');
+      var heading = entry.querySelector('.research-entry__content h3');
       var details = entry.querySelector(':scope > .research-entry__details');
       if (!heading || !details) return;
 
