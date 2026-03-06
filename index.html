@@ -3,138 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Valentine Mohaugen — Quantum computing, topological condensed matter, and quantum machine learning researcher at Clemson University.">
+  <meta name="description" content="Valentine Mohaugen — Senior physics student at Clemson University researching quantum computing, topological condensed matter, and quantum machine learning.">
   <title>Valentine Mohaugen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Valentine Mohaugen">
+  <meta property="og:title" content="Valentine Mohaugen — Quantum Computing Researcher">
+  <meta property="og:description" content="Senior physics student at Clemson University researching quantum computing, topological condensed matter, and quantum machine learning.">
+  <meta property="og:url" content="https://www.valmohaugen.com/">
+  <meta property="og:image" content="https://www.valmohaugen.com/assets/img/headshot.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Valentine Mohaugen — Quantum Computing Researcher">
+  <meta name="twitter:description" content="Senior physics student at Clemson University researching quantum computing, topological condensed matter, and quantum machine learning.">
+  <meta name="twitter:image" content="https://www.valmohaugen.com/assets/img/headshot.jpg">
+
+  <link rel="canonical" href="https://www.valmohaugen.com/">
+  <meta name="theme-color" content="#1a56db">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navigation -->
-  <nav class="nav">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
       <a href="index.html" class="nav-brand">Valentine Mohaugen</a>
-      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="research.html" class="nav-link">Research</a></li>
+        <li><a href="research.html" class="nav-link">Projects</a></li>
         <li><a href="publications.html" class="nav-link">Publications</a></li>
+        <li><a href="outreach.html" class="nav-link">Outreach</a></li>
         <li><a href="cv.html" class="nav-link">CV</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-text">
-        <h1 class="hero-name">Valentine Mohaugen</h1>
-        <p class="hero-title">Ph.D. Student in Physics</p>
-        <p class="hero-affiliation">Clemson University &mdash; Clemson Quantum Group</p>
-        <p class="hero-tagline">
-          I study quantum computing, topological condensed matter, and quantum machine learning.
-          My research focuses on using variational quantum algorithms to identify topological
-          superconductor candidates and developing ML pipelines for quantum system characterization.
-        </p>
-        <div class="hero-links">
-          <a href="https://github.com/valmohaugen" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-          <a href="mailto:vmohau@clemson.edu" class="btn btn-outline btn-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            Email
-          </a>
-          <a href="https://scholar.google.com/" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
-            Scholar
-          </a>
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-text">
+          <h1 class="hero-name">Valentine Mohaugen</h1>
+          <p class="hero-title">Senior Physics Student</p>
+          <p class="hero-affiliation">Clemson University</p>
+          <p class="hero-tagline">
+            I study quantum computing, topological condensed matter, and quantum machine learning.
+            My research focuses on using variational quantum algorithms to identify topological
+            superconductor candidates and developing ML pipelines for quantum system characterization.
+          </p>
+          <div class="hero-links">
+            <a href="mailto:valentm@clemson.edu" class="btn btn-outline btn-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Email
+            </a>
+            <a href="https://github.com/valmohaugen" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/valmohaugen" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://scholar.google.com/citations?user=bZlPsRYAAAAJ&amp;hl=en" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
+              Scholar
+            </a>
+            <a href="https://orcid.org/0009-0003-3013-6435" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.05-2.484 4.05-3.722 0-1.556-.947-3.722-3.881-3.722h-2.466z"/></svg>
+              ORCID
+            </a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="assets/img/headshot.jpg" alt="Valentine Mohaugen — portrait photo">
         </div>
       </div>
-      <div class="hero-photo">
-        <!-- Replace this div with an <img> tag when you have your photo:
-             <img src="assets/img/headshot.jpg" alt="Valentine Mohaugen"> -->
-        <div class="photo-placeholder">Photo</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2>About Me</h2>
+    <!-- News -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header"><h2>News</h2></div>
+        <ul class="news-list reveal">
+          <li class="news-item">
+            <span class="news-date">Jan 2026</span>
+            <span class="news-text">Competed at iQuHACK 2026 at MIT — built a Reed-Muller decoding-based Clifford+T circuit optimizer</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">2025</span>
+            <span class="news-text">Presented NeurotiQ at NYUAD Quantum Hackathon in Abu Dhabi</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">2025</span>
+            <span class="news-text">Competed in SC Quantathon v2 — quantum kernels for tornado prediction</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">Jan 2025</span>
+            <span class="news-text">Competed at iQuHACK 2025 at MIT — cat qubit simulation challenge</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">2024</span>
+            <span class="news-text">Launched Qoffee Maker educational quantum circuit activity</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">2023</span>
+            <span class="news-text">Joined the Clemson Quantum Group as undergraduate research assistant</span>
+          </li>
+        </ul>
       </div>
-      <p>
-        I am a physics Ph.D. student at Clemson University working in the
-        <a href="https://clemsonquantum.github.io" target="_blank" rel="noopener">Clemson Quantum Group</a>.
-        My research lies at the intersection of quantum computing, condensed matter theory, and machine learning.
-      </p>
-      <p>
-        On the physics side, I develop variational quantum eigensolver (VQE) frameworks to study
-        topological superconductors via the Kitaev chain model, probing Majorana zero modes and
-        topological phase transitions. On the ML side, I build convolutional neural network pipelines
-        to predict Majorana zero mode visibility from nanowire conductance data and apply quantum
-        kernels to real-world classification problems.
-      </p>
-      <p>
-        I am also active in the quantum computing hackathon community, with projects spanning
-        quantum error correction, cat qubit simulation, and hybrid quantum-classical healthcare
-        applications.
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Research Highlights -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Research Highlights</h2>
-        <p>Core areas of my current work</p>
+    <!-- About -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>About Me</h2>
+        </div>
+        <div class="reveal">
+          <p>
+            I am a senior physics student at Clemson University.
+            My research lies at the intersection of quantum computing, condensed matter theory, and machine learning.
+          </p>
+          <p>
+            On the physics side, I develop variational quantum eigensolver (VQE) frameworks to study
+            topological superconductors via the Kitaev chain model, probing Majorana zero modes and
+            topological phase transitions. On the ML side, I build convolutional neural network pipelines
+            to predict Majorana zero mode visibility from nanowire conductance data and apply quantum
+            kernels to real-world classification problems.
+          </p>
+          <p>
+            I am also active in the quantum computing hackathon community, with projects spanning
+            quantum error correction, cat qubit simulation, and hybrid quantum-classical healthcare
+            applications.
+          </p>
+        </div>
       </div>
-      <div class="highlight-item">
-        <h3>Topological Quantum Matter</h3>
-        <p>
-          Variational quantum eigensolver (VQE) framework for identifying topological superconductor
-          candidates. Studying Majorana zero modes, winding numbers, and topological phase transitions
-          in the Kitaev chain and related models.
-        </p>
+    </section>
+
+    <!-- Research Highlights -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Research Highlights</h2>
+          <p>Core areas of my current work</p>
+        </div>
+        <div class="highlight-item reveal">
+          <h3>Topological Quantum Matter</h3>
+          <p>
+            Variational quantum eigensolver (VQE) framework for identifying topological superconductor
+            candidates. Studying Majorana zero modes, winding numbers, and topological phase transitions
+            in the Kitaev chain and related models.
+          </p>
+        </div>
+        <div class="highlight-item reveal reveal-delay-1">
+          <h3>Quantum Machine Learning</h3>
+          <p>
+            CNN pipelines for predicting Majorana zero mode visibility from nanowire conductance data.
+            Quantum support vector machines and quantum neural networks for classification tasks
+            including tornado prediction and EEG analysis.
+          </p>
+        </div>
+        <div class="highlight-item reveal reveal-delay-2">
+          <h3>Quantum Circuit Optimization</h3>
+          <p>
+            Reed-Muller decoding-based Clifford+T circuit synthesis and optimization. Cat qubit
+            simulation for open quantum systems. Quantum error correction and fault-tolerant
+            computation research.
+          </p>
+        </div>
       </div>
-      <div class="highlight-item">
-        <h3>Quantum Machine Learning</h3>
-        <p>
-          CNN pipelines for predicting Majorana zero mode visibility from nanowire conductance data.
-          Quantum support vector machines and quantum neural networks for classification tasks
-          including tornado prediction and EEG analysis.
-        </p>
-      </div>
-      <div class="highlight-item">
-        <h3>Quantum Circuit Optimization</h3>
-        <p>
-          Reed-Muller decoding-based Clifford+T circuit synthesis and optimization. Cat qubit
-          simulation for open quantum systems. Quantum error correction and fault-tolerant
-          computation research.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <span class="footer-copy">&copy; Valentine Mohaugen <script>document.write(new Date().getFullYear())</script></span>
+      <span class="footer-copy">&copy; 2026 Valentine Mohaugen</span>
       <div class="footer-links">
         <a href="https://github.com/valmohaugen" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="mailto:vmohau@clemson.edu">Email</a>
+        <a href="https://scholar.google.com/citations?user=bZlPsRYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0009-0003-3013-6435" target="_blank" rel="noopener">ORCID</a>
+        <a href="mailto:valentm@clemson.edu">Email</a>
       </div>
     </div>
   </footer>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Valentine Mohaugen",
+    "url": "https://www.valmohaugen.com",
+    "jobTitle": "Senior Physics Student",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Clemson University",
+      "url": "https://www.clemson.edu"
+    },
+    "sameAs": [
+      "https://github.com/valmohaugen",
+      "https://scholar.google.com/citations?user=bZlPsRYAAAAJ&hl=en",
+      "https://orcid.org/0009-0003-3013-6435"
+    ],
+    "image": "https://www.valmohaugen.com/assets/img/headshot.jpg",
+    "email": "valentm@clemson.edu",
+    "knowsAbout": ["quantum computing", "topological condensed matter", "quantum machine learning", "variational quantum eigensolver", "Majorana zero modes"]
+  }
+  </script>
 
 </body>
 </html>
