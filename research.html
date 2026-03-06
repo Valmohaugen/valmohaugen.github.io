@@ -59,11 +59,12 @@
       </div>
     </section>
 
-    <!-- Research Entries -->
+    <!-- Current Work -->
     <section class="section">
       <div class="container-wide">
+        <div class="section-header"><h2>Current Work</h2></div>
 
-        <!-- 1. Topological Materials via VQE — thumbnail LEFT -->
+        <!-- Topological Materials via VQE — 2023–Present, LEFT -->
         <article class="research-entry reveal">
           <div class="research-entry__thumbnail">
             <div class="research-entry__thumbnail--placeholder">Topological VQE</div>
@@ -74,42 +75,65 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
-              <span class="research-entry__year">2023 &ndash; Present</span>
+              <span class="research-entry__year">2023</span>
             </div>
             <h3>Topological Materials via VQE</h3>
             <p>
-              VQE framework for identifying topological superconductor candidates via the Kitaev chain.
-              Includes real-space BdG Hamiltonian construction, Jordan-Wigner qubit mapping, and
-              topological invariant computation (winding numbers, entanglement entropy). Probing
-              Majorana zero modes and topological phase transitions including effects of disorder.
+              Reliability-first variational quantum eigensolver framework for screening topological
+              superconductor candidates. Implements a 13-stage pipeline spanning Kitaev chain
+              Hamiltonian construction, Jordan-Wigner qubit mapping, VQE optimization, and
+              topological invariant computation including winding numbers and entanglement entropy.
+              Integrates with the Materials Project API for candidate discovery and supports
+              both Kitaev chain and experimental Rashba nanowire models.
             </p>
           </div>
-          <!-- Expandable details -->
           <details class="research-entry__details">
             <summary>More details</summary>
             <div class="research-entry__details-body">
               <p>
-                Built on Qiskit 2.x with SparsePauliOp and BackendEstimatorV2. The pipeline constructs
-                the real-space BdG Hamiltonian with optional on-site disorder, maps it to qubit operators
-                via Jordan-Wigner transformation, and runs VQE with hardware-efficient ans&auml;tze.
-                Topological characterization includes winding number computation, entanglement entropy
-                across bipartitions, and finite-size scaling analysis near the phase boundary at |&mu;| = 2t.
+                Topological superconductors host Majorana zero modes&mdash;exotic quasiparticles
+                with potential applications in fault-tolerant quantum computing. This project
+                develops a systematic VQE-based framework for identifying topological
+                superconductor candidates by combining quantum simulation with model-aware
+                physics diagnostics.
               </p>
-              <p><strong>Key tools:</strong> Qiskit 2.x, NumPy, SciPy, Matplotlib, SLURM/HPC</p>
-              <details class="research-entry__paper">
-                <summary>Paper &mdash; In Preparation</summary>
-                <p>
-                  <em>VQE Framework for Topological Superconductor Identification via the Kitaev Chain</em>
-                  &mdash; V. Mohaugen et al. (2026). PDF will be available here once the preprint is posted.
-                </p>
-              </details>
+              <p>
+                The pipeline constructs real-space Bogoliubov&ndash;de Gennes (BdG) Hamiltonians
+                for the Kitaev chain model with configurable chemical potential (&mu;), hopping
+                amplitude (t), and superconducting gap (&Delta;), including optional on-site
+                disorder. These are mapped to qubit operators via Jordan-Wigner transformation
+                using Qiskit&rsquo;s SparsePauliOp, then optimized with VQE using
+                hardware-efficient ans&auml;tze and BackendEstimatorV2.
+              </p>
+              <p>
+                Topological characterization includes momentum-space winding number computation
+                (W = 1 in the topological phase |&mu;| &lt; 2t, W = 0 in the trivial phase),
+                entanglement entropy across bipartitions, and finite-size scaling analysis near
+                the phase boundary. Classical exact diagonalization benchmarks validate all
+                quantum results. An experimental Rashba nanowire model extends the framework
+                toward realistic material parameters.
+              </p>
+              <p>
+                The project integrates with the Materials Project API for candidate screening
+                and includes an active learning module for efficient material discovery. All
+                runs log reproducibility artifacts: git hash, random seeds, package versions,
+                and full parameter sets in HDF5 format. YAML-based configuration with typed
+                runtime validation ensures deterministic, auditable execution.
+              </p>
+              <p>
+                A preflight <code>doctor</code> command verifies all dependencies before
+                execution. The framework enforces model invariants (num_sites &times;
+                qubits_per_site = num_qubits) and supports both legacy and modern CLI
+                interfaces for the full 13-stage pipeline.
+              </p>
+              <p><strong>Key tools:</strong> Qiskit 2.x, PennyLane, NumPy, SciPy, Matplotlib, Materials Project API, SLURM/HPC</p>
             </div>
           </details>
         </article>
 
         <hr class="research-entry__divider">
 
-        <!-- 2. MZM Visibility — thumbnail RIGHT -->
+        <!-- MZM Visibility — 2024–Present, RIGHT -->
         <article class="research-entry research-entry--reverse reveal">
           <div class="research-entry__thumbnail">
             <img src="assets/img/thumbnails/mzm-visibility.png" alt="Nanowire conductance reconstruction plots showing predicted versus ground truth visibility" loading="lazy">
@@ -120,190 +144,68 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
-              <span class="research-entry__year">2024 &ndash; Present</span>
+              <span class="research-entry__year">2024</span>
             </div>
             <h3>MZM Visibility</h3>
             <p>
-              CNN pipeline predicting Majorana zero mode visibility from nanowire conductance data.
-              Uses ResNet-18 architecture with PyTorch for training and inference on simulated datasets.
-              Includes data generation, preprocessing, and evaluation with quality gate verification.
+              End-to-end deep learning pipeline for predicting Majorana zero mode phase diagrams
+              from semiconductor-superconductor nanowire conductance data. Trains a modified
+              ResNet-18 CNN autoencoder on up to 900 million synthetic Kwant-generated conductance
+              measurements spanning a 6-dimensional parameter space with realistic disorder
+              profiles. Features Monte Carlo dropout uncertainty quantification and supports
+              transfer to experimental measurements.
             </p>
           </div>
-          <!-- Expandable details -->
           <details class="research-entry__details">
             <summary>More details</summary>
             <div class="research-entry__details-body">
               <p>
-                Trains a modified ResNet-18 on simulated nanowire conductance maps (G(V_bias, V_gate))
-                to predict a continuous visibility score for Majorana zero modes. The pipeline includes
-                HDF5 data loading, train/val/test splitting with leakage prevention, mixed-precision
-                training on A100 GPUs via SLURM, and evaluation with reconstruction plots comparing
-                predicted vs. ground truth visibility.
+                Identifying Majorana zero modes (MZMs) in nanowire experiments remains
+                challenging due to the similarity between topological signatures and
+                disorder-induced trivial states. This project applies convolutional neural
+                networks to automate the classification of MZM visibility from simulated
+                conductance data G(V<sub>bias</sub>, V<sub>gate</sub>), bridging the gap
+                between theoretical predictions and experimental observables.
               </p>
-              <p><strong>Key tools:</strong> PyTorch, NumPy, h5py, Matplotlib, SLURM/HPC</p>
-              <details class="research-entry__paper">
-                <summary>Paper &mdash; In Preparation</summary>
-                <p>
-                  <em>CNN-Based Prediction of Majorana Zero Mode Visibility from Nanowire Conductance Data</em>
-                  &mdash; V. Mohaugen et al. (2026). PDF will be available here once the preprint is posted.
-                </p>
-              </details>
+              <p>
+                Data generation uses Kwant-based quantum transport simulations on a
+                6-dimensional parameter grid (disorder strength, Zeeman field, chemical
+                potential, superconducting gap, bias voltage, and spin-orbit coupling),
+                producing 300&ndash;900 million conductance measurements across three disorder
+                correlation lengths. Each sample is labeled with topological invariants:
+                the winding number and a periodic disorder invariant (PDI) for robust phase
+                detection beyond simple gap-based criteria.
+              </p>
+              <p>
+                The CNN architecture extends ResNet-18 with a 4-channel encoder, label
+                embedding decoder, CoordConv layers, and gated attention multiple-instance
+                learning (MIL) pooling. Training uses a composite loss function combining
+                binary cross-entropy, Dice, focal, and total variation terms, optimized with
+                AdamW and cosine annealing warm restarts. Disorder-based train/val/test
+                splitting (80/10/10) prevents data leakage by ensuring no disorder profile
+                appears in multiple splits.
+              </p>
+              <p>
+                Inference supports single-slice and multi-slice modes with Monte Carlo dropout
+                uncertainty quantification. Evaluation metrics include Hausdorff distance,
+                Dice/IoU coefficients, boundary-aware F1, and &mu;-informativeness analysis
+                identifying the most diagnostic parameter slices. Bootstrap confidence
+                intervals quantify statistical uncertainty across disorder realizations.
+              </p>
+              <p>
+                The pipeline runs on Clemson&rsquo;s Palmetto HPC cluster with A100 GPUs,
+                using mixed-precision training (torch.amp) and torch.compile for performance.
+                HDF5 chunked storage handles the large datasets, and the system supports
+                experimental data input (CSV/HDF5/npy) for transfer to real measurements.
+              </p>
+              <p><strong>Key tools:</strong> PyTorch 2.x, Kwant, NumPy, SciPy, h5py, Matplotlib, SLURM/HPC</p>
             </div>
           </details>
         </article>
 
         <hr class="research-entry__divider">
 
-        <!-- 3. SC Quantathon v2 — thumbnail LEFT -->
-        <article class="research-entry reveal">
-          <div class="research-entry__thumbnail">
-            <img src="assets/img/thumbnails/sc-quantathon.jpg" alt="SC Quantathon v2 event poster — International Quantum Circuit Championship" loading="lazy">
-          </div>
-          <div class="research-entry__content">
-            <div class="research-entry__meta">
-              <a href="https://github.com/valmohaugen/SC-Quantathon-v2-2025" class="btn btn-sm" target="_blank" rel="noopener">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <span class="research-entry__year">2025</span>
-            </div>
-            <h3>SC Quantathon v2 (2025)</h3>
-            <p>
-              QSVM, QNN, and Cirq-based quantum kernels for tornado prediction, developed for the
-              SRNL Quantum Computing Challenge. Combines classical ML with quantum feature maps
-              to explore quantum advantage in weather pattern classification.
-            </p>
-          </div>
-          <!-- Expandable details -->
-          <details class="research-entry__details">
-            <summary>More details</summary>
-            <div class="research-entry__details-body">
-              <p>
-                Benchmarked quantum kernel methods against classical baselines (XGBoost, SVC, logistic
-                regression) on NOAA storm report data. Built Cirq-based quantum feature maps with
-                ZZFeatureMap and custom entangling layers, compared QSVM and QNN classification accuracy,
-                and analyzed quantum kernel alignment to assess quantum advantage potential.
-              </p>
-              <p><strong>Key tools:</strong> Cirq, scikit-learn, XGBoost, Pandas, Matplotlib</p>
-            </div>
-          </details>
-        </article>
-
-        <hr class="research-entry__divider">
-
-        <!-- 4. iQuHACK 2026 — thumbnail RIGHT -->
-        <article class="research-entry research-entry--reverse reveal">
-          <div class="research-entry__thumbnail">
-            <div class="research-entry__thumbnail--placeholder">Circuit Synthesis</div>
-          </div>
-          <div class="research-entry__content">
-            <div class="research-entry__meta">
-              <a href="https://github.com/valmohaugen/iQuHack-2026" class="btn btn-sm" target="_blank" rel="noopener">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <span class="research-entry__year">2026</span>
-            </div>
-            <h3>iQuHACK 2026</h3>
-            <p>
-              Reed-Muller decoding-based Clifford+T circuit optimizer (rmsynth). Developed at MIT&rsquo;s
-              annual quantum hackathon for efficient quantum circuit synthesis, targeting reduced
-              T-gate counts and circuit depth.
-            </p>
-          </div>
-          <!-- Expandable details -->
-          <details class="research-entry__details">
-            <summary>More details</summary>
-            <div class="research-entry__details-body">
-              <p>
-                Implements the rmsynth algorithm for decomposing arbitrary single-qubit unitaries
-                into Clifford+T gate sequences using Reed-Muller code structure. Leverages
-                pygridsynth for grid operator search and applies RM decoding to minimize T-gate
-                count, improving circuit depth for fault-tolerant quantum compilation.
-              </p>
-              <p><strong>Key tools:</strong> Python, NumPy, SciPy, pygridsynth</p>
-            </div>
-          </details>
-        </article>
-
-        <hr class="research-entry__divider">
-
-        <!-- 5. iQuHACK 2025 — thumbnail LEFT -->
-        <article class="research-entry reveal">
-          <div class="research-entry__thumbnail">
-            <img src="assets/img/thumbnails/iquhack-2025.png" alt="Clemson Quantum team at iQuHACK 2025 at MIT" loading="lazy">
-          </div>
-          <div class="research-entry__content">
-            <div class="research-entry__meta">
-              <a href="https://github.com/valmohaugen/iQuHack-2025" class="btn btn-sm" target="_blank" rel="noopener">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <span class="research-entry__year">2025</span>
-            </div>
-            <h3>iQuHACK 2025</h3>
-            <p>
-              Cat qubit simulation for the Alice &amp; Bob open quantum systems challenge. Explored
-              bosonic error correction codes and noise-biased qubit architectures at MIT&rsquo;s
-              annual quantum hackathon.
-            </p>
-          </div>
-          <!-- Expandable details -->
-          <details class="research-entry__details">
-            <summary>More details</summary>
-            <div class="research-entry__details-body">
-              <p>
-                Simulated cat qubit dynamics using Dynamiqs for the Alice &amp; Bob open quantum
-                systems challenge. Modeled two-photon driven dissipative stabilization of cat states,
-                analyzed bit-flip vs. phase-flip error asymmetry, and benchmarked decoherence rates
-                against standard transmon qubits.
-              </p>
-              <p><strong>Key tools:</strong> Dynamiqs, Python, NumPy, Matplotlib</p>
-            </div>
-          </details>
-        </article>
-
-        <hr class="research-entry__divider">
-
-        <!-- 6. NeurotiQ (NYUAD 2025) — thumbnail RIGHT -->
-        <article class="research-entry research-entry--reverse reveal">
-          <div class="research-entry__thumbnail">
-            <img src="assets/img/thumbnails/neurotiq.jpg" alt="Clemson Quantum team at NYUAD Hackathon 2025 in Abu Dhabi" loading="lazy">
-          </div>
-          <div class="research-entry__content">
-            <div class="research-entry__meta">
-              <a href="https://github.com/valmohaugen/NYUAD-Hackathon-2025" class="btn btn-sm" target="_blank" rel="noopener">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-              <span class="research-entry__year">2025</span>
-            </div>
-            <h3>NeurotiQ (NYUAD 2025)</h3>
-            <p>
-              Hybrid QNN/QSVM system for EEG analysis built with PennyLane, featuring a Streamlit
-              web interface. Developed at the NYU Abu Dhabi Quantum Hackathon for neurological
-              disorder detection using quantum-classical hybrid models.
-            </p>
-          </div>
-          <!-- Expandable details -->
-          <details class="research-entry__details">
-            <summary>More details</summary>
-            <div class="research-entry__details-body">
-              <p>
-                Built a full-stack quantum ML application for EEG-based neurological disorder detection.
-                The quantum backend uses PennyLane with StronglyEntanglingLayers and AmplitudeEmbedding
-                for both QNN and QSVM approaches. Classical preprocessing includes PCA, StandardScaler,
-                and SMOTE for class imbalance. The Streamlit frontend provides real-time inference
-                and visualization of classification results.
-              </p>
-              <p><strong>Key tools:</strong> PennyLane, TensorFlow, scikit-learn, Streamlit</p>
-            </div>
-          </details>
-        </article>
-
-        <hr class="research-entry__divider">
-
-        <!-- 7. Clemson Quantum Website — thumbnail LEFT -->
+        <!-- Clemson Quantum Website — 2024–Present, LEFT -->
         <article class="research-entry reveal">
           <div class="research-entry__thumbnail">
             <div class="research-entry__thumbnail--placeholder">Clemson Quantum</div>
@@ -318,32 +220,308 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Live Site
               </a>
-              <span class="research-entry__year">2024 &ndash; Present</span>
+              <span class="research-entry__year">2024</span>
             </div>
             <h3>Clemson Quantum Website</h3>
             <p>
-              The official Clemson Quantum Group website, built with Next.js, React, and TypeScript.
-              Features group member profiles, research highlights, news, and event documentation.
+              The official Clemson Quantum Group website, built with Next.js 15, React 19, and
+              TypeScript. Serves as the public face of the group with member profiles, research
+              showcases, event documentation, educational resources, and a pre-built search index
+              for content discovery. Uses a markdown-driven content architecture so group members
+              can update pages without writing code, with static export deployed via GitHub Actions.
             </p>
           </div>
-          <!-- Expandable details -->
           <details class="research-entry__details">
             <summary>More details</summary>
             <div class="research-entry__details-body">
               <p>
-                Server-side rendered Next.js application with dynamic member profiles, research project
-                showcases, and a news/events feed. Uses TypeScript throughout, GitHub Actions for CI/CD
-                with automatic deployment to GitHub Pages, and responsive design for all screen sizes.
+                The Clemson Quantum Group needed a modern, maintainable web presence that
+                non-technical group members could update without writing code. This site uses a
+                markdown-driven content architecture: pages, events, news items, and resources
+                are authored as markdown files with YAML frontmatter, rendered at build time
+                with React-Markdown and Remark GFM.
               </p>
-              <p><strong>Key tools:</strong> Next.js, React, TypeScript, GitHub Actions</p>
+              <p>
+                The application is built on Next.js 15 with React 19 and strict TypeScript,
+                using the App Router for file-system-based routing. A Node.js build script
+                generates a search index at compile time, enabling client-side content
+                discovery without a backend. Static export produces a fully static site
+                deployed to GitHub Pages via GitHub Actions CI/CD.
+              </p>
+              <p>
+                The component architecture includes reusable React components for member
+                cards, event timelines, resource listings, and navigation. The design is
+                fully responsive and uses modern CSS features. ESLint 9 enforces code
+                quality standards across the TypeScript codebase.
+              </p>
+              <p><strong>Key tools:</strong> Next.js 15, React 19, TypeScript 5.7, React-Markdown, GitHub Actions, GitHub Pages</p>
+            </div>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="section-divider"><hr class="research-entry__divider"></div>
+
+    <!-- Past Work -->
+    <section class="section">
+      <div class="container-wide">
+        <div class="section-header"><h2>Past Work</h2></div>
+
+        <!-- iQuHACK 2026 — Jan 2026, LEFT -->
+        <article class="research-entry reveal">
+          <div class="research-entry__thumbnail">
+            <div class="research-entry__thumbnail--placeholder">Circuit Synthesis</div>
+          </div>
+          <div class="research-entry__content">
+            <div class="research-entry__meta">
+              <a href="https://github.com/valmohaugen/iQuHack-2026" class="btn btn-sm" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <span class="research-entry__year">2026</span>
+            </div>
+            <h3>iQuHACK 2026</h3>
+            <p>
+              Reed-Muller decoding-based Clifford+T circuit optimizer developed at MIT&rsquo;s
+              annual quantum hackathon. Minimizes T-gate count and circuit depth for arbitrary
+              unitary matrices through structure-aware synthesis, pattern recognition, and
+              phase-polynomial optimization. Built for the Superquantum challenge, the tool
+              provides both a CLI and Python API for fault-tolerant quantum circuit compilation,
+              successfully optimizing all 11 challenge unitaries.
+            </p>
+          </div>
+          <details class="research-entry__details">
+            <summary>More details</summary>
+            <div class="research-entry__details-body">
+              <p>
+                Fault-tolerant quantum computing requires decomposing arbitrary unitaries into
+                the Clifford+T gate set (H, T, T&dagger;, S, S&dagger;, CX), where T-gates are
+                the dominant cost due to magic state distillation overhead. This project tackles
+                the Superquantum challenge by building a complete synthesis and optimization
+                pipeline that converts arbitrary unitary matrices into resource-efficient
+                Clifford+T circuits.
+              </p>
+              <p>
+                The optimizer employs a multi-strategy approach: pattern recognition identifies
+                common 2-qubit structures (QFT blocks, Heisenberg/XX+YY interactions) and maps
+                them to known optimal decompositions; brute-force search explores low-T circuit
+                structures for small unitaries; and phase-polynomial optimization via the
+                <code>rmsynth</code> C++ toolkit applies Reed-Muller decoding (Dumer, RPA, and
+                OSD backends) to minimize T-count in larger circuits.
+              </p>
+              <p>
+                For single-qubit rotations, the pipeline uses <code>pygridsynth</code> for
+                grid-operator-based Rz angle approximation, achieving near-optimal T-counts
+                at configurable precision. The system supports multiple effort levels that
+                trade compilation time for circuit quality, and outputs standard QASM with
+                full resource metrics (T-count, CX-count, total depth).
+              </p>
+              <p>
+                All 11 challenge unitaries were successfully optimized, with results
+                benchmarked across effort levels. The project provides both a CLI and Python
+                API for integration into larger compilation workflows.
+              </p>
+              <p><strong>Key tools:</strong> Python, Qiskit 2.x, rmsynth (C++), pygridsynth, NumPy, SciPy</p>
             </div>
           </details>
         </article>
 
         <hr class="research-entry__divider">
 
-        <!-- 8. Qoffee Maker Activity — thumbnail RIGHT -->
+        <!-- SC Quantathon v2 — 2025, RIGHT -->
         <article class="research-entry research-entry--reverse reveal">
+          <div class="research-entry__thumbnail">
+            <img src="assets/img/thumbnails/sc-quantathon.jpg" alt="SC Quantathon v2 event poster — International Quantum Circuit Championship" loading="lazy">
+          </div>
+          <div class="research-entry__content">
+            <div class="research-entry__meta">
+              <a href="https://github.com/valmohaugen/SC-Quantathon-v2-2025" class="btn btn-sm" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <span class="research-entry__year">2025</span>
+            </div>
+            <h3>SC Quantathon v2 (2025)</h3>
+            <p>
+              Multi-framework quantum machine learning solution for tornado prediction developed
+              for the SRNL Quantum Computing Challenge. Benchmarks quantum support vector machines,
+              quantum neural networks, and quantum feature extraction against classical baselines
+              (XGBoost, LightGBM, SVC) across three quantum frameworks (Qiskit, Cirq, PennyLane).
+              The QSVM achieved 81% tornado recall while the QNN reached 80% overall accuracy
+              on NOAA storm report data.
+            </p>
+          </div>
+          <details class="research-entry__details">
+            <summary>More details</summary>
+            <div class="research-entry__details-body">
+              <p>
+                Severe weather prediction is a high-stakes classification problem where quantum
+                machine learning may offer advantages through richer feature representations
+                in exponentially large Hilbert spaces. This project explores that hypothesis
+                by applying quantum kernel methods and hybrid quantum-classical neural networks
+                to NOAA storm report data for binary tornado/no-tornado classification.
+              </p>
+              <p>
+                The QSVM approach uses data re-uploading feature maps with RY/RZ rotations and
+                CZ entangling gates, followed by two-stage hyperparameter optimization over 100
+                iterations. Quantum kernels are post-processed with centering, positive
+                semi-definite projection, and diagonal normalization for stability. Both binary
+                and multiclass variants were implemented, achieving 60.5% accuracy with 81.0%
+                tornado recall in the binary case.
+              </p>
+              <p>
+                The QNN pipeline uses PennyLane with 4-qubit StronglyEntanglingLayers fed by a
+                classical feedforward encoder (128&rarr;64&rarr;quantum parameters), trained
+                with early stopping. Quantum feature extraction concatenates statevector
+                amplitudes, measurement probabilities, and phase information with classical
+                features for hybrid classification. The QNN achieved 80.0% overall accuracy.
+              </p>
+              <p>
+                The data pipeline handles the heavily imbalanced NOAA dataset with iterative
+                imputation, SMOTE oversampling, and StandardScaler normalization. Optional
+                feature expansion includes polynomial, RBF, and Fourier basis features.
+                All three quantum backends (Qiskit, Cirq, PennyLane) produce consistent
+                kernel matrices, confirming framework-agnostic reproducibility.
+              </p>
+              <p>
+                Classical baselines (XGBoost, LightGBM, SVC, logistic regression) provide
+                controlled comparisons. ROC curves and tornado recall (the challenge-specific
+                primary metric) are reported across all methods.
+              </p>
+              <p><strong>Key tools:</strong> Qiskit 2.x, Cirq, PennyLane, PyTorch, scikit-learn, XGBoost, LightGBM, imbalanced-learn</p>
+            </div>
+          </details>
+        </article>
+
+        <hr class="research-entry__divider">
+
+        <!-- 5. NeurotiQ (NYUAD 2025) — 2025, LEFT -->
+        <article class="research-entry reveal">
+          <div class="research-entry__thumbnail">
+            <img src="assets/img/thumbnails/neurotiq.jpg" alt="Clemson Quantum team at NYUAD Hackathon 2025 in Abu Dhabi" loading="lazy">
+          </div>
+          <div class="research-entry__content">
+            <div class="research-entry__meta">
+              <a href="https://github.com/valmohaugen/NYUAD-Hackathon-2025" class="btn btn-sm" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <span class="research-entry__year">2025</span>
+            </div>
+            <h3>NeurotiQ (NYUAD 2025)</h3>
+            <p>
+              Full-stack quantum machine learning application for EEG-based mental health
+              diagnosis, integrating QSVM, QCNN, and classical ML baselines with a
+              GPT-4-powered Streamlit web interface. Developed at the NYU Abu Dhabi Quantum
+              Hackathon, targeting anxiety, depression, and ADHD detection from brain wave data.
+              The quantum kernel SVM achieved 79% AUC on anxiety detection, significantly
+              outperforming the 68% AUC classical baseline.
+            </p>
+          </div>
+          <details class="research-entry__details">
+            <summary>More details</summary>
+            <div class="research-entry__details-body">
+              <p>
+                Electroencephalography (EEG) data contains rich spatiotemporal patterns
+                associated with neurological conditions, but traditional analysis methods
+                struggle with the high dimensionality and noise inherent in brain signals.
+                NeurotiQ explores whether quantum machine learning can improve classification
+                performance for mental health diagnosis from EEG recordings.
+              </p>
+              <p>
+                The primary quantum model is a QSVM using Qiskit quantum kernels with
+                amplitude embedding and diagonal phase encoding, achieving 79% AUC on anxiety
+                detection&mdash;a significant improvement over the 68% AUC classical SVM
+                baseline. A secondary QCNN model built with PennyLane and TensorFlow uses
+                StronglyEntanglingLayers for hybrid quantum-classical feature learning.
+              </p>
+              <p>
+                EEG preprocessing includes KNN imputation for missing channels, PCA
+                dimensionality reduction to 8 components (matching quantum hardware
+                constraints), and L2 normalization. The pipeline supports multiple EEG datasets
+                sourced from Kaggle (anxiety), Zenodo (depression), and local collections
+                (ADHD), with severity classification into mild, moderate, and severe categories.
+              </p>
+              <p>
+                The Streamlit web application provides real-time inference, interactive
+                visualization of classification results, and a GPT-4-powered emotional support
+                chatbot (via LangChain) that generates personalized recommendations based on
+                the diagnostic output. Classical baselines include PyCaret AutoML ensembles,
+                SVM, and logistic regression for controlled comparisons.
+              </p>
+              <p><strong>Key tools:</strong> Qiskit 2.x, PennyLane, TensorFlow/Keras, scikit-learn, PyCaret, Streamlit, LangChain, OpenAI GPT-4</p>
+            </div>
+          </details>
+        </article>
+
+        <hr class="research-entry__divider">
+
+        <!-- 6. iQuHACK 2025 — 2025, RIGHT -->
+        <article class="research-entry research-entry--reverse reveal">
+          <div class="research-entry__thumbnail">
+            <img src="assets/img/thumbnails/iquhack-2025.png" alt="Clemson Quantum team at iQuHACK 2025 at MIT" loading="lazy">
+          </div>
+          <div class="research-entry__content">
+            <div class="research-entry__meta">
+              <a href="https://github.com/valmohaugen/iQuHack-2025" class="btn btn-sm" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <span class="research-entry__year">2025</span>
+            </div>
+            <h3>iQuHACK 2025</h3>
+            <p>
+              Cat qubit simulation and optimal control for the Alice &amp; Bob open quantum
+              systems challenge at MIT. Modeled two-photon driven dissipative stabilization of
+              bosonic cat states, analyzed noise-biased error channels, and implemented
+              gradient-based quantum state preparation using JAX automatic differentiation.
+              Includes adiabatic elimination validation, Wigner function phase space
+              visualization, and lab frame Hamiltonian simulation with SQUID nonlinearity.
+            </p>
+          </div>
+          <details class="research-entry__details">
+            <summary>More details</summary>
+            <div class="research-entry__details-body">
+              <p>
+                Cat qubits encode quantum information in superpositions of coherent states
+                within a harmonic oscillator, offering an inherent bias toward phase-flip
+                errors over bit-flip errors. This noise asymmetry is a key resource for
+                building hardware-efficient quantum error correction. This project simulates
+                cat qubit dynamics and develops optimal control protocols using the Dynamiqs
+                open quantum systems library.
+              </p>
+              <p>
+                The simulation models two-photon dissipation in composite Hilbert spaces,
+                tracking photon number evolution, parity dynamics, and Wigner function phase
+                space representations. Adiabatic elimination reduces two-mode systems to
+                effective single-mode descriptions, validated by fidelity comparisons between
+                full and approximate models. Zeno gate protocols protect against environmental
+                decoherence.
+              </p>
+              <p>
+                Gradient-based optimal control uses JAX automatic differentiation with the Adam
+                optimizer to prepare target cat states from vacuum, optimizing pulse shapes for
+                maximum fidelity. The lab frame simulation incorporates time-dependent
+                Hamiltonians with SQUID nonlinearity and microwave drive terms, connecting the
+                idealized model to experimental hardware parameters.
+              </p>
+              <p>
+                Results include cat state fidelity as a function of dissipation rate, bit-flip
+                vs. phase-flip error rate comparisons against standard transmon qubits, and
+                animated Wigner function evolution showing the characteristic interference
+                fringes of cat states.
+              </p>
+              <p><strong>Key tools:</strong> Dynamiqs, JAX, NumPy, SciPy, Matplotlib</p>
+            </div>
+          </details>
+        </article>
+
+        <hr class="research-entry__divider">
+
+        <!-- Qoffee Maker Activity — Nov 2024, LEFT -->
+        <article class="research-entry reveal">
           <div class="research-entry__thumbnail">
             <div class="research-entry__thumbnail--placeholder">Qoffee Maker</div>
           </div>
@@ -357,20 +535,39 @@
             </div>
             <h3>Qoffee Maker Activity</h3>
             <p>
-              Educational quantum circuit simulation activity designed to introduce quantum computing
-              concepts through an interactive, hands-on exercise. Used in outreach and teaching
-              settings to make quantum gates and circuits approachable.
+              Educational quantum circuit simulation activity designed to introduce quantum
+              computing concepts to newcomers through a hands-on, gamified exercise. Uses a
+              coffee-making metaphor to teach single-qubit gates (X, H, Z), measurement,
+              superposition, and entanglement in outreach and classroom settings. Deployed
+              in Clemson Quantum Group workshops as a structured 30&ndash;60 minute introduction
+              requiring no prior physics or programming knowledge.
             </p>
           </div>
-          <!-- Expandable details -->
           <details class="research-entry__details">
             <summary>More details</summary>
             <div class="research-entry__details-body">
               <p>
-                An interactive activity where learners build quantum circuits step-by-step to
-                &ldquo;brew&rdquo; different quantum states. Covers single-qubit gates (X, H, Z),
-                measurement, and introduces superposition and entanglement concepts through a
-                gamified coffee-making metaphor.
+                Making quantum computing accessible to students without a physics background
+                requires careful abstraction of core concepts into familiar, intuitive
+                frameworks. The Qoffee Maker activity maps quantum circuit operations to
+                steps in a coffee-making process, letting learners &ldquo;brew&rdquo;
+                different quantum states by applying gate sequences.
+              </p>
+              <p>
+                Participants start with qubits in the |0&rangle; state and apply single-qubit
+                gates&mdash;X (bit flip), H (superposition), and Z (phase flip)&mdash;to
+                produce target &ldquo;coffee&rdquo; outcomes. The activity introduces
+                measurement as &ldquo;tasting&rdquo; the result, naturally illustrating
+                wavefunction collapse and probabilistic outcomes. Multi-qubit extensions
+                introduce entanglement through CNOT gates, showing how quantum correlations
+                differ from classical mixing.
+              </p>
+              <p>
+                The activity has been used in Clemson Quantum Group outreach events and
+                educational workshops, providing a structured 30&ndash;60 minute introduction
+                to quantum computing that requires no prior physics or programming knowledge.
+                Facilitator guides and printable circuit worksheets support deployment in
+                diverse teaching contexts.
               </p>
               <p><strong>Key tools:</strong> Python, Qiskit</p>
             </div>
@@ -379,8 +576,8 @@
 
         <hr class="research-entry__divider">
 
-        <!-- 9. SC Quantathon v1 — thumbnail LEFT -->
-        <article class="research-entry reveal">
+        <!-- SC Quantathon v1 — Oct 2024, RIGHT -->
+        <article class="research-entry research-entry--reverse reveal">
           <div class="research-entry__thumbnail">
             <div class="research-entry__thumbnail--placeholder">QRNG</div>
           </div>
@@ -394,25 +591,52 @@
             </div>
             <h3>SC Quantathon v1 (2024)</h3>
             <p>
-              Quantum random number generation (QRNG) project for the inaugural SC Quantathon.
-              Built quantum circuits to generate certifiably random numbers and benchmarked
-              against classical pseudo-random generators. Won the competition.
+              Award-winning quantum random number generation (QRNG) project for the inaugural
+              SC Quantathon. Implemented, characterized, and verified QRNG on IBM quantum
+              processors through a five-stage challenge spanning circuit design, ML-based
+              quantum vs. classical discrimination, hardware noise characterization (T1/T2,
+              gate errors), and Toeplitz/Von Neumann entropy extraction. Won first place
+              in the competition.
             </p>
           </div>
-          <!-- Expandable details -->
           <details class="research-entry__details">
             <summary>More details</summary>
             <div class="research-entry__details-body">
               <p>
-                Implemented quantum random number generation using Qiskit, leveraging superposition
-                and measurement to produce true randomness from quantum circuits. Included statistical
-                testing of output distributions and comparison with classical PRNG methods to
-                demonstrate quantum advantage in randomness certification.
+                True random number generation is fundamentally impossible with classical
+                deterministic hardware, but quantum mechanics provides a natural source of
+                certified randomness through the Born rule. This project implements a complete
+                QRNG pipeline on IBM quantum processors, from raw bitstring generation to
+                post-processed, verified random output.
               </p>
-              <p><strong>Key tools:</strong> Qiskit, Python, NumPy, Matplotlib</p>
+              <p>
+                The five-stage challenge progresses from basic QRNG circuit design (Hadamard
+                gates producing superposition-based random bits) through increasingly
+                sophisticated analysis. Stage 2 trains an SVM classifier achieving 75%+
+                accuracy at distinguishing QRNG output from classical pseudo-random sequences,
+                confirming measurable statistical differences. Stage 3 characterizes hardware
+                noise through T1/T2 decoherence measurements, gate error rates, and readout
+                assignment error matrices across IBM backends (Brisbane, Sherbrooke).
+              </p>
+              <p>
+                Stage 4 applies entropy extraction techniques&mdash;Toeplitz matrix hashing,
+                Von Neumann extraction, and parity-based debiasing&mdash;to purify raw quantum
+                randomness from measurement bias and hardware noise. Stage 5 re-evaluates the
+                extracted output, confirming improved statistical quality. The pipeline supports
+                configurable shot counts from 10 to 100,000 qubits and includes HPCG benchmark
+                integration via a C shared library shim replacing <code>rand()</code> calls
+                with quantum-sourced randomness.
+              </p>
+              <p>
+                Four bitstring extraction methods (Mod2 XOR, iteration with chunking,
+                concatenation, and combined) are compared across simulator and real hardware
+                backends. The project won the inaugural SC Quantathon competition.
+              </p>
+              <p><strong>Key tools:</strong> Qiskit, qiskit-ibm-runtime, scikit-learn, XGBoost, NumPy, SciPy, Matplotlib</p>
             </div>
           </details>
         </article>
+
 
       </div>
     </section>
@@ -424,10 +648,10 @@
     <div class="container">
       <span class="footer-copy">&copy; 2026 Valentine Mohaugen</span>
       <div class="footer-links">
-        <a href="https://github.com/valmohaugen" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://scholar.google.com/citations?user=bZlPsRYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://orcid.org/0009-0003-3013-6435" target="_blank" rel="noopener">ORCID</a>
         <a href="mailto:valentm@clemson.edu">Email</a>
+        <a href="https://github.com/valmohaugen" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=bZlPsRYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://orcid.org/0009-0003-3013-6435" target="_blank" rel="noopener">ORCID</a>
       </div>
     </div>
   </footer>
