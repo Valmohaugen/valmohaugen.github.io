@@ -1,0 +1,58 @@
+[
+  {
+    "date": "Oct 2026",
+    "text": "Became President of the Clemson Quantum Club"
+  },
+  {
+    "date": "Sep 2026",
+    "text": "Presenting a poster on MEDA, our measurement-efficient Majorana zero mode detection framework, at Clemson HPC Day"
+  },
+  {
+    "date": "Aug 2026",
+    "text": "Started my Ph.D. in Civil Engineering at Clemson University, researching quantum ML, cybersecurity, and cyber-physical systems in Dr. Chowdhury's group"
+  },
+  {
+    "date": "2026",
+    "text": "MEDA, our paper on measurement-efficient disorder-aware detection of Majorana zero modes, accepted at IEEE QCE 2026"
+  },
+  {
+    "date": "May 2026",
+    "text": "Graduated from Clemson University with a B.S. in Physics and a minor in Italian Studies"
+  },
+  {
+    "date": "Apr 2026",
+    "text": "Won 3rd place at YQuantum 2026 at Yale for cat qubit control optimization with team (Ψ)ceratops"
+  },
+  {
+    "date": "Feb 2026",
+    "text": "Won 1st place at iQuHACK 2026 at MIT with a Reed-Muller decoding-based Clifford+T circuit optimizer (Superquantum challenge)"
+  },
+  {
+    "date": "Dec 2025",
+    "text": "Selected as an IBM Qiskit Advocate"
+  },
+  {
+    "date": "2025",
+    "text": "Co-authored a paper on chiral phonons in layered AgCrP₂Se₆, published in ACS Nano"
+  },
+  {
+    "date": "2025",
+    "text": "Presented NeurotiQ at NYUAD Quantum Hackathon in Abu Dhabi"
+  },
+  {
+    "date": "2025",
+    "text": "Competed in SC Quantathon v2, building quantum kernels for tornado prediction"
+  },
+  {
+    "date": "Jan 2025",
+    "text": "Competed at iQuHACK 2025 at MIT in the cat qubit simulation challenge"
+  },
+  {
+    "date": "Oct 2024",
+    "text": "Won 1st place and the grand prize overall at the inaugural SC Quantathon for quantum random number generation on IBM hardware"
+  },
+  {
+    "date": "2023",
+    "text": "Joined the Clemson Nanomaterials Institute as an undergraduate research assistant"
+  }
+]

@@ -1,2 +1,13 @@
-.claude/
+# Next.js
+.next/
+out/
+node_modules/
+tsconfig.tsbuildinfo
+
+# Misc
 .DS_Store
+.claude/
+
+# CV LaTeX source: contains private contact details, and this repo is public.
+# The compiled CV is intentionally not served from the site either.
+cv-src/
