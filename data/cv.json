@@ -22,7 +22,7 @@
     },
     {
       "date": "Aug 2024 – May 2026",
-      "title": "Undergraduate Researcher",
+      "title": "Undergraduate Research Assistant",
       "subtitle": "Dr. Rong Ge's group, Clemson University",
       "desc": "Developed an attention-based multiple-instance learning pipeline mapping sparse conductance measurements to the disorder-aware periodic disorder invariant in finite, disordered Majorana nanowires. Generated ground-truth PDI phase diagrams via HPC parameter sweeps in KWANT and built the data pipeline feeding a ResNet-18 encoder trained across disorder realizations."
     },
