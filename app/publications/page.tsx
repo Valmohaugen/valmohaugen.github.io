@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { GitHubIcon, ScholarIcon, OrcidIcon } from '@/components/icons';
+import { GitHubIcon, ScholarIcon, OrcidIcon, ResearchGateIcon } from '@/components/icons';
 import publications from '@/data/publications.json';
 import siteConfig from '@/data/site-config.json';
 import type { Publication } from '@/lib/types';
@@ -86,6 +86,10 @@ export default function PublicationsPage() {
               <a href={siteConfig.orcidUrl} className="link-inline" target="_blank" rel="noopener noreferrer">
                 <OrcidIcon size={16} />
                 ORCID
+              </a>
+              <a href={siteConfig.researchgateUrl} className="link-inline" target="_blank" rel="noopener noreferrer">
+                <ResearchGateIcon size={16} />
+                ResearchGate
               </a>
             </div>
           </div>
