@@ -25,14 +25,14 @@ export default function HomePage() {
             <h1 className="hero-name">Valentine Mohaugen</h1>
             <p className="hero-title">{siteConfig.title}</p>
             <p className="hero-tagline">
-              I&apos;m a first-year Ph.D. student and Graduate Research
+              I&rsquo;m a first-year Ph.D. student and Graduate Research
               Assistant in Civil Engineering at {siteConfig.affiliation},
               advised by {siteConfig.advisor}. My
               research is in quantum machine learning, cybersecurity, and
               cyber-physical systems, developing quantum-enhanced learning
               methods for intelligent, secure transportation and critical
               infrastructure. I earned my B.S. in Physics with a minor in
-              Italian Studies at Clemson in May 2026, and I&apos;m an IBM
+              Italian Studies at Clemson in May 2026, and I&rsquo;m an IBM
               Qiskit Advocate and a co-founder and President of the{' '}
               <a href={siteConfig.clubUrl} target="_blank" rel="noopener noreferrer">
                 Clemson Quantum Club
