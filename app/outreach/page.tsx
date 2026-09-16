@@ -6,11 +6,11 @@ import type { CvData } from '@/lib/types';
 export const metadata: Metadata = {
   title: 'Outreach & Leadership',
   description:
-    'Talks, presentations, outreach activities, and community engagement by Valentine Mohaugen.',
+    'Presentations, posters, and quantum computing community leadership by Valentine Mohaugen, Clemson University.',
   openGraph: {
     title: 'Outreach & Leadership · Valentine Mohaugen',
     description:
-      'Talks, posters, workshops, and quantum computing community engagement by Valentine Mohaugen.',
+      'Presentations, posters, and quantum computing community leadership by Valentine Mohaugen, Clemson University.',
     url: '/outreach/',
   },
 };
@@ -23,7 +23,7 @@ export default function OutreachPage() {
       <section className="page-header">
         <div className="container">
           <h1>Outreach &amp; Leadership</h1>
-          <p>Talks, education, and community engagement</p>
+          <p>Presentations, posters, and community leadership</p>
         </div>
       </section>
 
