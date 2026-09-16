@@ -1,5 +1,29 @@
 /** Shared content types for the data/*.json files. */
 
+/** data/site-config.json. */
+export interface SiteConfig {
+  name: string;
+  siteUrl: string;
+  /** Hero role line under the name. Not a page <title>. */
+  title: string;
+  affiliation: string;
+  advisor: string;
+  email: string;
+  githubUrl: string;
+  linkedinUrl: string;
+  scholarUrl: string;
+  orcidUrl: string;
+  orcidId: string;
+  researchgateUrl: string;
+  clubUrl: string;
+  /**
+   * The byline form of my name, used to bold my own entry in publication
+   * author lists. Must match data/publications.json exactly: the comparison
+   * in app/publications/page.tsx fails silently if either side drifts.
+   */
+  authorShort: string;
+}
+
 export interface Project {
   /** Stable slug used as the anchor id on the research page. */
   id: string;
@@ -24,8 +48,6 @@ export interface Project {
   /** Path under /images/thumbnails/, if a thumbnail exists. */
   thumbnail?: string;
   thumbnailAlt?: string;
-  /** Fallback label rendered in the placeholder thumbnail. */
-  placeholderLabel?: string;
   /** Shown in the homepage Research Highlights section. */
   highlight?: boolean;
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import siteConfig from '@/data/site-config.json';
+import siteConfig from '@/lib/site-config';
 import StarDivider from '@/components/StarDivider';
 import { NAV_LINKS } from '@/lib/nav';
 import { SOCIAL_PROFILES, externalLinkProps } from '@/lib/social';
