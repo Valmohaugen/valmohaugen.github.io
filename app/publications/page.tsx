@@ -1,17 +1,19 @@
 import type { Metadata } from 'next';
 import { GitHubIcon, ScholarIcon, OrcidIcon } from '@/components/icons';
+import TimelineItem from '@/components/TimelineItem';
+import cv from '@/data/cv.json';
 import publications from '@/data/publications.json';
 import siteConfig from '@/data/site-config.json';
-import type { Publication } from '@/lib/types';
+import type { CvData, Publication } from '@/lib/types';
 
 export const metadata: Metadata = {
-  title: 'Publications',
+  title: 'Publications & Conferences',
   description:
-    'Peer-reviewed publications by Valentine Mohaugen, Clemson University.',
+    'Peer-reviewed publications and conferences attended by Valentine Mohaugen, Clemson University.',
   openGraph: {
-    title: 'Publications · Valentine Mohaugen',
+    title: 'Publications & Conferences · Valentine Mohaugen',
     description:
-      'Peer-reviewed publications by Valentine Mohaugen, Clemson University.',
+      'Peer-reviewed publications and conferences attended by Valentine Mohaugen, Clemson University.',
     url: '/publications/',
   },
 };
@@ -44,6 +46,8 @@ function PubEntry({ pub }: { pub: Publication }) {
   );
 }
 
+const cvData = cv as CvData;
+
 const scholarlyJsonLd = publications.publications.map((pub) => ({
   '@context': 'https://schema.org',
   '@type': 'ScholarlyArticle',
@@ -63,14 +67,15 @@ export default function PublicationsPage() {
       />
       <section className="page-header">
         <div className="container">
-          <h1>Publications</h1>
-          <p>Peer-reviewed papers</p>
+          <h1>Publications &amp; Conferences</h1>
+          <p>Peer-reviewed papers and conferences attended</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="pub-section reveal">
+            <h2>Publications</h2>
             {publications.publications.map((pub) => (
               <PubEntry pub={pub} key={pub.title} />
             ))}
@@ -88,6 +93,13 @@ export default function PublicationsPage() {
                 ORCID
               </a>
             </div>
+          </div>
+
+          <div className="cv-section reveal">
+            <h2>Conferences</h2>
+            {cvData.conferences.map((entry) => (
+              <TimelineItem entry={entry} key={entry.title + entry.date} />
+            ))}
           </div>
         </div>
       </section>
