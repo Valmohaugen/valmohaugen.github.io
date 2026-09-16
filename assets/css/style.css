@@ -917,6 +917,12 @@ p:last-child {
   margin-bottom: 0.15rem;
 }
 
+/* The author's own name, emphasized within the muted byline. */
+.pub-authors strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 .pub-venue {
   font-size: 0.88rem;
   color: var(--color-text-light);

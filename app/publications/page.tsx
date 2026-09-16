@@ -22,7 +22,14 @@ function PubEntry({ pub }: { pub: Publication }) {
       <div className="pub-year">{pub.year}</div>
       <div>
         <p className="pub-title">{pub.title}</p>
-        <p className="pub-authors">{pub.authors}</p>
+        <p className="pub-authors">
+          {pub.authors.split(', ').map((name, i) => (
+            <span key={name}>
+              {i > 0 && ', '}
+              {name === siteConfig.authorShort ? <strong>{name}</strong> : name}
+            </span>
+          ))}
+        </p>
         <p className="pub-venue">
           <em>{pub.venue}</em>
         </p>
