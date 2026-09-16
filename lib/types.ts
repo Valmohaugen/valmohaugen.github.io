@@ -81,6 +81,8 @@ export interface CvData {
   research: TimelineEntry[];
   leadership: TimelineEntry[];
   presentations: TimelineEntry[];
+  /** Conferences attended (no speaking role — talks/posters live in presentations). */
+  conferences: TimelineEntry[];
   awards: TimelineEntry[];
   /** Professional & honor societies, dot-separated display string. */
   societies: string;
