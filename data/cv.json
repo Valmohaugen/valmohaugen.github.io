@@ -17,31 +17,31 @@
     {
       "date": "Aug 2026 – Present",
       "title": "Graduate Research Assistant",
-      "subtitle": "Glenn Department of Civil Engineering, Clemson University",
+      "subtitle": "Glenn Department of Civil Engineering, Clemson University, Clemson, SC",
       "desc": "Research in Dr. Mashrur “Ronnie” Chowdhury's group on quantum machine learning, cybersecurity, and cyber-physical systems."
     },
     {
       "date": "Aug 2024 – May 2026",
       "title": "Undergraduate Research Assistant",
-      "subtitle": "Dr. Rong Ge's group, Clemson University",
-      "desc": "Developed an attention-based multiple-instance learning pipeline mapping sparse conductance measurements to the disorder-aware periodic disorder invariant in finite, disordered Majorana nanowires. Generated ground-truth PDI phase diagrams via HPC parameter sweeps in KWANT and built the data pipeline feeding a ResNet-18 encoder trained across disorder realizations."
+      "subtitle": "Creative Inquiry + Undergraduate Research, Clemson University, Clemson, SC",
+      "desc": "Developed an attention-based multiple-instance learning pipeline in Dr. Rong Ge's group, mapping sparse conductance measurements to the disorder-aware periodic disorder invariant in finite, disordered Majorana nanowires. Generated ground-truth PDI phase diagrams via HPC parameter sweeps in KWANT and built the data pipeline feeding a ResNet-18 encoder trained across disorder realizations."
     },
     {
       "date": "Jun – Jul 2025",
       "title": "Summer Intern",
-      "subtitle": "Savannah River National Laboratory (SRNL), Aiken, SC",
+      "subtitle": "Quantum AI/ML & Optimization, Savannah River National Laboratory (SRNL), Aiken, SC",
       "desc": "Implemented VQE for Kitaev chain Hamiltonians in Dr. Larry Deschaine's group to resolve Majorana edge-state signatures and reproduce benchmark ground-state energies. Evaluated candidate materials using band gaps, Berry curvature, and coherence-time metrics for high-temperature operation."
     },
     {
       "date": "May – Jul 2024",
       "title": "Summer Intern",
-      "subtitle": "Air Force Research Laboratory (AFRL), Dayton, OH",
+      "subtitle": "Materials and Manufacturing Directorate, Air Force Research Laboratory (AFRL), Dayton, OH",
       "desc": "Prepared layered AgCrP₂Se₆ samples via mechanical exfoliation in Dr. Rahul Rao's group and characterized thickness and crystal quality with AFM. Collected excitation-energy-dependent Raman and photoluminescence measurements at room and cryogenic temperatures; data published in ACS Nano (2025)."
     },
     {
       "date": "Aug 2023 – May 2024",
       "title": "Undergraduate Research Assistant",
-      "subtitle": "Clemson Nanomaterials Institute (CNI)",
+      "subtitle": "Clemson Nanomaterials Institute, Clemson University, Anderson, SC",
       "desc": "Prepared and coated supercapacitor electrodes in Dr. Apparao Rao's group and performed cyclic voltammetry to evaluate electrochemical performance. Measured thermal diffusivity on a Linseis Laser Flash system supporting thermal characterization of novel carbon-based materials."
     }
   ],
