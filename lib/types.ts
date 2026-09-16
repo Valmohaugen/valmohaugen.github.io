@@ -4,7 +4,7 @@ export interface Project {
   /** Stable slug used as the anchor id on the research page. */
   id: string;
   title: string;
-  /** Display label, e.g. "2024 — 2026" or "Apr 2026". */
+  /** Display label, e.g. "2024 – 2026" or "Apr 2026". */
   year: string;
   /** One-paragraph summary shown in the entry card. */
   blurb: string;
@@ -32,7 +32,7 @@ export interface Project {
 
 /**
  * A homepage news entry. Entries are kept newest-first as a permanent running
- * log; the homepage renders only the first three (see app/page.tsx).
+ * log; the homepage renders only the first five (see app/page.tsx).
  */
 export interface NewsItem {
   /** Display date, e.g. "Apr 2026". */
@@ -59,7 +59,7 @@ export interface PublicationsData {
 
 /** One dated entry in a CV/outreach timeline section. */
 export interface TimelineEntry {
-  /** Display date or range, e.g. "Aug 2026 — Present". */
+  /** Display date or range, e.g. "Aug 2026 – Present". */
   date: string;
   title: string;
   /** Institution / venue line under the title. */

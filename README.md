@@ -15,7 +15,7 @@ npx tsc --noEmit   # type check
 ## Structure
 
 - `app/` — App Router pages (home, research, publications, outreach, cv, contact)
-- `components/` — React components (Header, Footer, ScrollReveal, ResearchEntry, StarfieldAccent, BraidAccent, …)
+- `components/` — React components (Header, Footer, ScrollReveal, ResearchEntry, StarfieldAccent, …)
 - `data/` — site content as JSON (projects, news, publications, cv, site config)
 - `lib/` — content type definitions (`types.ts`) and shared nav links (`nav.ts`)
 - `assets/css/style.css` — global stylesheet (imported in `app/layout.tsx`)
