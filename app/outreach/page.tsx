@@ -60,7 +60,7 @@ export default function OutreachPage() {
               <div className="timeline-desc">
                 Contribute to community education, workshops, and Qiskit ecosystem
                 resources; hosted and co-organized IBM Qiskit Fall Fest at Clemson
-                (2024, 2025).
+                (2024, 2025, 2026).
               </div>
             </div>
           </div>
