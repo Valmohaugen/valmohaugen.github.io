@@ -20,6 +20,9 @@
   --color-footer-text: #a0aec0;
   --color-shadow: rgba(0, 0, 0, 0.06);
   --color-shadow-lg: rgba(0, 0, 0, 0.1);
+  /* Foreground on a --color-primary fill. White fails AA on the lighter
+     dark-mode primary (2.72:1), so dark mode uses the page background. */
+  --color-on-primary: #ffffff;
 
   /* Font families are provided by next/font in app/layout.tsx via CSS
      variables; the literal names remain as fallbacks for tooling. */
@@ -56,6 +59,7 @@
     --color-footer-text: #6b7a8d;
     --color-shadow: rgba(0, 0, 0, 0.25);
     --color-shadow-lg: rgba(0, 0, 0, 0.4);
+    --color-on-primary: #0e1117;
   }
 }
 
@@ -157,7 +161,7 @@ p:last-child {
   z-index: 200;
   padding: 0.65rem 1.25rem;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-weight: 600;
   font-size: 0.875rem;
@@ -166,14 +170,14 @@ p:last-child {
 
 .skip-link:focus {
   top: 0;
-  color: #fff;
 }
 
-/* Focus indicators — one consistent ring everywhere */
+/* Focus indicators: one consistent ring everywhere. No border-radius here;
+   this selector ties with .skip-link on specificity and would override the
+   element's own corners. Outlines already follow the element's radius. */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 /* ============================================================
@@ -1303,6 +1307,7 @@ p:last-child {
 
   .footer .container {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
