@@ -1,0 +1,250 @@
+/* ============================================================
+   Page chrome: navigation, page header, hero, and section wrappers.
+   ============================================================ */
+
+/* ============================================================
+   06. Navigation
+   ============================================================ */
+.site-header {
+  /* Sticky lives on the banner landmark wrapper: a sticky child can only
+     stick within its parent's box, so the wrapper must own the positioning. */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--nav-height);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+    background: rgba(14, 17, 23, 0.88);
+  }
+}
+
+.nav .container {
+  max-width: var(--nav-max-width);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav-brand {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+
+.nav-brand:hover {
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color var(--transition-fast);
+}
+
+/* Underline slides in from the left on hover; stays for the active page. */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+
+/* Hamburger (mobile) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 1px;
+}
+
+/* Animate to an X when the menu is open */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   07. Page Header (inner pages)
+   ============================================================ */
+.page-header {
+  padding: 3.5rem 0 2.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-header h1 {
+  margin-bottom: 0.3rem;
+}
+
+.page-header p {
+  color: var(--color-text-light);
+  font-size: 1.05rem;
+}
+
+/* ============================================================
+   08. Hero Section (Home)
+   ============================================================ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 0 4rem;
+}
+
+/* Faint drifting star specks behind the hero (StarfieldAccent canvas). */
+.starfield-accent {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-name {
+  font-size: clamp(1.75rem, 1.1rem + 3.2vw, 2.85rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  /* Optical margin alignment: the serif V's receding diagonal makes the
+     headline look indented relative to the sans lines below, even though
+     the boxes align. Pull the first glyph's ink back to the margin. */
+  text-indent: -0.05em;
+}
+
+.hero-title {
+  font-family: var(--font-body);
+  /* Tracks the viewport so the full title line ("Ph.D. Student · Quantum
+     Machine Learning, Cybersecurity, and Cyber-Physical Systems") stays on
+     one line on desktop; it still wraps gracefully on narrow screens. */
+  font-size: clamp(0.85rem, 0.3rem + 0.85vw, 1.05rem);
+  color: var(--color-text-light);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.hero-tagline {
+  font-size: 1.02rem;
+  color: var(--color-text);
+  margin-bottom: 1.75rem;
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+.hero-links {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.75rem;
+  justify-content: start;
+  justify-items: start;
+}
+
+.hero-photo {
+  /* Natural width only — flex: 1 handed half the hero to a 230px image and
+     squeezed the text column into wrapping the title line. */
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-photo img {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none;
+  box-shadow: 0 8px 32px var(--color-shadow-lg);
+}
+
+/* ============================================================
+   09. Sections
+   ============================================================ */
+.section {
+  padding: 4rem 0 2rem;
+}
+
+/* The first section on a subpage sits closer to its page header. */
+.page-header + .section {
+  padding-top: 2rem;
+}
+
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+.section-header {
+  margin-bottom: 2.25rem;
+}

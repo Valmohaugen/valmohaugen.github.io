@@ -1,0 +1,65 @@
+/* ============================================================
+   Design tokens.
+
+   Every color, size and timing the rest of the site reads. Add a new token
+   here, and its dark-mode value in the same block below.
+   ============================================================ */
+
+/* --- 01. Design Tokens --- */
+:root {
+  --color-primary: #1a56db;
+  --color-primary-light: #e8f0fe;
+  --color-primary-dark: #0f3a8a;
+  --color-primary-glow: rgba(26, 86, 219, 0.12);
+  --starfield-rgb: 26, 86, 219;
+  --color-text: #1c1e21;
+  --color-text-light: #5c6370;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f8fb;
+  --color-border: #e2e5ea;
+  --color-surface: #ffffff;
+  --color-footer-bg: #141821;
+  --color-footer-text: #a0aec0;
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-shadow-lg: rgba(0, 0, 0, 0.1);
+  /* Foreground on a --color-primary fill. White fails AA on the lighter
+     dark-mode primary (2.72:1), so dark mode uses the page background. */
+  --color-on-primary: #ffffff;
+
+  /* Font families are provided by next/font in app/layout.tsx via CSS
+     variables; the literal names remain as fallbacks for tooling. */
+  --font-body: var(--font-dm-sans, 'DM Sans'), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-source-serif, 'Source Serif 4'), 'Georgia', serif;
+  --max-width: 1200px;
+  --nav-max-width: 1060px;
+  --max-width-wide: 1180px;
+  --nav-height: 64px;
+
+  --reveal-distance: 28px;
+  --reveal-duration: 0.7s;
+  --transition-fast: 0.18s ease;
+  --transition-base: 0.25s ease;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #6b9cf7;
+    --color-primary-light: #1a2744;
+    --color-primary-dark: #9bbcff;
+    --color-primary-glow: rgba(107, 156, 247, 0.1);
+    --starfield-rgb: 155, 188, 255;
+    --color-text: #e1e7ef;
+    --color-text-light: #8b95a5;
+    --color-bg: #0e1117;
+    --color-bg-alt: #161b25;
+    --color-border: #2a3042;
+    --color-surface: #181d28;
+    --color-footer-bg: #0a0d12;
+    --color-footer-text: #6b7a8d;
+    --color-shadow: rgba(0, 0, 0, 0.25);
+    --color-shadow-lg: rgba(0, 0, 0, 0.4);
+    --color-on-primary: #0e1117;
+  }
+}

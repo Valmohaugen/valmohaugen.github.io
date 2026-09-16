@@ -1,0 +1,51 @@
+/* ============================================================
+   Print styles.
+   ============================================================ */
+
+/* ============================================================
+   26. Print
+   ============================================================ */
+@media print {
+  .nav,
+  .footer,
+  .skip-link,
+  .btn {
+    display: none !important;
+  }
+
+  .reveal,
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .starfield-accent,
+  .star-divider {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .skill-details[hidden] {
+    /* Print the full CV: force collapsed skill panels open. */
+    display: block !important;
+    margin-top: 0.75rem;
+  }
+
+  .skill-category__toggle::after {
+    display: none;
+  }
+
+  .timeline-item,
+  .skill-category {
+    break-inside: avoid;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-color: #000;
+  }
+}

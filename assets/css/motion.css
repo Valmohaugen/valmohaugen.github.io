@@ -1,0 +1,56 @@
+/* ============================================================
+   The scroll-reveal system and the reduced-motion guard.
+
+   The guard uses a universal selector, so any animation added anywhere on
+   the site inherits it automatically. Keep it that way.
+   ============================================================ */
+
+/* ============================================================
+   19. Scroll Reveal Animations
+   ============================================================ */
+/* Content is fully visible without JavaScript. ScrollReveal adds
+   .reveal-init only to elements below the fold, then flips them to
+   .reveal--visible as they enter the viewport. */
+.reveal {
+  transition: opacity var(--reveal-duration) ease, transform var(--reveal-duration) ease;
+  /* Stagger: set --reveal-index on each item (0, 1, 2, ...). Unbounded, so a
+     group can grow without new classes. Tune a group's spacing by setting
+     --reveal-stagger on its container. */
+  transition-delay: calc(var(--reveal-index, 0) * var(--reveal-stagger, 0.1s));
+}
+
+/* The entrance. Override --reveal-from for a different one; the fallback here
+   is the default fade-and-rise, so existing .reveal elements are unchanged. */
+.reveal-init {
+  opacity: 0;
+  transform: var(--reveal-from, translateY(var(--reveal-distance)));
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Entrance variants: each is one declaration. */
+.reveal--left  { --reveal-from: translateX(calc(var(--reveal-distance) * -1)); }
+.reveal--right { --reveal-from: translateX(var(--reveal-distance)); }
+.reveal--scale { --reveal-from: scale(0.96); }
+
+/* ============================================================
+   20. Reduced Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal,
+  .reveal-init {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
