@@ -31,7 +31,7 @@ export default function OutreachPage() {
       <section className="section">
         <div className="container">
           <div className="cv-section reveal">
-            <h2>Talks, Posters &amp; Workshops</h2>
+            <h2>Presentations &amp; Posters</h2>
             {cvData.presentations.map((entry) => (
               <TimelineItem entry={entry} key={entry.title} />
             ))}
