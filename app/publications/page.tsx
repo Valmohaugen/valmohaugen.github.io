@@ -53,7 +53,7 @@ const scholarlyJsonLd = publications.publications.map((pub) => ({
   headline: pub.title,
   author: pub.authors.split(', ').map((name) => ({ '@type': 'Person', name })),
   datePublished: pub.year,
-  publication: pub.venue,
+  isPartOf: { '@type': 'Periodical', name: pub.venue },
   ...(pub.paperUrl ? { url: pub.paperUrl } : {}),
 }));
 
