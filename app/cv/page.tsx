@@ -10,9 +10,9 @@ import type { CvData } from '@/lib/types';
 export const metadata: Metadata = pageMetadata({
   title: 'CV',
   description:
-    'Curriculum Vitae of Valentine Mohaugen, Ph.D. student in quantum machine learning and cyber-physical systems at Clemson University.',
+    'Curriculum Vitae of Valentine Mohaugen, Ph.D. student in quantum machine learning, cybersecurity, and cyber-physical systems at Clemson University.',
   ogDescription:
-    'Education, research experience, publications, and skills of Valentine Mohaugen, Ph.D. student in quantum machine learning and cyber-physical systems at Clemson University.',
+    'Education, research experience, leadership, presentations, awards, and technical skills of Valentine Mohaugen, Ph.D. student in quantum machine learning, cybersecurity, and cyber-physical systems at Clemson University.',
   path: '/cv/',
 });
 

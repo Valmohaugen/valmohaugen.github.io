@@ -1,7 +1,7 @@
 [
   {
     "id": "mzm-visibility",
-    "title": "MZM Visibility",
+    "title": "MEDA: Measurement-Efficient Majorana Zero Mode Detection",
     "year": "2024 – 2026",
     "blurb": "End-to-end deep learning pipeline for predicting Majorana zero mode phase diagrams from semiconductor-superconductor nanowire conductance data. Trains a modified ResNet-18 CNN autoencoder on up to 900 million synthetic Kwant-generated conductance measurements spanning a 6-dimensional parameter space with realistic disorder profiles. Features Monte Carlo dropout uncertainty quantification and supports transfer to experimental measurements.",
     "details": [
