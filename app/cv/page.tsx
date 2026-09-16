@@ -66,6 +66,13 @@ export default function CvPage() {
           </div>
 
           <div className="cv-section reveal">
+            <h2>Conferences</h2>
+            {cvData.conferences.map((entry) => (
+              <TimelineItem entry={entry} key={entry.title + entry.date} />
+            ))}
+          </div>
+
+          <div className="cv-section reveal">
             <h2>Awards &amp; Honors</h2>
             {cvData.awards.map((entry) => (
               <TimelineItem entry={entry} key={entry.title} />

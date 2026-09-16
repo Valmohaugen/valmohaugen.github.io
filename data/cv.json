@@ -56,7 +56,7 @@
       "date": "Dec 2025 – Present",
       "title": "Qiskit Advocate",
       "subtitle": "IBM Quantum",
-      "desc": "Selected to the Qiskit Advocate program; contribute to community education, workshops, and Qiskit ecosystem resources. Hosted and co-organized IBM Qiskit Fall Fest at Clemson (2024, 2025); completed Qiskit Global Summer School (2025); attended IBM Quantum Developer Conference (2025)."
+      "desc": "Selected to the Qiskit Advocate program; contribute to community education, workshops, and Qiskit ecosystem resources. Hosted and co-organized IBM Qiskit Fall Fest at Clemson (2024, 2025); completed Qiskit Global Summer School (2025)."
     }
   ],
   "presentations": [
@@ -79,6 +79,18 @@
       "date": "Nov 2024 & Nov 2025",
       "title": "Introductory Quantum Computing Workshop",
       "subtitle": "Workshop Organizer & Instructor · IBM Qiskit Fall Fest, Clemson University"
+    }
+  ],
+  "conferences": [
+    {
+      "date": "Nov 2026",
+      "title": "IBM Quantum Developer Conference",
+      "subtitle": "Attendee · IBM Quantum"
+    },
+    {
+      "date": "Nov 2025",
+      "title": "IBM Quantum Developer Conference",
+      "subtitle": "Attendee · IBM Quantum"
     }
   ],
   "awards": [
