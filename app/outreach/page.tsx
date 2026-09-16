@@ -38,7 +38,7 @@ export default function OutreachPage() {
           </div>
 
           <div className="cv-section reveal">
-            <h2>Education &amp; Outreach</h2>
+            <h2>Leadership &amp; Activities</h2>
             <div className="timeline-item">
               <div className="timeline-date">Aug 2024 &ndash; Present</div>
               <div className="timeline-title">
