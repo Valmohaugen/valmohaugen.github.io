@@ -1,25 +1,8 @@
 import Link from 'next/link';
 import siteConfig from '@/data/site-config.json';
 import StarDivider from '@/components/StarDivider';
-import {
-  EmailIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  ScholarIcon,
-  OrcidIcon,
-  ResearchGateIcon,
-} from '@/components/icons';
-
 import { NAV_LINKS } from '@/lib/nav';
-
-const SOCIAL_LINKS = [
-  { label: 'Email', href: `mailto:${siteConfig.email}`, Icon: EmailIcon },
-  { label: 'GitHub', href: siteConfig.githubUrl, Icon: GitHubIcon },
-  { label: 'LinkedIn', href: siteConfig.linkedinUrl, Icon: LinkedInIcon },
-  { label: 'Google Scholar', href: siteConfig.scholarUrl, Icon: ScholarIcon },
-  { label: 'ORCID', href: siteConfig.orcidUrl, Icon: OrcidIcon },
-  { label: 'ResearchGate', href: siteConfig.researchgateUrl, Icon: ResearchGateIcon },
-];
+import { SOCIAL_PROFILES, externalLinkProps } from '@/lib/social';
 
 export default function Footer() {
   return (
@@ -44,15 +27,8 @@ export default function Footer() {
         </nav>
 
         <div className="footer-social">
-          {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('mailto:') ? undefined : '_blank'}
-              rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-              aria-label={label}
-              title={label}
-            >
+          {SOCIAL_PROFILES.map(({ key, label, href, Icon }) => (
+            <a key={key} href={href} {...externalLinkProps(href)} aria-label={label} title={label}>
               <Icon size={18} />
             </a>
           ))}

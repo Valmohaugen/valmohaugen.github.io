@@ -2,30 +2,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import StarfieldAccent from '@/components/StarfieldAccent';
 import StarDivider from '@/components/StarDivider';
-import {
-  EmailIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  ScholarIcon,
-  OrcidIcon,
-  ResearchGateIcon,
-} from '@/components/icons';
+import Section from '@/components/Section';
 import siteConfig from '@/data/site-config.json';
 import news from '@/data/news.json';
 import projects from '@/data/projects.json';
-import type { Project } from '@/lib/types';
+import { SOCIAL_PROFILES, externalLinkProps } from '@/lib/social';
+import type { NewsItem, Project } from '@/lib/types';
 
-const HERO_LINKS = [
-  { label: 'Email', href: `mailto:${siteConfig.email}`, Icon: EmailIcon },
-  { label: 'GitHub', href: siteConfig.githubUrl, Icon: GitHubIcon },
-  { label: 'LinkedIn', href: siteConfig.linkedinUrl, Icon: LinkedInIcon },
-  { label: 'Scholar', href: siteConfig.scholarUrl, Icon: ScholarIcon },
-  { label: 'ORCID', href: siteConfig.orcidUrl, Icon: OrcidIcon },
-  { label: 'ResearchGate', href: siteConfig.researchgateUrl, Icon: ResearchGateIcon },
-];
+const allProjects: Project[] = projects;
+const newsItems: NewsItem[] = news;
 
 export default function HomePage() {
-  const highlights = (projects as Project[]).filter((p) => p.highlight);
+  const highlights = allProjects.filter((p) => p.highlight);
 
   return (
     <>
@@ -51,16 +39,15 @@ export default function HomePage() {
               </a>.
             </p>
             <div className="hero-links">
-              {HERO_LINKS.map(({ label, href, Icon }) => (
+              {SOCIAL_PROFILES.map(({ key, shortLabel, href, Icon }) => (
                 <a
-                  key={label}
+                  key={key}
                   href={href}
                   className="btn btn-outline btn-sm"
-                  target={href.startsWith('mailto:') ? undefined : '_blank'}
-                  rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  {...externalLinkProps(href)}
                 >
                   <Icon size={16} />
-                  {label}
+                  {shortLabel}
                 </a>
               ))}
             </div>
@@ -78,34 +65,32 @@ export default function HomePage() {
       </section>
 
       {/* News */}
-      <section className="section section-alt">
-        <div className="container">
+      <Section alt>
           <div className="section-header">
             <h2>Latest</h2>
           </div>
           <ul className="news-list reveal">
-            {news.slice(0, 5).map(({ date, text }) => (
+            {newsItems.slice(0, 5).map(({ date, text }) => (
               <li className="news-item" key={date + text.slice(0, 24)}>
                 <span className="news-date">{date}</span>
                 <span className="news-text">{text}</span>
               </li>
             ))}
           </ul>
-        </div>
-      </section>
+      </Section>
 
       <StarDivider />
 
       {/* Research Highlights */}
-      <section className="section">
-        <div className="container">
+      <Section>
           <div className="section-header">
             <h2>Research Highlights</h2>
           </div>
 
           {highlights.map((project, i) => (
             <div
-              className={`highlight-item reveal${i > 0 ? ` reveal-delay-${i}` : ''}`}
+              className="highlight-item reveal"
+              style={{ '--reveal-index': i } as React.CSSProperties}
               key={project.id}
             >
               <div className="highlight-summary">
@@ -120,8 +105,7 @@ export default function HomePage() {
           <p className="highlight-more reveal">
             <Link href="/research/">View all projects &rarr;</Link>
           </p>
-        </div>
-      </section>
+      </Section>
     </>
   );
 }

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import PageHeader from '@/components/PageHeader';
+import Section from '@/components/Section';
 import SkillCard from '@/components/SkillCard';
-import TimelineItem from '@/components/TimelineItem';
+import TimelineSection from '@/components/TimelineSection';
 import cv from '@/data/cv.json';
-import type { CvData } from '@/lib/types';
 import { pageMetadata } from '@/lib/metadata';
+import type { CvData } from '@/lib/types';
 
 export const metadata: Metadata = pageMetadata({
   title: 'CV',
@@ -14,75 +16,38 @@ export const metadata: Metadata = pageMetadata({
   path: '/cv/',
 });
 
-const cvData = cv as CvData;
+const cvData: CvData = cv;
 
 export default function CvPage() {
   return (
     <>
-      <section className="page-header">
-        <div className="container">
-          <h1>Curriculum Vitae</h1>
-          <p>Education, research experience, and skills</p>
-        </div>
-      </section>
+      <PageHeader
+        title="Curriculum Vitae"
+        subtitle="Education, research experience, and skills"
+      />
 
-      <section className="section">
-        <div className="container">
-          <div className="cv-section reveal">
-            <h2>Education</h2>
-            {cvData.education.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title} />
+      <Section>
+        <TimelineSection heading="Education" entries={cvData.education} />
+        <TimelineSection heading="Research Experience" entries={cvData.research} />
+        <TimelineSection heading="Leadership & Activities" entries={cvData.leadership} />
+        <TimelineSection heading="Presentations & Posters" entries={cvData.presentations} />
+        <TimelineSection heading="Conferences" entries={cvData.conferences} />
+
+        <TimelineSection heading="Awards & Honors" entries={cvData.awards}>
+          <p className="cv-societies">
+            <strong>Societies:</strong> {cvData.societies}
+          </p>
+        </TimelineSection>
+
+        <div className="cv-section reveal">
+          <h2>Technical Skills</h2>
+          <div className="skills-grid">
+            {cvData.skills.map((skill) => (
+              <SkillCard key={skill.title} {...skill} />
             ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Research Experience</h2>
-            {cvData.research.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title + entry.date} />
-            ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Leadership &amp; Activities</h2>
-            {cvData.leadership.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title} />
-            ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Presentations &amp; Posters</h2>
-            {cvData.presentations.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title} />
-            ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Conferences</h2>
-            {cvData.conferences.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title + entry.date} />
-            ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Awards &amp; Honors</h2>
-            {cvData.awards.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title} />
-            ))}
-            <p className="cv-societies">
-              <strong>Societies:</strong> {cvData.societies}
-            </p>
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Technical Skills</h2>
-            <div className="skills-grid">
-              {cvData.skills.map((skill) => (
-                <SkillCard key={skill.title} {...skill} />
-              ))}
-            </div>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }
