@@ -39,7 +39,6 @@
   --transition-base: 0.25s ease;
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 14px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,7 +79,6 @@ body {
   font-family: var(--font-body);
   line-height: 1.7;
   color: var(--color-text);
-  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -427,11 +425,6 @@ p:last-child {
   margin-bottom: 2.25rem;
 }
 
-.section-header p {
-  color: var(--color-text-light);
-  font-size: 1.05rem;
-  margin-top: 0.25rem;
-}
 
 /* ============================================================
    10. Highlight Items (Home page)
@@ -504,10 +497,6 @@ p:last-child {
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.research-entry__thumbnail img {
-  transition: transform 0.45s ease;
-}
-
 .research-entry:hover .research-entry__thumbnail img {
   transform: scale(1.025);
 }
@@ -517,21 +506,12 @@ p:last-child {
   box-shadow: 0 8px 24px var(--color-shadow);
 }
 
-.research-entry__thumbnail:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 6px 24px var(--color-shadow);
-}
-
 .research-entry__thumbnail img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
-}
-
-.research-entry__thumbnail:hover img {
-  transform: scale(1.03);
 }
 
 /* Placeholder thumbnails (SVG gradient fallback) */
@@ -883,11 +863,6 @@ p:last-child {
   margin-bottom: 3rem;
 }
 
-.pub-section h2 {
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--color-primary-light);
-  margin-bottom: 1.5rem;
-}
 
 .pub-entry {
   display: grid;
@@ -1098,16 +1073,6 @@ p:last-child {
   line-height: 1.6;
   margin: 0.5rem 0 0;
   color: var(--color-footer-text);
-}
-
-.footer-descriptor a {
-  color: var(--color-footer-text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.footer-descriptor a:hover {
-  color: #ffffff;
 }
 
 .footer-nav {
@@ -1323,10 +1288,6 @@ p:last-child {
 @media (max-width: 480px) {
   .skills-grid {
     grid-template-columns: 1fr;
-  }
-
-  .research-entry__content h3 {
-    font-size: 1.15rem;
   }
 
   .hero-name {
