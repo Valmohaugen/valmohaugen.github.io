@@ -3,18 +3,14 @@ import { GitHubIcon, ScholarIcon, OrcidIcon, ResearchGateIcon } from '@/componen
 import publications from '@/data/publications.json';
 import siteConfig from '@/data/site-config.json';
 import type { Publication } from '@/lib/types';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Publications',
   description:
     'Peer-reviewed publications by Valentine Mohaugen, Clemson University.',
-  openGraph: {
-    title: 'Publications · Valentine Mohaugen',
-    description:
-      'Peer-reviewed publications by Valentine Mohaugen, Clemson University.',
-    url: '/publications/',
-  },
-};
+  path: '/publications/',
+});
 
 function PubEntry({ pub }: { pub: Publication }) {
   return (
