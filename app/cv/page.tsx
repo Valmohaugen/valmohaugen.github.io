@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import SkillCard from '@/components/SkillCard';
 import TimelineItem from '@/components/TimelineItem';
 import cv from '@/data/cv.json';
-import siteConfig from '@/data/site-config.json';
 import type { CvData } from '@/lib/types';
 
 export const metadata: Metadata = {
@@ -48,13 +47,7 @@ export default function CvPage() {
           <div className="cv-section reveal">
             <h2>Leadership &amp; Activities</h2>
             {cvData.leadership.map((entry) => (
-              <TimelineItem
-                entry={entry}
-                key={entry.title}
-                subtitleHref={
-                  entry.subtitle === 'clemsonquantum.com' ? siteConfig.clubUrl : undefined
-                }
-              />
+              <TimelineItem entry={entry} key={entry.title} />
             ))}
           </div>
 
