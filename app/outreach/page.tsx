@@ -2,18 +2,14 @@ import type { Metadata } from 'next';
 import TimelineItem from '@/components/TimelineItem';
 import cv from '@/data/cv.json';
 import type { CvData } from '@/lib/types';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Outreach & Leadership',
   description:
     'Presentations, posters, conferences, and quantum computing community leadership by Valentine Mohaugen, Clemson University.',
-  openGraph: {
-    title: 'Outreach & Leadership · Valentine Mohaugen',
-    description:
-      'Presentations, posters, conferences, and quantum computing community leadership by Valentine Mohaugen, Clemson University.',
-    url: '/outreach/',
-  },
-};
+  path: '/outreach/',
+});
 
 const cvData = cv as CvData;
 

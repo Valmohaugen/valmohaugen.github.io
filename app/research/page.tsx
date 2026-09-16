@@ -2,18 +2,14 @@ import type { Metadata } from 'next';
 import ResearchEntry from '@/components/ResearchEntry';
 import projects from '@/data/projects.json';
 import type { Project } from '@/lib/types';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Research & Projects',
   description:
     'Quantum machine learning, cyber-physical systems, deep learning for quantum systems, and quantum computing hackathon projects by Valentine Mohaugen.',
-  openGraph: {
-    title: 'Research & Projects · Valentine Mohaugen',
-    description:
-      'Quantum machine learning, cyber-physical systems, deep learning for quantum systems, and quantum computing hackathon projects by Valentine Mohaugen.',
-    url: '/research/',
-  },
-};
+  path: '/research/',
+});
 
 export default function ResearchPage() {
   const all = projects as Project[];

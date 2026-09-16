@@ -3,18 +3,16 @@ import SkillCard from '@/components/SkillCard';
 import TimelineItem from '@/components/TimelineItem';
 import cv from '@/data/cv.json';
 import type { CvData } from '@/lib/types';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'CV',
   description:
     'Curriculum Vitae of Valentine Mohaugen, Ph.D. student in quantum machine learning and cyber-physical systems at Clemson University.',
-  openGraph: {
-    title: 'CV · Valentine Mohaugen',
-    description:
-      'Education, research experience, publications, and skills of Valentine Mohaugen, Ph.D. student in quantum machine learning and cyber-physical systems at Clemson University.',
-    url: '/cv/',
-  },
-};
+  ogDescription:
+    'Education, research experience, publications, and skills of Valentine Mohaugen, Ph.D. student in quantum machine learning and cyber-physical systems at Clemson University.',
+  path: '/cv/',
+});
 
 const cvData = cv as CvData;
 

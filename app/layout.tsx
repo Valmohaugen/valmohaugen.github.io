@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import siteConfig from '@/data/site-config.json';
+import { OG_IMAGE } from '@/lib/metadata';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -39,18 +40,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: 'en_US',
     type: 'website',
-    // Explicit path with a real extension: the build copies the generated
-    // out/opengraph-image to opengraph-image.png so GitHub Pages serves it
-    // with an image/png Content-Type (extensionless files get octet-stream,
-    // which some social scrapers reject).
-    images: [
-      {
-        url: '/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Valentine Mohaugen, Ph.D. Student in Quantum Machine Learning, Cybersecurity, and Cyber-Physical Systems at Clemson University',
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',

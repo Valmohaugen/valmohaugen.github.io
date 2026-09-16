@@ -8,16 +8,13 @@ import {
   ResearchGateIcon,
 } from '@/components/icons';
 import siteConfig from '@/data/site-config.json';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Contact',
   description: 'Contact Valentine Mohaugen at Clemson University.',
-  openGraph: {
-    title: 'Contact · Valentine Mohaugen',
-    description: 'Contact Valentine Mohaugen at Clemson University.',
-    url: '/contact/',
-  },
-};
+  path: '/contact/',
+});
 
 const CONTACT_ITEMS = [
   {
