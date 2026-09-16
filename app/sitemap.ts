@@ -1,17 +1,23 @@
 import type { MetadataRoute } from 'next';
-import siteConfig from '@/data/site-config.json';
+import { NAV_LINKS } from '@/lib/nav';
+import siteConfig from '@/lib/site-config';
 
 export const dynamic = 'force-static';
+
+/** Routes not listed here fall back to 0.8. */
+const PRIORITY: Record<string, number> = {
+  '/': 1.0,
+  '/research/': 0.9,
+  '/contact/': 0.7,
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Build date: honest lastModified for a fully static export.
   const lastModified = new Date();
-  return [
-    { url: `${siteConfig.siteUrl}/`, priority: 1.0, lastModified },
-    { url: `${siteConfig.siteUrl}/research/`, priority: 0.9, lastModified },
-    { url: `${siteConfig.siteUrl}/publications/`, priority: 0.8, lastModified },
-    { url: `${siteConfig.siteUrl}/outreach/`, priority: 0.8, lastModified },
-    { url: `${siteConfig.siteUrl}/cv/`, priority: 0.8, lastModified },
-    { url: `${siteConfig.siteUrl}/contact/`, priority: 0.7, lastModified },
-  ];
+  // Derived from NAV_LINKS so adding a page means editing one file.
+  return NAV_LINKS.map(({ href }) => ({
+    url: `${siteConfig.siteUrl}${href}`,
+    priority: PRIORITY[href] ?? 0.8,
+    lastModified,
+  }));
 }

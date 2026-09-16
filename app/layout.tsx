@@ -4,7 +4,7 @@ import '../assets/css/style.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
-import siteConfig from '@/data/site-config.json';
+import siteConfig from '@/lib/site-config';
 import { OG_IMAGE } from '@/lib/metadata';
 import { PROFILE_URLS } from '@/lib/social';
 

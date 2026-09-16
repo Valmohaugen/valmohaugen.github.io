@@ -1,7 +1,7 @@
 /** Shared page metadata, so every route emits a complete Open Graph card. */
 
 import type { Metadata } from 'next';
-import siteConfig from '@/data/site-config.json';
+import siteConfig from '@/lib/site-config';
 
 /**
  * The social card image, shared by the root layout and every page.

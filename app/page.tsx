@@ -3,7 +3,7 @@ import Link from 'next/link';
 import StarfieldAccent from '@/components/StarfieldAccent';
 import StarDivider from '@/components/StarDivider';
 import Section from '@/components/Section';
-import siteConfig from '@/data/site-config.json';
+import siteConfig from '@/lib/site-config';
 import news from '@/data/news.json';
 import projects from '@/data/projects.json';
 import { SOCIAL_PROFILES, externalLinkProps } from '@/lib/social';

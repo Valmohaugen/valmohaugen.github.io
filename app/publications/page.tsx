@@ -8,7 +8,7 @@ import {
 import PageHeader from '@/components/PageHeader';
 import Section from '@/components/Section';
 import publications from '@/data/publications.json';
-import siteConfig from '@/data/site-config.json';
+import siteConfig from '@/lib/site-config';
 import type { Publication } from '@/lib/types';
 import { pageMetadata } from '@/lib/metadata';
 

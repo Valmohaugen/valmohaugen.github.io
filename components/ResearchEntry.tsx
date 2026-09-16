@@ -40,7 +40,7 @@ export default function ResearchEntry({
           />
         ) : (
           <div className="research-entry__thumbnail--placeholder">
-            {project.placeholderLabel ?? project.title}
+            {project.title}
           </div>
         )}
       </div>

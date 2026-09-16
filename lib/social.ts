@@ -8,7 +8,7 @@ import {
   OrcidIcon,
   ResearchGateIcon,
 } from '@/components/icons';
-import siteConfig from '@/data/site-config.json';
+import siteConfig from '@/lib/site-config';
 
 export interface SocialProfile {
   /** Stable key, also used as the React key. */
