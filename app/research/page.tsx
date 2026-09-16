@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   title:
     'Research & Projects',
   description:
-    'Quantum machine learning, cyber-physical systems, deep learning for quantum systems, and quantum computing hackathon projects by Valentine Mohaugen.',
+    'Quantum machine learning, cybersecurity, cyber-physical systems, deep learning for quantum systems, and quantum computing hackathon projects by Valentine Mohaugen.',
   path:
     '/research/',
 });
