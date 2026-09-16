@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
-import TimelineItem from '@/components/TimelineItem';
+import PageHeader from '@/components/PageHeader';
+import Section from '@/components/Section';
+import TimelineSection from '@/components/TimelineSection';
 import cv from '@/data/cv.json';
-import type { CvData } from '@/lib/types';
 import { pageMetadata } from '@/lib/metadata';
+import type { CvData } from '@/lib/types';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Outreach & Leadership',
@@ -11,42 +13,21 @@ export const metadata: Metadata = pageMetadata({
   path: '/outreach/',
 });
 
-const cvData = cv as CvData;
+const cvData: CvData = cv;
 
 export default function OutreachPage() {
   return (
     <>
-      <section className="page-header">
-        <div className="container">
-          <h1>Outreach &amp; Leadership</h1>
-          <p>Presentations, posters, conferences, and community leadership</p>
-        </div>
-      </section>
+      <PageHeader
+        title="Outreach & Leadership"
+        subtitle="Presentations, posters, conferences, and community leadership"
+      />
 
-      <section className="section">
-        <div className="container">
-          <div className="cv-section reveal">
-            <h2>Presentations &amp; Posters</h2>
-            {cvData.presentations.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title} />
-            ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Leadership &amp; Activities</h2>
-            {cvData.leadership.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title} />
-            ))}
-          </div>
-
-          <div className="cv-section reveal">
-            <h2>Conferences</h2>
-            {cvData.conferences.map((entry) => (
-              <TimelineItem entry={entry} key={entry.title + entry.date} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <Section>
+        <TimelineSection heading="Presentations & Posters" entries={cvData.presentations} />
+        <TimelineSection heading="Leadership & Activities" entries={cvData.leadership} />
+        <TimelineSection heading="Conferences" entries={cvData.conferences} />
+      </Section>
     </>
   );
 }

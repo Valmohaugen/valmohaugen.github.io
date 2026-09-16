@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import siteConfig from '@/data/site-config.json';
 import { OG_IMAGE } from '@/lib/metadata';
+import { PROFILE_URLS } from '@/lib/social';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -70,13 +71,7 @@ const personJsonLd = {
     name: 'Clemson University',
     url: 'https://www.clemson.edu',
   },
-  sameAs: [
-    siteConfig.githubUrl,
-    siteConfig.linkedinUrl,
-    siteConfig.scholarUrl,
-    siteConfig.orcidUrl,
-    siteConfig.researchgateUrl,
-  ],
+  sameAs: PROFILE_URLS,
   image: `${siteConfig.siteUrl}/images/headshot.jpg`,
   email: siteConfig.email,
   knowsAbout: [
