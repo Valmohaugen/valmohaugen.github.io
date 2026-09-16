@@ -410,6 +410,11 @@ p:last-child {
   padding: 4rem 0 2rem;
 }
 
+/* The first section on a subpage sits closer to its page header. */
+.page-header + .section {
+  padding-top: 2rem;
+}
+
 .section-alt {
   background: var(--color-bg-alt);
 }
@@ -1253,6 +1258,10 @@ p:last-child {
 
   .page-header {
     padding: 2.5rem 0 1.75rem;
+  }
+
+  .page-header + .section {
+    padding-top: 1.5rem;
   }
 
   /* Research entries: stack */
