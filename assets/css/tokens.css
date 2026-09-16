@@ -7,6 +7,10 @@
 
 /* --- 01. Design Tokens --- */
 :root {
+  /* Tells the browser both themes exist, so native scrollbars, form controls
+     and the pre-paint canvas follow the active one instead of staying light. */
+  color-scheme: light dark;
+
   --color-primary: #1a56db;
   --color-primary-light: #e8f0fe;
   --color-primary-dark: #0f3a8a;
@@ -25,6 +29,10 @@
   /* Foreground on a --color-primary fill. White fails AA on the lighter
      dark-mode primary (2.72:1), so dark mode uses the page background. */
   --color-on-primary: #ffffff;
+  /* The nav is --color-bg at 88%, over a backdrop blur. */
+  --color-nav-bg: rgba(255, 255, 255, 0.88);
+  /* The footer is dark in both themes, so its strong text is white in both. */
+  --color-footer-strong: #ffffff;
 
   /* Font families are provided by next/font in app/layout.tsx via CSS
      variables; the literal names remain as fallbacks for tooling. */
@@ -39,8 +47,45 @@
   --reveal-duration: 0.7s;
   --transition-fast: 0.18s ease;
   --transition-base: 0.25s ease;
+  --radius-xs: 2px;
   --radius-sm: 6px;
   --radius-md: 10px;
+  --radius-full: 50%;
+
+  /* Elevation. Geometry is fixed; the color token carries the theme. */
+  --shadow-sm: 0 6px 18px var(--color-shadow);
+  --shadow-md: 0 8px 24px var(--color-shadow);
+  --shadow-lg: 0 8px 32px var(--color-shadow-lg);
+
+  /* Motion. Reach for these rather than inventing a duration; the
+     reduced-motion guard in motion.css neutralizes all of them. */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 0.18s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.4s;
+  --transition-slow: var(--duration-slow) ease;
+
+  /* Type scale. New rules should use these; the existing declarations still
+     carry their own literals and can migrate onto the scale over time. */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.0625rem;
+  --fs-xl: 1.125rem;
+  --fs-2xl: 1.375rem;
+
+  /* Spacing scale, 4px based. Same note as the type scale. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,5 +106,6 @@
     --color-shadow: rgba(0, 0, 0, 0.25);
     --color-shadow-lg: rgba(0, 0, 0, 0.4);
     --color-on-primary: #0e1117;
+    --color-nav-bg: rgba(14, 17, 23, 0.88);
   }
 }

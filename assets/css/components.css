@@ -638,7 +638,7 @@
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-footer-strong);
   letter-spacing: -0.02em;
 }
 
@@ -666,7 +666,7 @@
 }
 
 .footer-nav a:hover {
-  color: #ffffff;
+  color: var(--color-footer-strong);
 }
 
 .footer-social {
@@ -682,7 +682,7 @@
 }
 
 .footer-social a:hover {
-  color: #ffffff;
+  color: var(--color-footer-strong);
   transform: translateY(-2px);
 }
 
