@@ -1,31 +1,39 @@
 [
   {
     "date": "Nov 2026",
-    "text": "Attending the IBM Quantum Developer Conference"
+    "text": "Attended the IBM Quantum Developer Conference 2026"
   },
   {
     "date": "Nov 2026",
-    "text": "Lead Organizer for IBM Qiskit Fall Fest at Clemson"
+    "text": "Served as Lead Organizer for Qiskit Fall Fest 2026 at Clemson"
   },
   {
     "date": "Oct 2026",
-    "text": "Became President of the Clemson Quantum Club"
+    "text": "Competed at DuQuantum 2026, Duke University’s quantum computing hackathon"
+  },
+  {
+    "date": "Oct 2026",
+    "text": "Competed at QHack 2026, PennyLane’s quantum computing hackathon"
   },
   {
     "date": "Sep 2026",
-    "text": "Tech Lead for SC Quantathon v3, leading technical planning and execution of the annual quantum hackathon"
+    "text": "Served as Tech Lead for SC Quantathon v3, leading technical planning and execution of the first Quantathon held at Clemson"
   },
   {
     "date": "Sep 2026",
-    "text": "Presenting a poster on MEDA, our measurement-efficient Majorana zero mode detection framework, at Clemson HPC Day"
+    "text": "Presented a poster on MEDA, our measurement-efficient Majorana zero mode detection framework, at Clemson HPC Day"
+  },
+  {
+    "date": "Sep 2026",
+    "text": "Nathan Jones presented our MEDA paper at IEEE Quantum Week 2026 (QCE 2026) in Toronto, ON"
   },
   {
     "date": "Aug 2026",
-    "text": "Started my Ph.D. in Civil Engineering at Clemson University, researching quantum ML, cybersecurity, and cyber-physical systems in Dr. Chowdhury’s group"
+    "text": "Started my Ph.D. in Civil Engineering at Clemson University, researching quantum ML/AI, cybersecurity, and cyber-physical systems in Dr. Chowdhury’s group"
   },
   {
     "date": "Jul 2026",
-    "text": "MEDA, our paper on measurement-efficient disorder-aware detection of Majorana zero modes, accepted at IEEE QCE 2026"
+    "text": "Our MEDA paper on measurement-efficient disorder-aware Majorana zero mode detection was accepted at IEEE Quantum Week 2026 (QCE 2026)"
   },
   {
     "date": "May 2026",
@@ -37,11 +45,15 @@
   },
   {
     "date": "Feb 2026",
-    "text": "Won 1st place at iQuHACK 2026 at MIT with a Reed-Muller decoding-based Clifford+T circuit optimizer (Superquantum challenge)"
+    "text": "Won 1st place at iQuHack 2026 at MIT with a Reed-Muller decoding-based Clifford+T circuit optimizer (Superquantum challenge)"
   },
   {
     "date": "Dec 2025",
     "text": "Selected as an IBM Qiskit Advocate"
+  },
+  {
+    "date": "Nov 2025",
+    "text": "Served as Lead Organizer for Qiskit Fall Fest 2025 at Clemson"
   },
   {
     "date": "Oct 2025",
@@ -52,16 +64,36 @@
     "text": "Co-authored a paper on chiral phonons in layered AgCrP₂Se₆, published in ACS Nano"
   },
   {
+    "date": "Jun 2025",
+    "text": "Started a summer internship in the Quantum AI group at Savannah River National Laboratory, implementing VQE for Kitaev chain Hamiltonians"
+  },
+  {
     "date": "Apr 2025",
     "text": "Presented NeurotiQ at the NYUAD Quantum Hackathon in Abu Dhabi"
   },
   {
+    "date": "Mar 2025",
+    "text": "Co-authored a talk on temperature-dependent Raman and photoluminescence spectroscopy of AgBiP₂Se₆, presented by Thuc T. Mai at the APS Global Physics Summit 2025 in Anaheim, CA"
+  },
+  {
     "date": "Jan 2025",
-    "text": "Competed at iQuHACK 2025 at MIT in the cat qubit simulation challenge"
+    "text": "Competed at iQuHack 2025 at MIT in the cat qubit simulation challenge"
+  },
+  {
+    "date": "Dec 2024",
+    "text": "Received a NISQ Quantum Grant from DoraHacks"
   },
   {
     "date": "Oct 2024",
-    "text": "Won 1st place and the grand prize overall at the inaugural SC Quantathon for quantum random number generation on IBM hardware"
+    "text": "Won 1st place and the Grand Prize Overall at the inaugural SC Quantathon for quantum random number generation on IBM hardware"
+  },
+  {
+    "date": "Aug 2024",
+    "text": "Co-founded the Clemson Quantum Club"
+  },
+  {
+    "date": "May 2024",
+    "text": "Started a summer internship in the Materials and Manufacturing Directorate at the Air Force Research Laboratory"
   },
   {
     "date": "Aug 2023",

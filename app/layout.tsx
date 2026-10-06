@@ -20,13 +20,35 @@ const sourceSerif = Source_Serif_4({
   variable: '--font-source-serif',
 });
 
+/**
+ * Research topics, used for the keywords meta tag and the Person JSON-LD
+ * `knowsAbout`. Covers the usual phrasings of quantum + AI so the site matches
+ * whichever one a search uses.
+ */
+const RESEARCH_TOPICS = [
+  'quantum AI',
+  'quantum ML/AI',
+  'quantum artificial intelligence',
+  'quantum machine learning',
+  'quantum-enhanced AI',
+  'quantum-enhanced machine learning',
+  'AI for quantum computing',
+  'machine learning for quantum systems',
+  'quantum computing',
+  'cybersecurity',
+  'cyber-physical systems',
+  'variational quantum algorithms',
+  'topological materials',
+];
+
 export const metadata: Metadata = {
   title: {
     template: '%s · Valentine Mohaugen',
     default: 'Valentine Mohaugen',
   },
   description:
-    'Valentine Mohaugen, Ph.D. student at Clemson University researching quantum machine learning, cybersecurity, and cyber-physical systems.',
+    'Valentine Mohaugen, Ph.D. student at Clemson University researching quantum ML/AI, cybersecurity, and cyber-physical systems.',
+  keywords: RESEARCH_TOPICS,
   metadataBase: new URL(siteConfig.siteUrl),
   alternates: { canonical: './' },
   // Maximum-privacy posture: outbound clicks carry no referrer, so external
@@ -34,9 +56,9 @@ export const metadata: Metadata = {
   // third-party requests (self-hosted fonts, no analytics or tracking).
   referrer: 'no-referrer',
   openGraph: {
-    title: 'Valentine Mohaugen · Quantum Machine Learning, Cybersecurity, and Cyber-Physical Systems',
+    title: 'Valentine Mohaugen · Quantum ML/AI, Cybersecurity, and Cyber-Physical Systems',
     description:
-      'Ph.D. student at Clemson University researching quantum machine learning, cybersecurity, and cyber-physical systems.',
+      'Ph.D. student at Clemson University researching quantum ML/AI, cybersecurity, and cyber-physical systems.',
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
     locale: 'en_US',
@@ -74,13 +96,7 @@ const personJsonLd = {
   sameAs: PROFILE_URLS,
   image: `${siteConfig.siteUrl}/images/headshot.jpg`,
   email: siteConfig.email,
-  knowsAbout: [
-    'cyber-physical systems',
-    'cybersecurity',
-    'quantum machine learning',
-    'variational quantum algorithms',
-    'topological materials',
-  ],
+  knowsAbout: RESEARCH_TOPICS,
 };
 
 export default function RootLayout({

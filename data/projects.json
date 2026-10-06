@@ -15,8 +15,25 @@
     "thumbnail": "/images/thumbnails/mzm-visibility.webp",
     "thumbnailAlt": "MEDA research poster: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices",
     "highlight": true,
-    "paperUrl": "https://arxiv.org/abs/2607.26208",
-    "posterUrl": "/posters/MZM-Poster.pptx"
+    "paperUrl": "https://www.arxiv.org/abs/2607.26208",
+    "posterUrl": "/posters/MEDA-Poster-2026.pdf"
+  },
+  {
+    "id": "sc-quantathon-v3",
+    "title": "SC Quantathon v3: Tech Lead and Bootcamp Author",
+    "year": "Sep 2026",
+    "blurb": "Helped organize SC Quantathon v3, the first edition of SC Quantum’s quantum hackathon hosted by the Clemson Quantum Club, held September 25–27, 2026 at Clemson’s Watt Family Innovation Center. As Tech Lead, I wrote the seven-day self-paced bootcamp that prepared participants, built the event website, and ran the technical side of the event across GitHub, Devpost, and Discord. Teams of 3–5 students spent 24 hours on challenges set by Savannah River National Laboratory and Quantum Rings.",
+    "details": [
+      "SC Quantum founded the Quantathon and hosted its first two editions in Columbia. For the third edition, the Clemson Quantum Club brought the event to Clemson University. Undergraduate and graduate students from computing, physics, engineering, and mathematics competed in teams of 3–5, ranking their preferred challenge on Friday evening, hacking from Saturday morning to Sunday morning, and presenting to judges on Sunday.",
+      "The bootcamp ran September 14–22 and assumed no prior quantum experience. It covered setup and a first circuit, the math behind a qubit, gates, measurement, and entanglement, real hardware with transpilation, noise, and error mitigation, variational algorithms (VQE and QAOA), and quantum machine learning. Day 3 was a recorded platform demo from qBraid.",
+      "Each of the six written days has an exercise notebook, a solutions notebook, and a PDF of notes with figures and references. Every day ends with a run on real IBM Quantum hardware that compares the exact result, a simulator, and the device, and the notes quote the recorded hardware numbers. The notebooks run on qBraid Lab, the environment used during the hackathon, or locally from the public GitHub repository.",
+      "I also built the event page on the club website (schedule, venue, FAQ, sponsors, and bootcamp) and kept the event’s facts consistent across the website, Devpost, Discord, and participant emails. The challenges were written by Savannah River National Laboratory and Quantum Rings, the event was powered by qBraid, and partners included South Carolina Quantum, Clemson’s College of Engineering, Computing and Applied Sciences, and TraCR."
+    ],
+    "keyTools": "Qiskit 2.x, IBM Quantum hardware, qBraid Lab, Jupyter, LaTeX, Next.js, GitHub, Devpost, Discord",
+    "github": "https://www.github.com/ClemsonQuantum/SC-Quantathon-v3-2026",
+    "live": "https://www.clemsonquantum.com/events/hackathons/sc-quantathon-v3-2026/",
+    "thumbnail": "/images/thumbnails/sc-quantathon-v3.webp",
+    "thumbnailAlt": "SC Quantathon v3 event banner: September 25–27 at Clemson University, presented by Clemson Quantum Club and South Carolina Quantum"
   },
   {
     "id": "yquantum-2026",
@@ -30,7 +47,7 @@
       "Extensions cover the moon-cat configuration (adding squeezing parameters) and single-qubit Zeno gate optimization. A 221-test suite validates the simulation, reward, optimizer, and drift-model layers. The project placed 3rd in the Alice & Bob challenge."
     ],
     "keyTools": "Python, JAX, dynamiqs, CMA-ES, PPO/REINFORCE, Bayesian optimization, open quantum systems simulation",
-    "github": "https://github.com/valmohaugen/YQuantum-2026",
+    "github": "https://www.github.com/valmohaugen/YQuantum-2026",
     "highlight": true,
     "thumbnail": "/images/thumbnails/yquantum-2026.webp",
     "thumbnailAlt": "Team (Ψ)ceratops at YQuantum 2026 at Yale University",
@@ -38,7 +55,7 @@
   },
   {
     "id": "iquhack-2026",
-    "title": "iQuHACK 2026: Circuit Optimization (1st Place)",
+    "title": "iQuHack 2026: Circuit Optimization (1st Place)",
     "year": "Feb 2026",
     "blurb": "Reed-Muller decoding-based Clifford+T circuit optimizer developed at MIT’s annual quantum hackathon. Minimizes T-gate count and circuit depth for arbitrary unitary matrices through structure-aware synthesis, pattern recognition, and phase-polynomial optimization. Winner of the Superquantum challenge (1st place), the tool provides both a CLI and Python API for fault-tolerant quantum circuit compilation, successfully optimizing all 11 challenge unitaries.",
     "details": [
@@ -48,16 +65,16 @@
       "All 11 challenge unitaries were successfully optimized, with results benchmarked across effort levels, earning 1st place in the Superquantum challenge. The project provides both a CLI and Python API for integration into larger compilation workflows."
     ],
     "keyTools": "Python, Qiskit 2.x, rmsynth (C++), pygridsynth, NumPy, SciPy",
-    "github": "https://github.com/valmohaugen/iQuHack-2026",
+    "github": "https://www.github.com/valmohaugen/iQuHack-2026",
     "highlight": true,
     "thumbnail": "/images/thumbnails/iquhack-2026.webp",
-    "thumbnailAlt": "The Clemson group at iQuHACK 2026 at MIT",
+    "thumbnailAlt": "The Clemson group at iQuHack 2026 at MIT",
     "challenge": "Superquantum challenge"
   },
   {
     "id": "sc-quantathon-v2",
     "title": "SC Quantathon v2: Quantum Kernels for Tornado Prediction",
-    "year": "2025",
+    "year": "Oct 2025",
     "blurb": "Multi-framework quantum machine learning solution for tornado prediction developed for the Tornado challenge at SC Quantathon v2. Benchmarks quantum support vector machines, quantum neural networks, and quantum feature extraction against classical baselines (XGBoost, LightGBM, SVC) across three quantum frameworks (Qiskit, Cirq, PennyLane). The QSVM achieved 81% tornado recall while the QNN reached 80% overall accuracy on NOAA storm report data.",
     "details": [
       "Severe weather prediction is a high-stakes classification problem where quantum machine learning may offer advantages through richer feature representations in exponentially large Hilbert spaces. This project explores that hypothesis by applying quantum kernel methods and hybrid quantum-classical neural networks to NOAA storm report data for binary tornado/no-tornado classification.",
@@ -67,7 +84,7 @@
       "Classical baselines (XGBoost, LightGBM, SVC, logistic regression) provide controlled comparisons. ROC curves and tornado recall (the challenge-specific primary metric) are reported across all methods."
     ],
     "keyTools": "Qiskit 2.x, Cirq, PennyLane, PyTorch, scikit-learn, XGBoost, LightGBM, imbalanced-learn",
-    "github": "https://github.com/valmohaugen/SC-Quantathon-v2-2025",
+    "github": "https://www.github.com/valmohaugen/SC-Quantathon-v2-2025",
     "thumbnail": "/images/thumbnails/sc-quantathon.jpg",
     "thumbnailAlt": "SC Quantathon v2 event poster: International Quantum Circuit Championship",
     "challenge": "Tornado challenge"
@@ -75,7 +92,7 @@
   {
     "id": "neurotiq",
     "title": "NeurotiQ: Hybrid QNN/QSVM for EEG Analysis",
-    "year": "2025",
+    "year": "Apr 2025",
     "blurb": "Full-stack quantum machine learning application for EEG-based mental health diagnosis, integrating QSVM, QCNN, and classical ML baselines with a GPT-4-powered Streamlit web interface. Developed at the NYUAD Quantum Hackathon, targeting anxiety, depression, and ADHD detection from brain wave data. The quantum kernel SVM achieved 79% AUC on anxiety detection, significantly outperforming the 68% AUC classical baseline.",
     "details": [
       "Electroencephalography (EEG) data contains rich spatiotemporal patterns associated with neurological conditions, but traditional analysis methods struggle with the high dimensionality and noise inherent in brain signals. NeurotiQ explores whether quantum machine learning can improve classification performance for mental health diagnosis from EEG recordings.",
@@ -84,13 +101,13 @@
       "The Streamlit web application provides real-time inference, interactive visualization of classification results, and a GPT-4-powered emotional support chatbot (via LangChain) that generates personalized recommendations based on the diagnostic output. Classical baselines include PyCaret AutoML ensembles, SVM, and logistic regression for controlled comparisons."
     ],
     "keyTools": "Qiskit 2.x, PennyLane, TensorFlow/Keras, scikit-learn, PyCaret, Streamlit, LangChain, OpenAI GPT-4",
-    "github": "https://github.com/valmohaugen/NYUAD-Hackathon-2025",
+    "github": "https://www.github.com/valmohaugen/NYUAD-Hackathon-2025",
     "thumbnail": "/images/thumbnails/neurotiq.webp",
     "thumbnailAlt": "The team at the NYUAD Quantum Hackathon 2025 in Abu Dhabi"
   },
   {
     "id": "iquhack-2025",
-    "title": "iQuHACK 2025: Cat Qubit Simulation for Open Quantum Systems",
+    "title": "iQuHack 2025: Cat Qubit Simulation for Open Quantum Systems",
     "year": "Jan 2025",
     "blurb": "Cat qubit simulation and optimal control for the Alice & Bob open quantum systems challenge at MIT. Modeled two-photon driven dissipative stabilization of bosonic cat states, analyzed noise-biased error channels, and implemented gradient-based quantum state preparation using JAX automatic differentiation. Includes adiabatic elimination validation, Wigner function phase space visualization, and lab frame Hamiltonian simulation with SQUID nonlinearity.",
     "details": [
@@ -100,23 +117,23 @@
       "Results include cat state fidelity as a function of dissipation rate, bit-flip vs. phase-flip error rate comparisons against standard transmon qubits, and animated Wigner function evolution showing the characteristic interference fringes of cat states."
     ],
     "keyTools": "dynamiqs, JAX, NumPy, SciPy, Matplotlib",
-    "github": "https://github.com/valmohaugen/iQuHack-2025",
+    "github": "https://www.github.com/valmohaugen/iQuHack-2025",
     "thumbnail": "/images/thumbnails/iquhack-2025.webp",
-    "thumbnailAlt": "Team 9 at iQuHACK 2025 at MIT",
+    "thumbnailAlt": "Team 9 at iQuHack 2025 at MIT",
     "challenge": "Alice & Bob challenge"
   },
   {
     "id": "clemson-quantum-website",
     "title": "Clemson Quantum Club Website",
     "year": "2024 – Present",
-    "blurb": "The official Clemson Quantum Club website, built with Next.js 15, React 19, and TypeScript. Serves as the public face of the club with member profiles, research showcases, event documentation, educational resources, and a pre-built search index for content discovery. Uses a markdown-driven content architecture so members can update pages without writing code, with static export deployed via GitHub Actions. I develop and maintain the site as President of the club.",
+    "blurb": "The official Clemson Quantum Club website, built with Next.js 15, React 19, and TypeScript. Serves as the public face of the club with member profiles, research showcases, event documentation, educational resources, and a pre-built search index for content discovery. Uses a markdown-driven content architecture so members can update pages without writing code, with static export deployed via GitHub Actions. I develop and maintain the site as Vice President of the club.",
     "details": [
       "The Clemson Quantum Club needed a modern, maintainable web presence that non-technical members could update without writing code. This site uses a markdown-driven content architecture: pages, events, news items, and resources are authored as markdown files with YAML frontmatter, rendered at build time with React-Markdown and Remark GFM.",
       "The application is built on Next.js 15 with React 19 and strict TypeScript, using the App Router for file-system-based routing. A Node.js build script generates a search index at compile time, enabling client-side content discovery without a backend. Static export produces a fully static site deployed to GitHub Pages via GitHub Actions CI/CD.",
       "The component architecture includes reusable React components for member cards, event timelines, resource listings, and navigation. The design is fully responsive and uses modern CSS features. ESLint 9 enforces code quality standards across the TypeScript codebase."
     ],
     "keyTools": "Next.js 15, React 19, TypeScript 5.7, React-Markdown, GitHub Actions, GitHub Pages",
-    "live": "https://clemsonquantum.com",
+    "live": "https://www.clemsonquantum.com",
     "thumbnail": "/images/thumbnails/clemson-quantum-website.webp",
     "thumbnailAlt": "Clemson Quantum Club website"
   },
@@ -132,7 +149,7 @@
       "Four bitstring extraction methods (Mod2 XOR, iteration with chunking, concatenation, and combined) are compared across simulator and real hardware backends. The project won the inaugural SC Quantathon competition."
     ],
     "keyTools": "Qiskit, qiskit-ibm-runtime, scikit-learn, XGBoost, NumPy, SciPy, Matplotlib",
-    "github": "https://github.com/valmohaugen/SC-Quantathon-v1-2024",
+    "github": "https://www.github.com/valmohaugen/SC-Quantathon-v1-2024",
     "thumbnail": "/images/thumbnails/sc-quantathon-v1.webp",
     "thumbnailAlt": "The team working late at SC Quantathon v1 2024",
     "challenge": "DoraHacks challenge"

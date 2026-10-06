@@ -13,7 +13,7 @@ export default function Footer() {
             {siteConfig.name}
           </Link>
           <p className="footer-descriptor">
-            Quantum machine learning, cybersecurity &amp; cyber-physical systems
+            Quantum ML/AI, cybersecurity &amp; cyber-physical systems
             researcher at Clemson University.
           </p>
         </div>

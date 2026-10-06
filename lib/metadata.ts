@@ -15,7 +15,7 @@ export const OG_IMAGE = {
   url: '/opengraph-image.png',
   width: 1200,
   height: 630,
-  alt: 'Valentine Mohaugen, Ph.D. Student in Quantum Machine Learning, Cybersecurity, and Cyber-Physical Systems at Clemson University',
+  alt: 'Valentine Mohaugen, Ph.D. Student in Quantum ML/AI, Cybersecurity, and Cyber-Physical Systems at Clemson University',
 } as const;
 
 interface PageMetadataOptions {
