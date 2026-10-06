@@ -87,6 +87,8 @@ export interface TimelineEntry {
   /** Institution / venue line under the title. */
   subtitle?: string;
   desc?: string;
+  /** Optional link for the title (paper, poster file, event page). */
+  url?: string;
 }
 
 /** An expandable category in the CV skills grid (see SkillCard). */

@@ -64,7 +64,7 @@ export function GET() {
             Valentine Mohaugen
           </div>
           <div style={{ fontSize: 36, color: '#6b9cf7', marginTop: 28 }}>
-            Quantum ML · Cybersecurity · Cyber-Physical Systems
+            Quantum ML/AI · Cybersecurity · Cyber-Physical Systems
           </div>
           <div style={{ fontSize: 30, color: '#6b9cf7', marginTop: 14, opacity: 0.85 }}>
             Ph.D. Student · Clemson University · valmohaugen.com
