@@ -11,15 +11,49 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  /* The slot keeps its full height while the bar condenses inside it, so the
+     page never shifts; the freed strip lets clicks through to the page. */
+  height: var(--nav-height);
+  pointer-events: none;
 }
 
 .nav {
+  position: relative;
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   height: var(--nav-height);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: var(--color-nav-bg);
+  pointer-events: auto;
+  transition:
+    height var(--dur-settle) var(--ease-measure),
+    background-color var(--dur-settle) var(--ease-measure),
+    box-shadow var(--dur-settle) var(--ease-measure);
+}
+
+/* Scrolled: a shorter, frosted bar with a soft shadow (Header.tsx). */
+.site-header.is-condensed .nav {
+  height: var(--nav-height-condensed);
+  background: color-mix(in oklab, var(--color-bg) 92%, transparent);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px) saturate(1.2);
+}
+
+/* How far down the page is: a thin line along the bar's foot. */
+.scroll-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: var(--color-primary);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    display: none;
+  }
 }
 
 .nav .container {
@@ -32,7 +66,9 @@
 
 .nav-brand {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  /* Shrinks below about 307px at the default text size, and earlier at
+     larger ones (6vw: below 460px at 24px), so the menu button stays on screen. */
+  font-size: min(1.15rem, 6vw);
   font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
@@ -49,6 +85,12 @@
   list-style: none;
   gap: 1.75rem;
   align-items: center;
+}
+
+/* Small-screen menu only (responsive.css): the profile row and the backdrop. */
+.nav-social,
+.nav-backdrop {
+  display: none;
 }
 
 .nav-link {
@@ -72,7 +114,7 @@
   background: var(--color-primary);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.25s ease;
+  transition: transform var(--transition-base);
 }
 
 .nav-link:hover {
@@ -95,7 +137,9 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  /* A 44 × 44 px target, like the site's other primary controls: 22 × 26 px
+     of bars plus the padding. */
+  padding: 9px 11px;
 }
 
 .nav-toggle span {
@@ -104,8 +148,8 @@
   height: 2px;
   background: var(--color-text);
   margin: 5px 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  border-radius: 1px;
+  transition: transform var(--dur-settle) var(--ease-measure), opacity var(--dur-measure) var(--ease-measure);
+  border-radius: var(--radius-xs);
 }
 
 /* Animate to an X when the menu is open */
@@ -121,6 +165,32 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Forced colours repaint backgrounds as Canvas, which would erase the nav
+   underline and the menu button's bars: draw them in system colours. */
+@media (forced-colors: active) {
+  /* The condensed bar's translucency survives the Canvas repaint (its alpha
+     is kept), so make it solid and drop the blur. */
+  .site-header.is-condensed .nav {
+    background: Canvas;
+    backdrop-filter: none;
+  }
+
+  .nav-link::after {
+    forced-color-adjust: none;
+    background: LinkText;
+  }
+
+  .nav-toggle span {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+
+  .scroll-progress {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+}
+
 /* ============================================================
    07. Page Header (inner pages)
    ============================================================ */
@@ -133,6 +203,11 @@
   margin-bottom: 0.3rem;
 }
 
+/* Without a subtitle the title is the last line: no margin before the figure strip. */
+.page-header__text > .decrypt:last-child h1 {
+  margin-bottom: 0;
+}
+
 .page-header p {
   color: var(--color-text-light);
   font-size: 1.05rem;
@@ -143,34 +218,15 @@
    ============================================================ */
 .hero {
   position: relative;
-  overflow: hidden;
-  padding: 4.5rem 0 4rem;
-}
-
-/* Faint drifting star specks behind the hero (StarfieldAccent canvas). */
-.starfield-accent {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.hero .container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 3.5rem;
-}
-
-.hero-text {
-  flex: 1;
 }
 
 .hero-name {
-  font-size: clamp(1.75rem, 1.1rem + 3.2vw, 2.85rem);
+  /* Beside the 96px photo and its 1.25rem gap, never wider than its column:
+     "Valentine Mohaugen" measures 9.61em, so the name stays on one line from
+     900px up (the owner's choice) and only shrinks where the column is tight
+     (about 900–960px). Phones set their own size in responsive.css. */
+  font-size: min(clamp(1.75rem, 1.1rem + 3.2vw, 2.85rem), (100cqi - 96px - 1.25rem) / 9.7);
   font-weight: 700;
-  margin-bottom: 0.4rem;
   letter-spacing: -0.025em;
   line-height: 1.1;
   /* Optical margin alignment: the serif V's receding diagonal makes the
@@ -181,21 +237,30 @@
 
 .hero-title {
   font-family: var(--font-body);
-  /* Tracks the viewport so the full title line ("Ph.D. Student · Quantum
-     Machine Learning, Cybersecurity, and Cyber-Physical Systems") stays on
-     one line on desktop; it still wraps gracefully on narrow screens. */
+  /* Tracks the viewport. One line from about 430px up, beside the avatar
+     too; narrower, balance evens the stacked lines, and the word joiner in
+     data/site-config.json keeps "Cyber-Physical" whole. */
   font-size: clamp(0.85rem, 0.3rem + 0.85vw, 1.05rem);
+  text-wrap: balance;
   color: var(--color-text-light);
-  margin-bottom: 1.25rem;
   font-weight: 400;
 }
 
 .hero-tagline {
-  font-size: 1.02rem;
+  /* The joined advisor name and its period are 15.1em: below about 295px the
+     intro shrinks just enough that it fits the panel (a container). */
+  font-size: min(1.02rem, 100cqi / 15.2);
   color: var(--color-text);
   margin-bottom: 1.75rem;
   line-height: 1.75;
-  max-width: 540px;
+}
+
+/* Beside the figure the intro runs as wide as the hero panel (stage.css): a
+   little larger there, so the long line stays easy to follow. */
+@media (width >= 56.25em) {
+  .hero-tagline {
+    font-size: var(--fs-lg);
+  }
 }
 
 .hero-links {
@@ -203,24 +268,24 @@
   grid-template-columns: repeat(3, auto);
   gap: 0.75rem;
   justify-content: start;
-  justify-items: start;
+  justify-items: stretch;
 }
 
-.hero-photo {
-  /* Natural width only — flex: 1 handed half the hero to a 230px image and
-     squeezed the text column into wrapping the title line. */
-  flex: 0 0 auto;
-  display: flex;
+/* Beside the figure the grid is as wide as its buttons, in three equal
+   columns as wide as the longest label (ResearchGate), like the equal
+   columns below 56.25em (stage.css). */
+@media (width >= 56.25em) {
+  .hero-links {
+    width: fit-content;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Hero profile links are the page's main touch targets: 44 px tall. Each
+   fills its column, so every gap is the grid's 0.75rem. */
+.hero-links .btn {
+  min-height: 44px;
   justify-content: center;
-}
-
-.hero-photo img {
-  width: 230px;
-  height: 230px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: none;
-  box-shadow: 0 8px 32px var(--color-shadow-lg);
 }
 
 /* ============================================================
@@ -235,10 +300,21 @@
   padding-top: 2rem;
 }
 
+/* A tinted band closes with as much space below its last row as above its
+   heading (on an untinted page the next section's padding does that). */
 .section-alt {
   background: var(--color-bg-alt);
+  padding-bottom: 3.5rem;
 }
 
 .section-header {
   margin-bottom: 2.25rem;
+}
+
+/* The homepage's section headlines ("Latest", "Research Highlights"), a step
+   above other h2s, on a tighter line so the space around them stays as it
+   was at the smaller size. */
+.section-header h2 {
+  font-size: clamp(1.65rem, 1.25rem + 1.5vw, 2rem);
+  line-height: 1.1;
 }

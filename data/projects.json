@@ -1,17 +1,17 @@
 [
   {
     "id": "mzm-visibility",
-    "title": "MEDA: Measurement-Efficient Majorana Zero Mode Detection",
+    "title": "MEDA: Measurement-\u2060Efficient Disorder-\u2060Aware Majorana Zero Mode Detection",
     "year": "2024 – 2026",
-    "blurb": "End-to-end deep learning pipeline for predicting Majorana zero mode phase diagrams from semiconductor-superconductor nanowire conductance data. Trains a modified ResNet-18 CNN autoencoder on up to 900 million synthetic Kwant-generated conductance measurements spanning a 6-dimensional parameter space with realistic disorder profiles. Features Monte Carlo dropout uncertainty quantification and supports transfer to experimental measurements.",
+    "blurb": "End-to-end deep learning pipeline for predicting Majorana zero mode phase diagrams from semiconductor–superconductor nanowire conductance data. Trains a modified ResNet-\u206018 CNN autoencoder on up to 900\u00a0million synthetic Kwant-generated conductance measurements spanning a 6-\u2060dimensional parameter space with realistic disorder profiles. Features Monte\u00a0Carlo dropout uncertainty quantification and supports transfer to experimental measurements.",
     "details": [
-      "Identifying Majorana zero modes (MZMs) in nanowire experiments remains challenging due to the similarity between topological signatures and disorder-induced trivial states. This project applies convolutional neural networks to automate the classification of MZM visibility from simulated conductance data G(V_bias, V_gate), bridging the gap between theoretical predictions and experimental observables.",
-      "Data generation uses Kwant-based quantum transport simulations on a 6-dimensional parameter grid (disorder strength, Zeeman field, chemical potential, superconducting gap, bias voltage, and spin-orbit coupling), producing 300–900 million conductance measurements across three disorder correlation lengths. Each sample is labeled with topological invariants: the winding number and a periodic disorder invariant (PDI) for robust phase detection beyond simple gap-based criteria.",
-      "The CNN architecture extends ResNet-18 with a 4-channel encoder, label embedding decoder, CoordConv layers, and gated attention multiple-instance learning (MIL) pooling. Training uses a composite loss function combining binary cross-entropy, Dice, focal, and total variation terms, optimized with AdamW and cosine annealing warm restarts. Disorder-based train/val/test splitting (80/10/10) prevents data leakage by ensuring no disorder profile appears in multiple splits.",
-      "Inference supports single-slice and multi-slice modes with Monte Carlo dropout uncertainty quantification. Evaluation metrics include Hausdorff distance, Dice/IoU coefficients, boundary-aware F1, and μ-informativeness analysis identifying the most diagnostic parameter slices. Bootstrap confidence intervals quantify statistical uncertainty across disorder realizations.",
+      "Identifying Majorana zero modes (MZMs) in nanowire experiments remains challenging due to the similarity between topological signatures and disorder-induced trivial states. This project applies convolutional neural networks to automate the classification of MZM visibility from simulated conductance data $G(V_{bias}, V_{gate})$, bridging the gap between theoretical predictions and experimental observables.",
+      "Data generation uses Kwant-based quantum transport simulations on a 6-\u2060dimensional parameter grid (disorder strength, Zeeman field, chemical potential, superconducting gap, bias voltage, and spin–orbit coupling), producing 300–\u2060900\u00a0million conductance measurements across three disorder correlation lengths. Each sample is labeled with topological invariants: the winding number and a periodic disorder invariant (PDI) for robust phase detection beyond simple gap-based criteria.",
+      "The CNN architecture extends ResNet-\u206018 with a 4-\u2060channel encoder, a label-embedding decoder, CoordConv layers, and gated attention multiple-instance learning (MIL) pooling. Training uses a composite loss function combining binary cross-entropy, Dice, focal, and total variation terms, optimized with AdamW and cosine annealing with warm restarts. Disorder-based train/val/test splitting (80/10/10) prevents data leakage by ensuring no disorder profile appears in multiple splits.",
+      "Inference supports single-slice and multi-slice modes with Monte Carlo dropout uncertainty quantification. Evaluation metrics include Hausdorff distance, Dice/IoU coefficients, boundary-aware F1, and $μ$-\u2060informativeness analysis identifying the most diagnostic parameter slices. Bootstrap confidence intervals quantify statistical uncertainty across disorder realizations.",
       "The pipeline runs on Clemson’s Palmetto HPC cluster with A100 GPUs, using mixed-precision training (torch.amp) and torch.compile for performance. HDF5 chunked storage handles the large datasets, and the system supports experimental data input (CSV/HDF5/npy) for transfer to real measurements."
     ],
-    "keyTools": "PyTorch 2.x, Kwant, NumPy, SciPy, h5py, Matplotlib, SLURM/HPC",
+    "keyTools": "PyTorch\u00a02.x, Kwant, NumPy, SciPy, h5py, Matplotlib, SLURM/HPC",
     "thumbnail": "/images/thumbnails/mzm-visibility.webp",
     "thumbnailAlt": "MEDA research poster: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices",
     "highlight": true,
@@ -19,17 +19,35 @@
     "posterUrl": "/posters/MEDA-Poster-2026.pdf"
   },
   {
-    "id": "sc-quantathon-v3",
-    "title": "SC Quantathon v3: Tech Lead and Bootcamp Author",
-    "year": "Sep 2026",
-    "blurb": "Helped organize SC Quantathon v3, the first edition of SC Quantum’s quantum hackathon hosted by the Clemson Quantum Club, held September 25–27, 2026 at Clemson’s Watt Family Innovation Center. As Tech Lead, I wrote the seven-day self-paced bootcamp that prepared participants, built the event website, and ran the technical side of the event across GitHub, Devpost, and Discord. Teams of 3–5 students spent 24 hours on challenges set by Savannah River National Laboratory and Quantum Rings.",
+    "id": "duquantum-2026",
+    "title": "DuQuantum\u00a02026: Dicke State Preparation on Willow (2nd\u00a0Place)",
+    "year": "Oct 2026",
+    "blurb": "Calibration-\u2060aware preparation of $N$-\u2060qubit, weight-\u2060$n$ Dicke states on Google’s Willow processor, built with Ryon\u00a0Peddapalli, Toby\u00a0Cox, and Jessica\u00a0Ratovondranto as team QuBillionaires for the Google\u00a0Quantum\u00a0AI challenge at Duke’s DuQuantum\u00a02026, where it took 2nd\u00a0place. Every circuit uses only CZ gates between calibrated neighbors and PhasedXZ single-\u2060qubit gates: the main entry picks its qubits from the processor’s calibration data, and the bonus entry returns the shallowest verified circuit for each of the 56 graded cases, scoring 52.482 on depth.",
     "details": [
-      "SC Quantum founded the Quantathon and hosted its first two editions in Columbia. For the third edition, the Clemson Quantum Club brought the event to Clemson University. Undergraduate and graduate students from computing, physics, engineering, and mathematics competed in teams of 3–5, ranking their preferred challenge on Friday evening, hacking from Saturday morning to Sunday morning, and presenting to judges on Sunday.",
-      "The bootcamp ran September 14–22 and assumed no prior quantum experience. It covered setup and a first circuit, the math behind a qubit, gates, measurement, and entanglement, real hardware with transpilation, noise, and error mitigation, variational algorithms (VQE and QAOA), and quantum machine learning. Day 3 was a recorded platform demo from qBraid.",
-      "Each of the six written days has an exercise notebook, a solutions notebook, and a PDF of notes with figures and references. Every day ends with a run on real IBM Quantum hardware that compares the exact result, a simulator, and the device, and the notes quote the recorded hardware numbers. The notebooks run on qBraid Lab, the environment used during the hackathon, or locally from the public GitHub repository.",
+      "A Dicke state $D(N, n)$ is the equal superposition of every $N$-\u2060qubit basis state with exactly $n$ ones. The challenge was to prepare it on Google’s Willow processor (Willow105 in Cirq) using only CZ gates between calibrated neighbors and PhasedXZ single-\u2060qubit gates, scored on real hardware in the $Z$ and $X$ bases with 10,000 shots each, plus a bonus scored on circuit depth alone.",
+      "The main entry chooses its qubits per call from the calibration data: each qubit and coupler is weighted by its CZ, single-\u2060qubit, and readout error rates, with a penalty for uneven 0/1 readout errors that would skew the measured $Z$ distribution. For $n = 1$ the excitation spreads down a low-\u2060error spanning tree of the chip with one Givens rotation per edge. For $n ≥ 2$ several constructions compete, and the one with the lowest estimated error on that calibration wins: Bärtschi–\u2060Eidenbenz split-\u2060and-\u2060cyclic-\u2060shift on a path of qubits, a ladder that prepares two halves in parallel and joins them, and whole-\u2060state circuits for specific $(N, n)$ found offline.",
+      "Everything compiles to CZ + PhasedXZ with dynamical decoupling on long idle stretches, and each circuit is checked against the calibrated couplers and the 1,750-\u2060moment limit, with a build guard well inside the one-\u2060minute budget. In a local noise model with gate and readout errors, $T_1/T_2$, and detuning, averaged over three synthetic calibrations, the circuits reach a summed score of 17.66 of the 19.18 possible for $N = 2$\u00a0to\u00a0$8$.",
+      "The bonus entry gets no calibration data, so it returns a frozen table of the shallowest verified circuit for each of the 56 graded cases ($2 ≤ N ≤ 15$, $1 ≤ n ≤ N/2$), found by offline depth searches: the constructions above packed for depth, a moment squeeze, learned angles with exact scheduling, and depth-\u2060weighted pruning. Every circuit is exact and passes Willow105’s validation. For $D(15, 7)$, on the challenge’s synthetic calibration, the main entry uses 207 CZ gates in 130 moments, against 447 CZ gates in 529 moments for the textbook construction routed onto the chip. The team took 2nd\u00a0place in the Google\u00a0Quantum\u00a0AI challenge."
+    ],
+    "keyTools": "Python, Cirq\u00a01.8, cirq-\u2060google (Willow105), NumPy, SciPy",
+    "github": "https://www.github.com/valmohaugen/DuQuantum-2026",
+    "highlight": true,
+    "thumbnail": "/images/thumbnails/duquantum-2026.webp",
+    "thumbnailAlt": "The DuQuantum 2026 logo",
+    "challenge": "Google Quantum AI challenge"
+  },
+  {
+    "id": "sc-quantathon-v3",
+    "title": "SC Quantathon\u00a0v3: Tech\u00a0Lead and Bootcamp Author",
+    "year": "Sep 2026",
+    "blurb": "Helped organize SC\u00a0Quantathon\u00a0v3, the first edition of SC\u00a0Quantum’s quantum hackathon hosted by the Clemson\u00a0Quantum\u00a0Club, held September\u00a025–\u206027,\u00a02026, at Clemson’s Watt Family Innovation Center. As Tech Lead, I wrote the seven-day self-paced bootcamp that prepared participants, built the event website, and ran the technical side of the event across GitHub, Devpost, and Discord. Teams of 3–\u20605\u00a0students spent 24\u00a0hours on challenges set by Savannah River National Laboratory and Quantum Rings.",
+    "details": [
+      "SC Quantum founded the Quantathon and hosted its first two editions in Columbia. For the third edition, the Clemson\u00a0Quantum\u00a0Club brought the event to Clemson University. Undergraduate and graduate students from computing, physics, engineering, and mathematics competed in teams of 3–\u20605, ranking their preferred challenge on Friday evening, hacking from Saturday morning to Sunday morning, and presenting to judges on Sunday.",
+      "The bootcamp ran September\u00a014–\u206022 and assumed no prior quantum experience. It covered setup and a first circuit; the math behind a qubit; gates, measurement, and entanglement; real hardware with transpilation, noise, and error mitigation; variational algorithms (VQE and QAOA); and quantum machine learning. Day\u00a03 was a recorded platform demo from qBraid.",
+      "Each of the six written days has an exercise notebook, a solutions notebook, and a PDF of notes with figures and references. Every day ends with a run on real IBM\u00a0Quantum hardware that compares the exact result, a simulator, and the device, and the notes quote the recorded hardware numbers. The notebooks run on qBraid Lab, the environment used during the hackathon, or locally from the public GitHub repository.",
       "I also built the event page on the club website (schedule, venue, FAQ, sponsors, and bootcamp) and kept the event’s facts consistent across the website, Devpost, Discord, and participant emails. The challenges were written by Savannah River National Laboratory and Quantum Rings, the event was powered by qBraid, and partners included South Carolina Quantum, Clemson’s College of Engineering, Computing and Applied Sciences, and TraCR."
     ],
-    "keyTools": "Qiskit 2.x, IBM Quantum hardware, qBraid Lab, Jupyter, LaTeX, Next.js, GitHub, Devpost, Discord",
+    "keyTools": "Qiskit\u00a02.x, IBM\u00a0Quantum hardware, qBraid Lab, Jupyter, LaTeX, Next.js, GitHub, Devpost, Discord",
     "github": "https://www.github.com/ClemsonQuantum/SC-Quantathon-v3-2026",
     "live": "https://www.clemsonquantum.com/events/hackathons/sc-quantathon-v3-2026/",
     "thumbnail": "/images/thumbnails/sc-quantathon-v3.webp",
@@ -37,121 +55,150 @@
   },
   {
     "id": "yquantum-2026",
-    "title": "YQuantum 2026: Cat Qubit Control Optimization (3rd Place)",
+    "title": "YQuantum\u00a02026: Cat Qubit Control Optimization (3rd\u00a0Place)",
     "year": "Apr 2026",
-    "blurb": "Automated control-parameter tuning framework for dissipative cat qubits, built with team (Ψ)ceratops for the Alice & Bob challenge at Yale’s YQuantum 2026, where it took 3rd place. Balances competing objectives (T_Z and T_X lifetimes, target bias ratios) across realistic hardware drift using eight reward functions and five optimization algorithms.",
+    "blurb": "Automated control-parameter tuning framework for dissipative cat qubits, built with team (Ψ)ceratops for the Alice\u00a0&\u00a0Bob challenge at Yale’s YQuantum\u00a02026, where it took 3rd\u00a0place. Balances competing objectives ($T_Z$ and $T_X$ lifetimes, target bias ratios) across realistic hardware drift using eight reward functions and five optimization algorithms.",
     "details": [
-      "Dissipative cat qubits require careful tuning of 4–5 coupled control parameters to maximize state lifetimes while holding a target noise-bias ratio. Hand-tuning breaks down under realistic hardware drift, so this project builds an automated optimization framework that finds and tracks good operating points.",
-      "Eight reward functions span from computationally economical proxies to physically rigorous measurements, including a vacuum reward that matches actual experimental protocols: the system finds its own cat states from vacuum, then measurement reveals what actually happened. The framework favors data-driven α estimation over analytical heuristics, since adiabatic elimination formulas become unreliable near operational thresholds.",
-      "Five optimization algorithms (CMA-ES, a hybrid CMA-ES+Adam scheme, REINFORCE, PPO-Clip, and Bayesian optimization) are benchmarked across drift scenarios including amplitude fluctuations, frequency shifts, Kerr nonlinearities, and two-level-system defects, with per-optimizer convergence figures.",
-      "Extensions cover the moon-cat configuration (adding squeezing parameters) and single-qubit Zeno gate optimization. A 221-test suite validates the simulation, reward, optimizer, and drift-model layers. The project placed 3rd in the Alice & Bob challenge."
+      "Dissipative cat qubits require careful tuning of 4–\u20605 coupled control parameters to maximize state lifetimes while holding a target noise-bias ratio. Hand-tuning breaks down under realistic hardware drift, so this project builds an automated optimization framework that finds and tracks good operating points.",
+      "Eight reward functions span from computationally economical proxies to physically rigorous measurements, including a vacuum reward that matches actual experimental protocols: the system finds its own cat states from vacuum, then measurement reveals what actually happened. The framework favors data-driven $α$ estimation over analytical heuristics, since adiabatic elimination formulas become unreliable near operational thresholds.",
+      "Five optimization algorithms (CMA-\u2060ES, a hybrid CMA-\u2060ES+Adam scheme, REINFORCE, PPO-\u2060Clip, and Bayesian optimization) are benchmarked across drift scenarios including amplitude fluctuations, frequency shifts, Kerr nonlinearities, and two-level-system defects, with per-optimizer convergence figures.",
+      "Extensions cover the moon-cat configuration (adding squeezing parameters) and single-\u2060qubit Zeno gate optimization. A 221-\u2060test suite validates the simulation, reward, optimizer, and drift-model layers. The project placed 3rd in the Alice\u00a0&\u00a0Bob challenge."
     ],
-    "keyTools": "Python, JAX, dynamiqs, CMA-ES, PPO/REINFORCE, Bayesian optimization, open quantum systems simulation",
+    "keyTools": "Python, JAX, dynamiqs, CMA-\u2060ES, PPO/REINFORCE, Bayesian optimization, open quantum systems simulation",
     "github": "https://www.github.com/valmohaugen/YQuantum-2026",
     "highlight": true,
     "thumbnail": "/images/thumbnails/yquantum-2026.webp",
-    "thumbnailAlt": "Team (Ψ)ceratops at YQuantum 2026 at Yale University",
+    "thumbnailAlt": "Team (Ψ)ceratops at Yale’s YQuantum 2026",
     "challenge": "Alice & Bob challenge"
   },
   {
     "id": "iquhack-2026",
-    "title": "iQuHack 2026: Circuit Optimization (1st Place)",
+    "title": "iQuHack\u00a02026: Circuit Optimization (1st\u00a0Place)",
     "year": "Feb 2026",
-    "blurb": "Reed-Muller decoding-based Clifford+T circuit optimizer developed at MIT’s annual quantum hackathon. Minimizes T-gate count and circuit depth for arbitrary unitary matrices through structure-aware synthesis, pattern recognition, and phase-polynomial optimization. Winner of the Superquantum challenge (1st place), the tool provides both a CLI and Python API for fault-tolerant quantum circuit compilation, successfully optimizing all 11 challenge unitaries.",
+    "blurb": "Reed–\u2060Muller decoding-based Clifford+T circuit optimizer developed at MIT’s annual quantum hackathon. Minimizes T-\u2060gate count and circuit depth for arbitrary unitary matrices through structure-aware synthesis, pattern recognition, and phase-polynomial optimization. Winner of the Superquantum challenge (1st\u00a0place), the tool provides both a CLI and a Python API for fault-tolerant quantum circuit compilation, successfully optimizing all 11 challenge unitaries.",
     "details": [
-      "Fault-tolerant quantum computing requires decomposing arbitrary unitaries into the Clifford+T gate set (H, T, T†, S, S†, CX), where T-gates are the dominant cost due to magic state distillation overhead. This project tackles the Superquantum challenge by building a complete synthesis and optimization pipeline that converts arbitrary unitary matrices into resource-efficient Clifford+T circuits.",
-      "The optimizer employs a multi-strategy approach: pattern recognition identifies common 2-qubit structures (QFT blocks, Heisenberg/XX+YY interactions) and maps them to known optimal decompositions; brute-force search explores low-T circuit structures for small unitaries; and phase-polynomial optimization via the rmsynth C++ toolkit applies Reed-Muller decoding (Dumer, RPA, and OSD backends) to minimize T-count in larger circuits.",
-      "For single-qubit rotations, the pipeline uses pygridsynth for grid-operator-based Rz angle approximation, achieving near-optimal T-counts at configurable precision. The system supports multiple effort levels that trade compilation time for circuit quality, and outputs standard QASM with full resource metrics (T-count, CX-count, total depth).",
-      "All 11 challenge unitaries were successfully optimized, with results benchmarked across effort levels, earning 1st place in the Superquantum challenge. The project provides both a CLI and Python API for integration into larger compilation workflows."
+      "Fault-tolerant quantum computing requires decomposing arbitrary unitaries into the Clifford+T gate set (H, T, T†, S, S†, CX), where T-\u2060gates are the dominant cost due to magic state distillation overhead. This project tackles the Superquantum challenge by building a complete synthesis and optimization pipeline that converts arbitrary unitary matrices into resource-efficient Clifford+T circuits.",
+      "The optimizer employs a multi-strategy approach: pattern recognition identifies common 2-\u2060qubit structures (QFT blocks, Heisenberg/XX+YY interactions) and maps them to known optimal decompositions; brute-force search explores low-\u2060T circuit structures for small unitaries; and phase-polynomial optimization via the rmsynth C++ toolkit applies Reed–\u2060Muller decoding (Dumer, RPA, and OSD backends) to minimize T-\u2060count in larger circuits.",
+      "For single-\u2060qubit rotations, the pipeline uses pygridsynth for grid-operator-based Rz angle approximation, achieving near-optimal T-\u2060counts at configurable precision. The system supports multiple effort levels that trade compilation time for circuit quality, and outputs standard QASM with full resource metrics (T-\u2060count, CX-\u2060count, total depth).",
+      "All 11 challenge unitaries were successfully optimized, with results benchmarked across effort levels, earning 1st\u00a0place in the Superquantum challenge. The project provides both a CLI and a Python API for integration into larger compilation workflows."
     ],
-    "keyTools": "Python, Qiskit 2.x, rmsynth (C++), pygridsynth, NumPy, SciPy",
+    "keyTools": "Python, Qiskit\u00a02.x, rmsynth (C++), pygridsynth, NumPy, SciPy",
     "github": "https://www.github.com/valmohaugen/iQuHack-2026",
     "highlight": true,
     "thumbnail": "/images/thumbnails/iquhack-2026.webp",
-    "thumbnailAlt": "The Clemson group at iQuHack 2026 at MIT",
+    "thumbnailAlt": "The Clemson group for MIT’s iQuHack 2026",
     "challenge": "Superquantum challenge"
   },
   {
     "id": "sc-quantathon-v2",
-    "title": "SC Quantathon v2: Quantum Kernels for Tornado Prediction",
+    "title": "SC Quantathon\u00a0v2: Quantum Kernels for Tornado Prediction",
     "year": "Oct 2025",
-    "blurb": "Multi-framework quantum machine learning solution for tornado prediction developed for the Tornado challenge at SC Quantathon v2. Benchmarks quantum support vector machines, quantum neural networks, and quantum feature extraction against classical baselines (XGBoost, LightGBM, SVC) across three quantum frameworks (Qiskit, Cirq, PennyLane). The QSVM achieved 81% tornado recall while the QNN reached 80% overall accuracy on NOAA storm report data.",
+    "blurb": "Multi-framework quantum machine learning solution for tornado prediction developed for the Tornado challenge at SC\u00a0Quantathon\u00a0v2. Benchmarks quantum support vector machines, quantum neural networks, and quantum feature extraction against classical baselines (XGBoost, LightGBM, SVC) across three quantum frameworks (Qiskit, Cirq, PennyLane). The QSVM achieved 81% tornado recall, while the QNN reached 80% overall accuracy on NOAA storm report data.",
     "details": [
       "Severe weather prediction is a high-stakes classification problem where quantum machine learning may offer advantages through richer feature representations in exponentially large Hilbert spaces. This project explores that hypothesis by applying quantum kernel methods and hybrid quantum-classical neural networks to NOAA storm report data for binary tornado/no-tornado classification.",
       "The QSVM approach uses data re-uploading feature maps with RY/RZ rotations and CZ entangling gates, followed by two-stage hyperparameter optimization over 100 iterations. Quantum kernels are post-processed with centering, positive semi-definite projection, and diagonal normalization for stability. Both binary and multiclass variants were implemented, achieving 60.5% accuracy with 81.0% tornado recall in the binary case.",
-      "The QNN pipeline uses PennyLane with 4-qubit StronglyEntanglingLayers fed by a classical feedforward encoder (128→64→quantum parameters), trained with early stopping. Quantum feature extraction concatenates statevector amplitudes, measurement probabilities, and phase information with classical features for hybrid classification. The QNN achieved 80.0% overall accuracy.",
+      "The QNN pipeline uses PennyLane with 4-\u2060qubit StronglyEntanglingLayers fed by a classical feedforward encoder (128→64→quantum parameters), trained with early stopping. Quantum feature extraction concatenates statevector amplitudes, measurement probabilities, and phase information with classical features for hybrid classification. The QNN achieved 80.0% overall accuracy.",
       "The data pipeline handles the heavily imbalanced NOAA dataset with iterative imputation, SMOTE oversampling, and StandardScaler normalization. All three quantum backends (Qiskit, Cirq, PennyLane) produce consistent kernel matrices, confirming framework-agnostic reproducibility.",
       "Classical baselines (XGBoost, LightGBM, SVC, logistic regression) provide controlled comparisons. ROC curves and tornado recall (the challenge-specific primary metric) are reported across all methods."
     ],
-    "keyTools": "Qiskit 2.x, Cirq, PennyLane, PyTorch, scikit-learn, XGBoost, LightGBM, imbalanced-learn",
+    "keyTools": "Qiskit\u00a02.x, Cirq, PennyLane, PyTorch, scikit-\u2060learn, XGBoost, LightGBM, imbalanced-learn",
     "github": "https://www.github.com/valmohaugen/SC-Quantathon-v2-2025",
-    "thumbnail": "/images/thumbnails/sc-quantathon.jpg",
+    "thumbnail": "/images/thumbnails/sc-quantathon.webp",
     "thumbnailAlt": "SC Quantathon v2 event poster: International Quantum Circuit Championship",
     "challenge": "Tornado challenge"
   },
   {
+    "id": "srnl-vqe-majorana",
+    "title": "SRNL Internship: VQE Simulations of Majorana Edge States",
+    "year": "Jun – Aug 2025",
+    "blurb": "Summer internship research in the Quantum\u00a0AI group at Savannah River National Laboratory, presented as a poster at the SRNL Research Symposium\u00a02025. Screens synthetic materials for topological quantum computing by band gap, Berry curvature, coherence time, and gate fidelity, then runs the Variational Quantum Eigensolver (VQE) on Kitaev chain Hamiltonians for the top three candidates to resolve Majorana edge states and topological phases.",
+    "details": [
+      "Superconducting quantum computers must run at extremely low temperatures, which makes them costly to operate. Materials with topological properties that work above 1\u00a0K could lower that cost. This project pairs synthetic materials generation with VQE to calculate Majorana edge states and topological phases, as a way to identify candidate materials for topological quantum computing.",
+      "Each synthetic material is scored on its band gap, Berry curvature, coherence time, and gate fidelity, and the scores are cross-referenced with environmental stability and manufacturability to choose the best candidate for real-world use. For the top three materials, VQE solves the Kitaev chain Hamiltonian across values of the chemical potential $μ$, the hopping energy $t$, and the superconducting pairing $Δ$, and the results are compared with classical optimization.",
+      "The leading candidate, material\u00a0295, has a band gap of 2.93\u00a0eV, an energy gap of 1.2929\u00a0eV, a coherence time of 91.5\u00a0\u00b5s, and a Berry curvature of 2.156. VQE found its ground-state energy at −1.9955\u00a0eV against the exact −2.0000\u00a0eV, an error of 0.0045\u00a0eV. Next steps are density functional theory (DFT) to generate real, realizable materials and simulations of their manufacturing. The work was funded by SC\u00a0Quantum and conducted at SRNL with Larry\u00a0Deschaine, Adrian\u00a0Mistreanu, and Simona\u00a0Murph."
+    ],
+    "keyTools": "VQE, Kitaev chain model, classical optimization",
+    "thumbnail": "/images/thumbnails/srnl-vqe-majorana.webp",
+    "thumbnailAlt": "SRNL research poster: Advancing Materials Development with Quantum AI and VQE Simulations of Majorana Edge States and Topological Phases",
+    "posterUrl": "/posters/SRNL-Poster-2025.pdf"
+  },
+  {
     "id": "neurotiq",
-    "title": "NeurotiQ: Hybrid QNN/QSVM for EEG Analysis",
+    "title": "NeurotiQ: Hybrid QNN/\u2060QSVM for EEG Analysis",
     "year": "Apr 2025",
-    "blurb": "Full-stack quantum machine learning application for EEG-based mental health diagnosis, integrating QSVM, QCNN, and classical ML baselines with a GPT-4-powered Streamlit web interface. Developed at the NYUAD Quantum Hackathon, targeting anxiety, depression, and ADHD detection from brain wave data. The quantum kernel SVM achieved 79% AUC on anxiety detection, significantly outperforming the 68% AUC classical baseline.",
+    "blurb": "Full-stack quantum machine learning application for EEG-based mental health diagnosis, integrating QSVM, QCNN, and classical ML baselines with a GPT-\u20604-\u2060powered Streamlit web interface. Developed at the NYUAD Quantum Hackathon, targeting anxiety, depression, and ADHD detection from brain wave data. The quantum kernel SVM achieved 79% AUC on anxiety detection, significantly outperforming the 68% AUC classical baseline.",
     "details": [
       "Electroencephalography (EEG) data contains rich spatiotemporal patterns associated with neurological conditions, but traditional analysis methods struggle with the high dimensionality and noise inherent in brain signals. NeurotiQ explores whether quantum machine learning can improve classification performance for mental health diagnosis from EEG recordings.",
       "The primary quantum model is a QSVM using Qiskit quantum kernels with amplitude embedding and diagonal phase encoding, achieving 79% AUC on anxiety detection, a significant improvement over the 68% AUC classical SVM baseline. A secondary QCNN model built with PennyLane and TensorFlow uses StronglyEntanglingLayers for hybrid quantum-classical feature learning.",
-      "EEG preprocessing includes KNN imputation for missing channels, PCA dimensionality reduction to 8 components (matching quantum hardware constraints), and L2 normalization. The pipeline supports multiple EEG datasets sourced from Kaggle (anxiety), Zenodo (depression), and local collections (ADHD), with severity classification into mild, moderate, and severe categories.",
-      "The Streamlit web application provides real-time inference, interactive visualization of classification results, and a GPT-4-powered emotional support chatbot (via LangChain) that generates personalized recommendations based on the diagnostic output. Classical baselines include PyCaret AutoML ensembles, SVM, and logistic regression for controlled comparisons."
+      "EEG preprocessing includes KNN imputation for missing channels, PCA dimensionality reduction to eight components (matching quantum hardware constraints), and L2 normalization. The pipeline supports multiple EEG datasets sourced from Kaggle (anxiety), Zenodo (depression), and local collections (ADHD), with severity classification into mild, moderate, and severe categories.",
+      "The Streamlit web application provides real-time inference, interactive visualization of classification results, and a GPT-\u20604-\u2060powered emotional support chatbot (via LangChain) that generates personalized recommendations based on the diagnostic output. Classical baselines include PyCaret AutoML ensembles, SVM, and logistic regression for controlled comparisons."
     ],
-    "keyTools": "Qiskit 2.x, PennyLane, TensorFlow/Keras, scikit-learn, PyCaret, Streamlit, LangChain, OpenAI GPT-4",
+    "keyTools": "Qiskit\u00a02.x, PennyLane, TensorFlow/\u2060Keras, scikit-\u2060learn, PyCaret, Streamlit, LangChain, OpenAI\u00a0GPT-\u20604",
     "github": "https://www.github.com/valmohaugen/NYUAD-Hackathon-2025",
     "thumbnail": "/images/thumbnails/neurotiq.webp",
     "thumbnailAlt": "The team at the NYUAD Quantum Hackathon 2025 in Abu Dhabi"
   },
   {
     "id": "iquhack-2025",
-    "title": "iQuHack 2025: Cat Qubit Simulation for Open Quantum Systems",
+    "title": "iQuHack\u00a02025: Cat\u00a0Qubit\u00a0Simulation for Open Quantum\u00a0Systems",
     "year": "Jan 2025",
-    "blurb": "Cat qubit simulation and optimal control for the Alice & Bob open quantum systems challenge at MIT. Modeled two-photon driven dissipative stabilization of bosonic cat states, analyzed noise-biased error channels, and implemented gradient-based quantum state preparation using JAX automatic differentiation. Includes adiabatic elimination validation, Wigner function phase space visualization, and lab frame Hamiltonian simulation with SQUID nonlinearity.",
+    "blurb": "Cat qubit simulation and optimal control for the Alice\u00a0&\u00a0Bob challenge at MIT’s iQuHack\u00a02025. Modeled two-photon-driven dissipative stabilization of bosonic cat states, analyzed noise-biased error channels, and implemented gradient-based quantum state preparation using JAX automatic differentiation. Includes adiabatic elimination validation, Wigner function phase space visualization, and lab-frame Hamiltonian simulation with SQUID nonlinearity.",
     "details": [
       "Cat qubits encode quantum information in superpositions of coherent states within a harmonic oscillator, offering an inherent bias toward phase-flip errors over bit-flip errors. This noise asymmetry is a key resource for building hardware-efficient quantum error correction. This project simulates cat qubit dynamics and develops optimal control protocols using the dynamiqs open quantum systems library.",
       "The simulation models two-photon dissipation in composite Hilbert spaces, tracking photon number evolution, parity dynamics, and Wigner function phase space representations. Adiabatic elimination reduces two-mode systems to effective single-mode descriptions, validated by fidelity comparisons between full and approximate models. Zeno gate protocols protect against environmental decoherence.",
-      "Gradient-based optimal control uses JAX automatic differentiation with the Adam optimizer to prepare target cat states from vacuum, optimizing pulse shapes for maximum fidelity. The lab frame simulation incorporates time-dependent Hamiltonians with SQUID nonlinearity and microwave drive terms, connecting the idealized model to experimental hardware parameters.",
+      "Gradient-based optimal control uses JAX automatic differentiation with the Adam optimizer to prepare target cat states from vacuum, optimizing pulse shapes for maximum fidelity. The lab-frame simulation incorporates time-dependent Hamiltonians with SQUID nonlinearity and microwave drive terms, connecting the idealized model to experimental hardware parameters.",
       "Results include cat state fidelity as a function of dissipation rate, bit-flip vs. phase-flip error rate comparisons against standard transmon qubits, and animated Wigner function evolution showing the characteristic interference fringes of cat states."
     ],
     "keyTools": "dynamiqs, JAX, NumPy, SciPy, Matplotlib",
     "github": "https://www.github.com/valmohaugen/iQuHack-2025",
     "thumbnail": "/images/thumbnails/iquhack-2025.webp",
-    "thumbnailAlt": "Team 9 at iQuHack 2025 at MIT",
+    "thumbnailAlt": "Team 9 at MIT’s iQuHack 2025",
     "challenge": "Alice & Bob challenge"
   },
   {
     "id": "clemson-quantum-website",
     "title": "Clemson Quantum Club Website",
     "year": "2024 – Present",
-    "blurb": "The official Clemson Quantum Club website, built with Next.js 15, React 19, and TypeScript. Serves as the public face of the club with member profiles, research showcases, event documentation, educational resources, and a pre-built search index for content discovery. Uses a markdown-driven content architecture so members can update pages without writing code, with static export deployed via GitHub Actions. I develop and maintain the site as Vice President of the club.",
+    "blurb": "The official Clemson Quantum Club website, built with Next.js\u00a015, React\u00a019, and TypeScript. Serves as the public face of the club with member profiles, research showcases, event documentation, educational resources, and a pre-built search index for content discovery. Uses a Markdown-driven content architecture so members can update pages without writing code, with static export deployed via GitHub Actions. I designed and built the site and continue to maintain it.",
     "details": [
-      "The Clemson Quantum Club needed a modern, maintainable web presence that non-technical members could update without writing code. This site uses a markdown-driven content architecture: pages, events, news items, and resources are authored as markdown files with YAML frontmatter, rendered at build time with React-Markdown and Remark GFM.",
-      "The application is built on Next.js 15 with React 19 and strict TypeScript, using the App Router for file-system-based routing. A Node.js build script generates a search index at compile time, enabling client-side content discovery without a backend. Static export produces a fully static site deployed to GitHub Pages via GitHub Actions CI/CD.",
-      "The component architecture includes reusable React components for member cards, event timelines, resource listings, and navigation. The design is fully responsive and uses modern CSS features. ESLint 9 enforces code quality standards across the TypeScript codebase."
+      "The Clemson Quantum Club needed a modern, maintainable web presence that non-technical members could update without writing code. This site uses a Markdown-driven content architecture: pages, events, news items, and resources are authored as Markdown files with YAML frontmatter, rendered at build time with React-Markdown and Remark GFM.",
+      "The application is built on Next.js\u00a015 with React\u00a019 and strict TypeScript, using the App Router for file-system-based routing. A Node.js build script generates a search index at compile time, enabling client-side content discovery without a backend. Static export produces a fully static site deployed to GitHub Pages via GitHub Actions CI/\u2060CD.",
+      "The component architecture includes reusable React components for member cards, event timelines, resource listings, and navigation. The design is fully responsive and uses modern CSS features. ESLint\u00a09 enforces code quality standards across the TypeScript codebase."
     ],
-    "keyTools": "Next.js 15, React 19, TypeScript 5.7, React-Markdown, GitHub Actions, GitHub Pages",
+    "keyTools": "Next.js\u00a015, React\u00a019, TypeScript\u00a05.7, React-\u2060Markdown, GitHub\u00a0Actions, GitHub Pages",
     "live": "https://www.clemsonquantum.com",
-    "thumbnail": "/images/thumbnails/clemson-quantum-website.webp",
-    "thumbnailAlt": "Clemson Quantum Club website"
+    "thumbnail": "/images/thumbnails/clemson-quantum-website-light.webp",
+    "thumbnailDark": "/images/thumbnails/clemson-quantum-website.webp",
+    "thumbnailAlt": "Clemson Quantum Club logo: the letters CQC inside atomic orbits"
   },
   {
     "id": "sc-quantathon-v1",
-    "title": "SC Quantathon v1: Quantum Random Number Generation (1st Place & Grand Prize)",
+    "title": "SC Quantathon\u00a0v1: Quantum Random Number Generation (1st\u00a0Place\u00a0& Grand\u00a0Prize)",
     "year": "Oct 2024",
-    "blurb": "Award-winning quantum random number generation (QRNG) project for the inaugural SC Quantathon. Implemented, characterized, and verified QRNG on IBM quantum processors through a five-stage challenge spanning circuit design, ML-based quantum vs. classical discrimination, hardware noise characterization (T1/T2, gate errors), and Toeplitz/von Neumann entropy extraction. Won first place in the competition.",
+    "blurb": "Award-winning quantum random number generation (QRNG) project for the inaugural SC Quantathon. Implemented, characterized, and verified QRNG on IBM quantum processors through a five-stage challenge spanning circuit design, ML-based quantum vs. classical discrimination, hardware noise characterization ($T_1/T_2$, gate errors), and Toeplitz/von Neumann entropy extraction. Won 1st\u00a0place and the Grand\u00a0Prize\u00a0Overall.",
     "details": [
-      "True random number generation is fundamentally impossible with classical deterministic hardware, but quantum mechanics provides a natural source of certified randomness through the Born rule. This project implements a complete QRNG pipeline on IBM quantum processors, from raw bitstring generation to post-processed, verified random output.",
-      "The five-stage challenge progresses from basic QRNG circuit design (Hadamard gates producing superposition-based random bits) through increasingly sophisticated analysis. Stage 2 trains an SVM classifier achieving 75%+ accuracy at distinguishing QRNG output from classical pseudo-random sequences, confirming measurable statistical differences. Stage 3 characterizes hardware noise through T1/T2 decoherence measurements, gate error rates, and readout assignment error matrices across IBM backends (Brisbane, Sherbrooke).",
+      "True random number generation is fundamentally impossible with classical deterministic hardware, but quantum measurement provides a physical source of randomness through the Born rule. This project implements a complete QRNG pipeline on IBM quantum processors, from raw bitstring generation to post-processed, verified random output.",
+      "The five-stage challenge progresses from basic QRNG circuit design (Hadamard gates producing superposition-based random bits) through increasingly sophisticated analysis. Stage 2 trains an SVM classifier achieving 75%+ accuracy at distinguishing QRNG output from classical pseudo-random sequences, confirming measurable statistical differences. Stage 3 characterizes hardware noise through $T_1/T_2$ decoherence measurements, gate error rates, and readout assignment error matrices across IBM backends (Brisbane, Sherbrooke).",
       "Stage 4 applies entropy extraction techniques (Toeplitz matrix hashing, von Neumann extraction, and parity-based debiasing) to purify raw quantum randomness from measurement bias and hardware noise. Stage 5 re-evaluates the extracted output, confirming improved statistical quality. The pipeline supports configurable shot counts and includes HPCG benchmark integration via a C shared library shim replacing rand() calls with quantum-sourced randomness.",
       "Four bitstring extraction methods (Mod2 XOR, iteration with chunking, concatenation, and combined) are compared across simulator and real hardware backends. The project won the inaugural SC Quantathon competition."
     ],
-    "keyTools": "Qiskit, qiskit-ibm-runtime, scikit-learn, XGBoost, NumPy, SciPy, Matplotlib",
+    "keyTools": "Qiskit, qiskit-\u2060ibm-\u2060runtime, scikit-\u2060learn, XGBoost, NumPy, SciPy, Matplotlib",
     "github": "https://www.github.com/valmohaugen/SC-Quantathon-v1-2024",
+    "highlight": true,
     "thumbnail": "/images/thumbnails/sc-quantathon-v1.webp",
-    "thumbnailAlt": "The team working late at SC Quantathon v1 2024",
+    "thumbnailAlt": "The team working late at SC Quantathon v1",
     "challenge": "DoraHacks challenge"
+  },
+  {
+    "id": "afrl-chiral-phonons",
+    "title": "AFRL Internship: Chiral Phonons in Layered AgCrP₂Se₆",
+    "year": "May – Jul 2024",
+    "blurb": "Summer internship in Dr.\u00a0Rahul\u00a0Rao’s group in the Materials and Manufacturing Directorate of the Air Force Research Laboratory. I prepared layered AgCrP₂Se₆ samples by mechanical exfoliation, characterized their thickness and crystal quality with AFM, and collected excitation-energy-dependent Raman and photoluminescence measurements at room and cryogenic temperatures. The data are published in ACS\u00a0Nano (2025).",
+    "details": [
+      "The paper, “Chiral Phonons and Anomalous Excitation-Energy-Dependent Raman Intensities in Layered AgCrP₂Se₆” (R.\u00a0Rao, J.\u00a0Jiang, R.\u00a0Pachter, T.\u00a0Mai, V.\u00a0Mohaugen, et\u00a0al., ACS\u00a0Nano, 2025), reports these measurements.",
+      "I also fabricated stacked 2D hetero- and homostructures to investigate interactions between layers. Related work that I co-\u2060authored, “Temperature dependent Raman and photoluminescence spectroscopy study of AgBiP₂Se₆,” was presented by Thuc\u00a0T.\u00a0Mai at the APS Global Physics Summit\u00a02025 in Anaheim,\u00a0CA."
+    ],
+    "keyTools": "AFM, Raman spectroscopy, photoluminescence spectroscopy, mechanical exfoliation",
+    "paperUrl": "https://www.doi.org/10.1021/acsnano.5c00381"
   }
 ]

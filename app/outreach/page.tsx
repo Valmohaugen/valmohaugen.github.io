@@ -21,6 +21,7 @@ export default function OutreachPage() {
       <PageHeader
         title="Outreach & Leadership"
         subtitle="Presentations, posters, conferences, and community leadership"
+        figure="outreach"
       />
 
       <Section>

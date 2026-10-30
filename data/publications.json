@@ -2,16 +2,18 @@
   "publications": [
     {
       "year": "2026",
-      "title": "MEDA: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices",
+      "title": "MEDA: Measurement-\u2060Efficient Disorder-\u2060Aware Majorana Zero Mode Detection in Realistic Devices",
       "authors": "N. Jones, B. Roy, V. Mohaugen, I. Lewis, T. Cox, S. Tewari, R. Ge",
-      "venue": "IEEE Quantum Week 2026 (QCE 2026)",
+      "venue": "IEEE Quantum\u00a0Week\u00a02026 (QCE\u00a02026)",
+      "venueType": "conference",
       "paperUrl": "https://www.doi.org/10.48550/arXiv.2607.26208"
     },
     {
       "year": "2025",
-      "title": "Chiral Phonons and Anomalous Excitation-Energy-Dependent Raman Intensities in Layered AgCrP₂Se₆",
+      "title": "Chiral Phonons and Anomalous Excitation-Energy-Dependent Raman Intensities in Layered\u00a0AgCrP₂Se₆",
       "authors": "R. Rao, J. Jiang, R. Pachter, T. Mai, V. Mohaugen, M. F. Muñoz, R. Siebenaller, E. Rowe, R. Selhorst, A. N. Giordano, A. R. Hight Walker, M. A. Susner",
       "venue": "ACS Nano (2025)",
+      "venueType": "journal",
       "paperUrl": "https://www.doi.org/10.1021/acsnano.5c00381"
     }
   ]

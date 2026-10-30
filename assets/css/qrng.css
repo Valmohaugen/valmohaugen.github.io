@@ -1,0 +1,48 @@
+/* ============================================================
+   QRNG: text that decrypts through measured ibm_sherbrooke digits
+   (components/qrng/Decrypt.tsx). The real text stays in the DOM; this
+   overlay only draws, and only for at most 600 ms.
+   ============================================================ */
+.decrypt {
+  position: relative;
+}
+
+.decrypt__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.decrypt__glyph {
+  position: absolute;
+  line-height: normal;
+  white-space: pre;
+}
+
+/* Digits in the text's own font (the overlay carries it), as full-height
+   figures of equal width, centred on the letter they stand in for, so the
+   flicker never jumps. */
+.decrypt__glyph--digit {
+  font-variant-numeric: lining-nums tabular-nums;
+  /* Flex centring also centres a digit wider than its glyph's box (text-align
+     start-aligns overflow), so the spill is even on both sides. */
+  display: flex;
+  justify-content: center;
+}
+
+/* Link hover decrypt (components/qrng/LinkDecrypt.tsx): the digits draw in
+   a page-level overlay over the link while the link's own text is
+   see-through; its underline and icon stay. Under the sticky header. */
+.link-decrypt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  pointer-events: none;
+  user-select: none;
+}
+
+.is-decrypting {
+  -webkit-text-fill-color: transparent;
+}

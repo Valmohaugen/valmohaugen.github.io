@@ -1,40 +1,101 @@
 /* ============================================================
-   The scroll-reveal system and the reduced-motion guard.
+   Motion guards.
 
-   The guard uses a universal selector, so any animation added anywhere on
-   the site inherits it automatically. Keep it that way.
+   The visitor's OS setting, prefers-reduced-motion: reduce, stops every
+   animation on the site at once. The universal selectors cover CSS
+   transitions and keyframe animations anywhere; the view-transition rules
+   cover page transitions. JavaScript animations check the same media query,
+   and scroll-driven CSS animations are written inside a no-preference guard
+   of their own. The figures evolve nonstop with no pause control: the
+   owner's deliberate exception to WCAG 2.2.2, recorded in the README;
+   reduced motion stills them.
    ============================================================ */
 
 /* ============================================================
-   19. Scroll Reveal Animations
+   Page transitions: React's <ViewTransition> around <main>
+   (app/layout.tsx). Content crossfades in 200 ms; the header is its own
+   group with no animation, so it stays put; clicks pass through.
    ============================================================ */
-/* Content is fully visible without JavaScript. ScrollReveal adds
-   .reveal-init only to elements below the fold, then flips them to
-   .reveal--visible as they enter the viewport. */
-.reveal {
-  transition: opacity var(--reveal-duration) ease, transform var(--reveal-duration) ease;
-  /* Stagger: set --reveal-index on each item (0, 1, 2, ...). Unbounded, so a
-     group can grow without new classes. Tune a group's spacing by setting
-     --reveal-stagger on its container. */
-  transition-delay: calc(var(--reveal-index, 0) * var(--reveal-stagger, 0.1s));
+::view-transition {
+  pointer-events: none;
 }
 
-/* The entrance. Override --reveal-from for a different one; the fallback here
-   is the default fade-and-rise, so existing .reveal elements are unchanged. */
-.reveal-init {
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--dur-measure);
+  animation-timing-function: var(--ease-measure);
+}
+
+/* Named on the bar, not its .site-header wrapper: a view-transition-name
+   makes an element a backdrop root, and on the wrapper it would stop the
+   condensed bar's backdrop-filter from seeing (and blurring) the page. */
+.nav {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  z-index: 100;
+  animation: none;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* ============================================================
+   Scroll effects (components/ScrollEffects.tsx). Script adds
+   .has-scroll-fx to <html> only when motion is allowed, and marks only
+   blocks below the fold, so nothing on screen is ever hidden and the page
+   reads in full without JavaScript.
+   ============================================================ */
+
+/* Blocks rise into view. A timeline entry keeps its rail still and lifts
+   its text instead, so the rail never breaks while an entry arrives. */
+html.has-scroll-fx .fx-pending:not(.timeline-item),
+html.has-scroll-fx .timeline-item.fx-pending > * {
   opacity: 0;
-  transform: var(--reveal-from, translateY(var(--reveal-distance)));
+  transform: translateY(1rem);
 }
 
-.reveal--visible {
+html.has-scroll-fx .fx-pending.fx-in:not(.timeline-item),
+html.has-scroll-fx .timeline-item.fx-pending.fx-in > * {
   opacity: 1;
   transform: none;
+  transition:
+    opacity var(--dur-morph) var(--ease-measure) var(--fx-delay, 0ms),
+    transform var(--dur-morph) var(--ease-spring) var(--fx-delay, 0ms);
 }
 
-/* Entrance variants: each is one declaration. */
-.reveal--left  { --reveal-from: translateX(calc(var(--reveal-distance) * -1)); }
-.reveal--right { --reveal-from: translateX(var(--reveal-distance)); }
-.reveal--scale { --reveal-from: scale(0.96); }
+/* Timeline rails draw down in the primary colour as the page scrolls
+   (--draw, 0 to 1, from lib/motion/scroll.mjs) over the grey border, which
+   stays as the undrawn rail. The node dot sits above the drawn line. */
+html.has-scroll-fx .timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: 2px;
+  background: var(--color-primary);
+  transform: scaleY(var(--draw, 0));
+  transform-origin: top;
+}
+
+html.has-scroll-fx .timeline-item::before {
+  z-index: 1;
+}
+
+/* Forced colours: the plain border is the rail. */
+@media (forced-colors: active) {
+  html.has-scroll-fx .timeline-item::after {
+    display: none;
+  }
+}
 
 /* ============================================================
    20. Reduced Motion
@@ -44,13 +105,27 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
-  .reveal,
-  .reveal-init {
-    opacity: 1;
-    transform: none;
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
   html {
     scroll-behavior: auto;
+  }
+
+  /* Switched on while a page is open (ScrollEffects.tsx checks only when it
+     sets up): show every waiting block and leave the rails as the plain
+     border, as on a page loaded under reduced motion. */
+  html.has-scroll-fx .fx-pending:not(.timeline-item),
+  html.has-scroll-fx .timeline-item.fx-pending > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.has-scroll-fx .timeline-item::after {
+    display: none;
   }
 }

@@ -5,72 +5,213 @@
 /* ============================================================
    23. Responsive
    ============================================================ */
-@media (max-width: 768px) {
+/* In em, like the hero's 56.25em, so larger default text gets the drawer
+   before the desktop nav runs out of room. */
+@media (max-width: 48em) {
   .nav-toggle {
     display: block;
+    /* The bars, not the 44px target, sit on the content's right edge. */
+    margin-right: -11px;
   }
 
+  /* The menu: a panel that drops from the bar's foot over a dimmed page.
+     Hidden with visibility (not display) so it can ease in and out, and so its
+     links leave the tab order while it is closed. It animates only when
+     opened (.open) or just closed (html.nav-closing, Header.tsx), so a window
+     resized across this breakpoint never flashes it. */
   .nav-links {
-    display: none;
     position: absolute;
-    top: var(--nav-height);
-    left: 0;
+    top: 100%;
     right: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    /* 1.5rem, the .container padding: rows start on the nav brand's edge. */
+    padding: 0.5rem 1.5rem 1rem;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
-    flex-direction: column;
-    padding: 1rem 1.5rem;
-    gap: 0.5rem;
-    box-shadow: 0 8px 24px var(--color-shadow-lg);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    /* The shadow falls below the panel only, never up over the bar. */
+    clip-path: inset(0 -3rem -3rem -3rem);
+    /* Landscape phones: the panel scrolls instead of running off the
+       screen (html.nav-open locks the page behind it). */
+    max-height: calc(100dvh - var(--nav-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.5rem);
   }
 
+  html.nav-closing .nav-links {
+    transition:
+      opacity var(--dur-measure) var(--ease-exit),
+      transform var(--dur-measure) var(--ease-exit),
+      visibility 0s linear var(--dur-measure);
+  }
 
   .nav-links.open {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity var(--dur-measure) var(--ease-measure),
+      transform var(--dur-settle) var(--ease-measure),
+      visibility 0s;
   }
 
+  /* Rows ease in one after another as the panel opens. */
+  .nav-links > li {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+
+  html.nav-closing .nav-links > li {
+    transition:
+      opacity var(--dur-measure) var(--ease-measure),
+      transform var(--dur-measure) var(--ease-measure);
+  }
+
+  .nav-links.open > li {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity var(--dur-measure) var(--ease-measure) calc(var(--i, 0) * 30ms + 40ms),
+      transform var(--dur-measure) var(--ease-measure) calc(var(--i, 0) * 30ms + 40ms);
+  }
+
+  .nav-links > li + li {
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* Whole-row tap targets, 48px tall. */
   .nav-link {
-    padding: 0.6rem 0;
-    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 0.75rem;
+    font-size: var(--fs-lg);
+    color: var(--color-text);
   }
 
   .nav-link::after {
     display: none;
   }
 
-  /* Hero */
-  .hero {
-    padding: 3rem 0 2.5rem;
+  /* The current page: a blue bar at the row's start and a tint, not colour
+     alone. */
+  .nav-link.active {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    box-shadow: inset 3px 0 0 var(--color-primary);
   }
 
-  .hero .container {
-    flex-direction: column-reverse;
-    text-align: center;
+  /* Forced colours erase the tint and the bar: underline the row instead,
+     like the desktop link. */
+  @media (forced-colors: active) {
+    .nav-link.active {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.2em;
+    }
   }
 
-  .hero-name {
-    font-size: 2rem;
+  /* One row of six 44px icons from the content's left edge: 0.25rem apart
+     where they fit, closing up on narrow phones. The row itself spans the
+     panel, so its top rule matches the rows' rules; the right padding (a
+     percentage of the panel's content width) keeps the icons to 284px. */
+  .nav-social {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem max(0px, 100% - (6 * 44px + 5 * 0.25rem)) 0 0;
   }
 
-  .hero-tagline {
-    max-width: none;
+  /* Below 312px (six 44px icons and the panel's 3rem of padding) one row
+     would run out of the panel: two rows of three, never a lone icon. */
+  @media (width < 19.5em) {
+    .nav-social {
+      display: grid;
+      grid-template-columns: repeat(3, 44px);
+      justify-content: start;
+      gap: 0.25rem;
+    }
   }
 
-  .hero-links {
+  .nav-social a {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--color-text-light);
+    border-radius: var(--radius-sm);
   }
 
-  .hero-photo img {
-    width: 180px;
-    height: 180px;
+  /* Hover-only: touch screens keep :hover after a tap. */
+  @media (hover: hover) {
+    .nav-social a:hover {
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+  }
+
+  /* While the menu is open the bar is solid, even when condensed. */
+  html.nav-open .site-header .nav {
+    background: var(--color-bg);
+  }
+
+  /* The dimmed page behind the open menu; a tap on it closes the menu. */
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: color-mix(in oklab, var(--color-footer-bg) 32%, transparent);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: auto;
+  }
+
+  html.nav-closing .nav-backdrop {
+    transition:
+      opacity var(--dur-settle) var(--ease-measure),
+      visibility 0s linear var(--dur-settle);
+  }
+
+  .nav-backdrop.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity var(--dur-settle) var(--ease-measure),
+      visibility 0s;
+  }
+
+  html.nav-open {
+    overflow: hidden;
+  }
+
+  /* Hero (layout in stage.css) */
+  .hero-name {
+    font-size: min(2rem, 100cqi / 9.7);
   }
 
   /* General */
   h1 { font-size: 1.75rem; }
+  /* The longest page title, “Curriculum Vitae”, is 8.3em: below 282px (or at
+     a larger default text size) it shrinks just enough to stay on one line in
+     every engine. */
+  .page-header h1 { font-size: min(1.75rem, (100vw - 3rem) / 8.35); }
   h2 { font-size: 1.45rem; }
 
   .section {
     padding: 2.75rem 0;
+  }
+
+  .section-alt {
+    padding-bottom: 2.25rem;
   }
 
   .page-header {
@@ -81,11 +222,21 @@
     padding-top: 1.5rem;
   }
 
-  /* Research entries: stack */
+  /* Research entries: stack, in a track that never grows past the page
+     (minmax(0, 1fr)): at a large default text size a word-joined title or
+     the placeholder's title would otherwise widen it. */
   .research-entry,
   .research-entry--reverse {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
+  }
+
+  /* Stacked, the column is the content width. The longest joined unit,
+     “Measurement-Efficient” (10.8em), fits from 282px; below that the title
+     shrinks just enough that it never splits inside a word. */
+  .research-entry__title {
+    font-size: min(1.35rem, (100vw - 3rem) / 10.9);
+    overflow-wrap: break-word;
   }
 
   .research-entry--reverse .research-entry__thumbnail,
@@ -111,15 +262,57 @@
   .contact-list {
     grid-template-columns: 1fr;
   }
+}
 
+/* Below the site's 56.25em breakpoint (the stacked hero, stage.css): the
+   footer stacks as on phones (its brand, nav and icons share one row only
+   from about 870px), and the skill cards pair up in 2 columns. */
+@media (width < 56.25em) {
   .footer .container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
+  /* Stacked and centred: one line where it fits, else even lines. */
+  .footer-brand {
+    max-width: none;
+  }
+
+  .footer-descriptor {
+    text-wrap: balance;
+  }
+
   .skills-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* Equal columns, so the centred pair mirrors about the footer's axis. */
+  .footer-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Below about 290px the paper column (the viewport less 3rem, the 48px year
+   and the 0.75rem gap) is narrower than the joined “Measurement-Efficient”
+   (11.3em): the year sits above the title, which keeps its size and joins. */
+@media (width < 18.125em) {
+  .pub-entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+}
+
+/* Below 272px the highlight column is narrower than the same joined unit at
+   1.15rem (10.8em): a tighter inset beside the rule, and a title that scales
+   just enough to fit, never under the 1rem blurb. */
+@media (width < 17em) {
+  .highlight-summary {
+    padding-left: 0.75rem;
+  }
+
+  .highlight-item h3 {
+    font-size: min(1.15rem, (100vw - 3.75rem - 3px) / 10.85);
   }
 }
 
@@ -128,8 +321,40 @@
     grid-template-columns: 1fr;
   }
 
+  /* A news row is one fact over a few short lines here. Pretty still strands
+     a last word this narrow ("(Ψ)ceratops", "Advocate"), so balance the lines;
+     at a 24px default text size a long word breaks rather than widening the
+     page ("photoluminescence" at 375). */
+  .news-text {
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  /* Below 20em the 5rem date column leaves the text too narrow for a joined
+     name ("Clemson Quantum Club", "Quantum Week 2026"), which would break
+     mid-word: the date sits above the fact, as in the timelines. */
+  @media (width < 20em) {
+    .news-item {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.25rem;
+    }
+  }
+
+  /* A timeline line can carry a joined event name ("IEEE Quantum Week 2026",
+     "Clemson HPC Day 2026,"); at a 24px default text size on the narrowest
+     phones one is wider than the column, so it breaks rather than widening
+     the page, as the news rows do. */
+  .timeline-desc,
+  .timeline-subtitle {
+    overflow-wrap: anywhere;
+  }
+
+  /* At most the panel's width over the name's 9.6em, so it fits on one line
+     in the stacked column: at the default text size the 1.75rem cap holds
+     from 320px (the panel is 272px there, 28.04px); the panel term takes
+     over below that and at larger default text sizes. */
   .hero-name {
-    font-size: 1.75rem;
+    font-size: min(1.75rem, 100cqi / 9.7);
   }
 }
 
@@ -137,11 +362,12 @@
    24. Not Found (404)
    ============================================================ */
 .not-found {
-  text-align: center;
   padding: 6rem 0;
 }
 
-.not-found__code {
+/* The type selector ties base.css p:last-child, which matches once Decrypt
+   wraps the code, and comes later, so this margin applies. */
+p.not-found__code {
   font-family: var(--font-heading);
   font-size: 4.5rem;
   font-weight: 700;
@@ -158,6 +384,5 @@
 .not-found__links {
   display: flex;
   gap: 0.75rem;
-  justify-content: center;
   flex-wrap: wrap;
 }

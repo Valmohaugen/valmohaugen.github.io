@@ -3,24 +3,27 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "npm run figures",
     "dev": "next dev",
-    "build": "next build && touch out/.nojekyll",
+    "prebuild": "npm run verify && npm run figures",
+    "build": "next build && touch out/.nojekyll && node scripts/measure-size.mjs",
     "lint": "eslint .",
-    "images": "node scripts/optimize-images.mjs"
+    "images": "node scripts/optimize-images.mjs",
+    "verify": "node scripts/verify-motion.mjs && node scripts/verify-wigner.mjs && node scripts/verify-states.mjs && node scripts/verify-cameras.mjs && node scripts/verify-stage.mjs && node scripts/verify-contours.mjs && node scripts/verify-qrng.mjs && node scripts/verify-cats.mjs && node scripts/verify-decrypt.mjs",
+    "figures": "node scripts/build-figures.mjs"
   },
   "dependencies": {
-    "next": "^15.1.0",
+    "next": "^16.3.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.6",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^15.1.0",
-    "sharp": "^0.35.4",
+    "eslint-config-next": "^16.3.8",
+    "sharp": "^0.35.5",
     "typescript": "^5.7.0"
   }
 }

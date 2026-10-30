@@ -13,7 +13,7 @@ import siteConfig from '@/lib/site-config';
 export interface SocialProfile {
   /** Stable key, also used as the React key. */
   key: string;
-  /** Service name. Used as the accessible name for icon-only footer links. */
+  /** Service name. Used as the accessible name for the icon-only links (footer, phone menu). */
   label: string;
   /** Abbreviated name, for the space-constrained hero button row. */
   shortLabel: string;
@@ -59,7 +59,7 @@ export const SOCIAL_PROFILES: SocialProfile[] = [
     shortLabel: 'Scholar',
     contactLabel: 'Google Scholar',
     href: siteConfig.scholarUrl,
-    displayValue: 'Scholar Profile',
+    displayValue: 'Google Scholar Profile',
     Icon: ScholarIcon,
   },
   {

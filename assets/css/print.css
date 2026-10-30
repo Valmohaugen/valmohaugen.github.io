@@ -6,22 +6,28 @@
    26. Print
    ============================================================ */
 @media print {
-  .nav,
+  .site-header,
   .footer,
   .skip-link,
-  .btn {
+  .btn,
+  .highlight-more {
     display: none !important;
   }
 
-  .reveal,
-  .reveal-init {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .starfield-accent,
+  .timeline-item::after,
+  .cat,
+  .decrypt__overlay,
+  .link-decrypt,
+  .route-figure,
+  .hero-stage,
+  .hero-cat,
   .star-divider {
     display: none !important;
+  }
+
+  /* The figure is hidden; drop its full-screen height too. */
+  .hero--stage {
+    min-height: 0;
   }
 
   body {
@@ -29,14 +35,29 @@
     background: #fff;
   }
 
+  /* Blocks still waiting to scroll into view print in full. */
+  .fx-pending,
+  .fx-pending > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .skill-details[hidden] {
     /* Print the full CV: force collapsed skill panels open. */
     display: block !important;
-    margin-top: 0.75rem;
   }
 
   .skill-category__toggle::after {
     display: none;
+  }
+
+  /* Print the research record in full too; the toggle does nothing on paper. */
+  .research-entry__details-body[hidden] {
+    display: block !important;
+  }
+
+  .research-entry__details-toggle {
+    display: none !important;
   }
 
   .timeline-item,
@@ -44,8 +65,41 @@
     break-inside: avoid;
   }
 
-  a {
+  /* A heading prints on the same page as its first entry. */
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Letter and A4 pages are under 48em wide, so the stacked phone layout
+     would print each project photo across the page: keep it beside the text. */
+  .research-entry,
+  .research-entry--reverse {
+    grid-template-columns: 2.5in 1fr;
+    gap: 1.25rem;
+  }
+
+  .research-entry--reverse .research-entry__thumbnail,
+  .research-entry--reverse .research-entry__content {
+    order: unset;
+  }
+
+  a:any-link {
     color: inherit;
-    text-decoration-color: #000;
+  }
+
+  /* On paper, links whose text is not the address print the address. */
+  .pub-links a::after,
+  .pub-profiles__links a::after,
+  .research-entry__meta a[href^="http"]::after,
+  .contact-value a[href*="scholar.google"]::after,
+  .contact-value a[href*="researchgate"]::after {
+    content: " (" attr(href) ")";
+    font-weight: 400;
+  }
+
+  /* A long research address takes its own line under its label. */
+  .research-entry__meta a[href^="http"] {
+    flex-wrap: wrap;
   }
 }

@@ -10,11 +10,11 @@
       "date": "Aug 2026 – Present",
       "title": "M.S. in Civil Engineering",
       "subtitle": "Clemson University, Clemson, SC",
-      "desc": "Earned en route to the Ph.D. in Civil Engineering."
+      "desc": "En route to the Ph.D.\u00a0in\u00a0Civil\u00a0Engineering."
     },
     {
       "date": "Aug 2022 – May 2026",
-      "title": "B.S. in Physics, Minor in Italian Studies",
+      "title": "B.S.\u00a0in\u00a0Physics, Minor\u00a0in\u00a0Italian\u00a0Studies",
       "subtitle": "Clemson University, Clemson, SC",
       "desc": "Graduated May 2026. Undergraduate research in quantum computing and topological condensed matter."
     }
@@ -22,32 +22,32 @@
   "research": [
     {
       "date": "Aug 2026 – Present",
-      "title": "Graduate Research Assistant · Dr. Mashrur “Ronnie” Chowdhury’s group",
-      "subtitle": "National Center for Transportation Cybersecurity and Resiliency (TraCR), Clemson University, Clemson, SC",
-      "desc": "Develop machine learning and AI models that use quantum computing for cybersecurity and cyber-physical systems, with applications to securing critical infrastructure."
+      "title": "Graduate Research Assistant",
+      "subtitle": "Dr.\u00a0Mashrur\u00a0“Ronnie”\u00a0Chowdhury’s group · National Center for Transportation Cybersecurity and Resiliency (TraCR), Clemson University, Clemson, SC",
+      "desc": "Develop machine learning and AI models that use quantum computing for cybersecurity and cyber-physical systems, with applications to securing critical\u00a0infrastructure."
     },
     {
       "date": "Aug 2024 – May 2026",
-      "title": "Undergraduate Research Assistant · Dr. Rong Ge’s group",
-      "subtitle": "Creative Inquiry + Undergraduate Research, Clemson University, Clemson, SC",
-      "desc": "Developed an attention-based multiple-instance learning (MIL) pipeline that maps sparse conductance measurements to the disorder-aware periodic disorder invariant (PDI), identifying Majorana zero modes in finite, disordered semiconductor–superconductor nanowires. Generated ground-truth PDI phase diagrams via HPC parameter sweeps in Kwant, parallelizing large-scale data generation and automating image conversion for downstream analysis. Built the simulation framework for disordered nanowires, computing the winding-number topological invariant from transport data. Designed the data pipeline and trained a ResNet-18 autoencoder across disorder realizations to predict topological phase maps from multi-channel conductance inputs. Co-authored “MEDA: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices,” presented by Nathan Jones at IEEE Quantum Week 2026 (QCE 2026) in Toronto, ON, and presented the work myself as a poster at Clemson HPC Day 2026."
+      "title": "Undergraduate Research Assistant",
+      "subtitle": "Dr.\u00a0Rong\u00a0Ge’s group · Creative Inquiry + Undergraduate Research, Clemson University, Clemson, SC",
+      "desc": "Developed an attention-based multiple-instance learning (MIL) pipeline that maps sparse conductance measurements to the disorder-aware periodic disorder invariant (PDI), identifying Majorana zero modes in finite, disordered semiconductor–superconductor nanowires. Generated ground-truth PDI phase diagrams via HPC parameter sweeps in Kwant, parallelizing large-scale data generation and automating image conversion for downstream analysis. Built the simulation framework for disordered nanowires, computing the winding-number topological invariant from transport data. Designed the data pipeline and trained a ResNet-\u206018 autoencoder across disorder realizations to predict topological phase maps from multi-channel conductance inputs. Co-authored “MEDA: Measurement-\u2060Efficient Disorder-\u2060Aware Majorana Zero Mode Detection in Realistic Devices,” presented by Nathan\u00a0Jones at IEEE\u00a0Quantum\u00a0Week 2026 (QCE 2026) in Toronto, ON, and presented the work myself as a poster at Clemson\u00a0HPC\u00a0Day 2026."
     },
     {
       "date": "Jun – Aug 2025",
-      "title": "Summer Intern · Quantum AI · Dr. Larry Deschaine’s group",
-      "subtitle": "Savannah River National Laboratory (SRNL), Aiken, SC",
+      "title": "Summer Intern · Quantum AI",
+      "subtitle": "Dr.\u00a0Larry\u00a0Deschaine’s group · Savannah River National Laboratory (SRNL), Aiken, SC",
       "desc": "Implemented VQE for Kitaev chain Hamiltonians to resolve Majorana edge-state signatures and reproduce benchmark ground-state energies. Evaluated candidate materials using band gaps, Berry curvature, and coherence-time metrics for high-temperature operation. Worked on computational fluid dynamics (CFD) projects modeling fluid flow around airfoils. Assisted with quantum machine learning (QML) algorithms for robotic pathfinding and quantum neural networks (QNN) for supply chain optimization."
     },
     {
       "date": "May – Jul 2024",
-      "title": "Summer Intern · Materials and Manufacturing Directorate · Dr. Rahul Rao’s group",
-      "subtitle": "Air Force Research Laboratory (AFRL), Wright-Patterson AFB, OH",
-      "desc": "Prepared layered AgCrP₂Se₆ samples via mechanical exfoliation and characterized thickness and crystal quality with AFM. Fabricated stacked 2D hetero- and homostructures to investigate inter-layer interactions. Collected excitation-energy-dependent Raman and photoluminescence measurements at room and cryogenic temperatures; data published in ACS Nano (2025). Co-authored “Temperature dependent Raman and photoluminescence spectroscopy study of AgBiP₂Se₆,” presented by Thuc T. Mai at the APS Global Physics Summit 2025 in Anaheim, CA."
+      "title": "Summer Intern · Materials and Manufacturing Directorate",
+      "subtitle": "Dr.\u00a0Rahul\u00a0Rao’s group · Air\u00a0Force Research Laboratory (AFRL), Wright-\u2060Patterson\u00a0AFB, OH",
+      "desc": "Prepared layered AgCrP₂Se₆ samples via mechanical exfoliation and characterized thickness and crystal quality with AFM. Fabricated stacked 2D hetero- and homostructures to investigate inter-layer interactions. Collected excitation-energy-dependent Raman and photoluminescence measurements at room and cryogenic temperatures; data published in ACS\u00a0Nano (2025). Co-authored “Temperature dependent Raman and photoluminescence spectroscopy study of AgBiP₂Se₆,” presented by Thuc\u00a0T.\u00a0Mai at the APS Global Physics Summit 2025 in Anaheim, CA."
     },
     {
       "date": "Aug 2023 – May 2024",
-      "title": "Undergraduate Research Assistant · Dr. Apparao Rao’s group",
-      "subtitle": "Clemson Nanomaterials Institute (CNI), Clemson University, Anderson, SC",
+      "title": "Undergraduate Research Assistant",
+      "subtitle": "Dr.\u00a0Apparao\u00a0Rao’s group · Clemson Nanomaterials Institute (CNI), Clemson University, Anderson, SC",
       "desc": "Prepared and coated supercapacitor electrodes and performed cyclic voltammetry to evaluate electrochemical performance. Measured thermal diffusivity on a Linseis Laser Flash system, supporting thermal characterization of novel carbon-based materials. Assisted with heat transfer projects involving thermocouple data collection and heat sink optimization."
     }
   ],
@@ -56,34 +56,34 @@
       "date": "Dec 2025 – Present",
       "title": "Qiskit Advocate",
       "subtitle": "IBM Quantum",
-      "desc": "Lead Qiskit outreach at Clemson and mentor students new to quantum computing. Contribute to community education, workshops, and Qiskit ecosystem resources. Hosted and co-organized Qiskit Fall Fest at Clemson in 2024, 2025, and 2026, serving as lead organizer in 2025 and 2026. Completed Qiskit Global Summer School 2025 and attended the IBM Quantum Developer Conference in 2025 and 2026."
+      "desc": "Lead Qiskit outreach at Clemson and mentor students new to quantum computing. Contribute to community education, workshops, and Qiskit ecosystem resources. Hosted and co-organized Qiskit Fall Fest at Clemson in 2024, 2025, and 2026, serving as lead organizer in 2025 and 2026. Completed Qiskit Global Summer\u00a0School 2025 and attended the IBM Quantum Developer Conference in 2025 and 2026."
     },
     {
       "date": "Aug 2025 – Present",
-      "title": "Tech Lead, SC Quantathon",
+      "title": "Director, SC Quantathon",
       "subtitle": "Clemson University",
-      "desc": "Help organize SC Quantathon, the student quantum hackathon founded by SC Quantum. Hosted and co-organized SC Quantathon v3 in September 2026, the first Quantathon held at Clemson, serving as Tech Lead. Ran all technology and online operations for the event, including the event website, public GitHub repository, Devpost submissions, and participant Discord server. Wrote the seven-day self-paced bootcamp, with exercise notebooks, solutions, and notes that each end in a run on real IBM Quantum hardware. Planned the 24-hour hackathon at the Watt Family Innovation Center with the organizing team, working with challenge sponsors Savannah River National Laboratory and Quantum Rings, and platform partner qBraid.",
+      "desc": "Since October 2026, direct SC Quantathon, the student quantum hackathon founded by SC\u00a0Quantum, and lead the Quantathon Committee, with leads for logistics, technology, finance, and communications. Set each edition’s timeline and budget with the committee, and oversee the venue, schedule, prep bootcamp, challenges, and judging. Recruit challenge sponsors and partners, keeping the event free for participants. Served as Tech Lead for SC Quantathon v3 in September 2026, the first Quantathon held at Clemson, running the event website, public GitHub repository, Devpost submissions, and participant Discord server. Wrote the v3 seven-day self-paced bootcamp, with exercise notebooks, solutions, and notes that each end in a run on real IBM Quantum hardware.",
       "url": "https://www.clemsonquantum.com/events/hackathons/sc-quantathon-v3-2026/"
     },
     {
       "date": "Aug 2024 – Present",
-      "title": "Co-Founder & Vice President, Clemson Quantum Club",
+      "title": "Co-Founder & President, Clemson Quantum Club",
       "subtitle": "Clemson University",
-      "desc": "Co-founded the club in Fall 2024 to build a student community for quantum computing at Clemson. Co-lead the club as Vice President, running meetings and events for undergraduate and graduate students. Lead Clemson student teams at quantum hackathons across the U.S. and UAE, with results including 1st place and the Grand Prize Overall at SC Quantathon v1, 1st place at MIT’s iQuHack 2026, and 3rd place at Yale’s YQuantum 2026. Designed and built the club’s official website and continue to maintain it as the hub for events, resources, and educational content. Hosted and co-organized Qiskit Fall Fest at Clemson in 2024, 2025, and 2026, serving as lead organizer in 2025 and 2026. Hosted and co-organized SC Quantathon v3 in September 2026, the first Quantathon held at Clemson, serving as Tech Lead. Coordinate with faculty, industry partners, and quantum computing companies to connect students with networking and career opportunities.",
+      "desc": "Co-founded the club in Fall 2024 to build a student community for quantum computing at Clemson. Lead the club as President after two years as Vice President, presiding over meetings and serving as the principal organizer of club events for undergraduate and graduate students. Maintain the club’s registration with Clemson’s Center for Student Leadership and Engagement, its Constitution and Bylaws, and its TigerQuest page, and keep the faculty advisor informed of club business. Direct the club’s Quantathon Committee, which plans and hosts SC Quantathon. Lead Clemson student teams at quantum hackathons across the U.S. and UAE, with results including 1st place in the DoraHacks challenge and the 1st overall at SC Quantathon v1, 1st place in Superquantum’s challenge at MIT’s iQuHack 2026, 3rd place in Alice & Bob’s challenge at Yale’s YQuantum 2026, and 2nd place in Google Quantum AI’s challenge at Duke’s DuQuantum 2026. Designed and built the club’s official website and continue to maintain it as the hub for events, resources, and educational content. Hosted and co-organized Qiskit Fall Fest at Clemson in 2024, 2025, and 2026, serving as lead organizer in 2025 and 2026. Hosted and co-organized SC Quantathon v3 in September 2026, the first Quantathon held at Clemson, serving as Tech Lead. Coordinate with faculty, industry partners, and quantum computing companies to connect students with networking and career opportunities.",
       "url": "https://www.clemsonquantum.com"
     }
   ],
   "presentations": [
     {
       "date": "Sep 2026",
-      "title": "MEDA: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices",
-      "subtitle": "Contributed Talk (co-author; presented by Nathan Jones) · IEEE Quantum Week 2026 (QCE 2026), Toronto, ON",
+      "title": "MEDA: Measurement-\u2060Efficient Disorder-\u2060Aware Majorana Zero Mode Detection in Realistic Devices",
+      "subtitle": "Contributed Talk (co-author; presented by Nathan\u00a0Jones) · IEEE\u00a0Quantum\u00a0Week 2026 (QCE 2026), Toronto, ON",
       "url": "https://www.doi.org/10.48550/arXiv.2607.26208"
     },
     {
       "date": "Sep 2026",
-      "title": "MEDA: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices",
-      "subtitle": "Poster Presentation · Clemson HPC Day 2026, Clemson, SC",
+      "title": "MEDA: Measurement-\u2060Efficient Disorder-\u2060Aware Majorana Zero Mode Detection in Realistic Devices",
+      "subtitle": "Poster Presentation · Clemson\u00a0HPC\u00a0Day 2026, Clemson, SC",
       "url": "/posters/MEDA-Poster-2026.pdf"
     },
     {
@@ -95,7 +95,7 @@
     {
       "date": "Mar 2025",
       "title": "Temperature dependent Raman and photoluminescence spectroscopy study of AgBiP₂Se₆",
-      "subtitle": "Contributed Talk (co-author; presented by Thuc T. Mai) · APS Global Physics Summit 2025, Anaheim, CA",
+      "subtitle": "Contributed Talk (co-author; presented by Thuc\u00a0T.\u00a0Mai) · APS Global Physics Summit 2025, Anaheim, CA",
       "url": "https://meetings-archive.aps.org/smt/2025/mar-c28/9/"
     }
   ],
@@ -113,6 +113,11 @@
   ],
   "awards": [
     {
+      "date": "Oct 2026",
+      "title": "2nd Place, DuQuantum (Duke University)",
+      "desc": "Google Quantum AI challenge: calibration-\u2060aware Dicke state preparation on Google’s Willow processor."
+    },
+    {
       "date": "Apr 2026",
       "title": "3rd Place, YQuantum (Yale University)",
       "desc": "Alice & Bob challenge: automated control optimization for dissipative cat qubits."
@@ -120,7 +125,7 @@
     {
       "date": "Feb 2026",
       "title": "1st Place, iQuHack (MIT)",
-      "desc": "Superquantum challenge: Reed-Muller decoding-based Clifford+T circuit optimizer."
+      "desc": "Superquantum challenge: Reed–\u2060Muller decoding-based Clifford+T circuit optimizer."
     },
     {
       "date": "Dec 2024",
@@ -133,7 +138,7 @@
       "desc": "DoraHacks challenge: verifiable quantum random number generation, validated with the NIST Statistical Test Suite."
     }
   ],
-  "societies": "IEEE · IEEE Intelligent Transportation Systems Society · American Physical Society · American Society of Civil Engineers · Society of Physics Students · Sigma Pi Sigma · Omicron Delta Kappa",
+  "societies": "IEEE\u00a0· IEEE Intelligent Transportation Systems Society\u00a0· American\u00a0Physical\u00a0Society\u00a0· American\u00a0Society\u00a0of\u00a0Civil\u00a0Engineers\u00a0· Society\u00a0of\u00a0Physics\u00a0Students\u00a0· Sigma\u00a0Pi\u00a0Sigma\u00a0· Omicron\u00a0Delta\u00a0Kappa",
   "skills": [
     {
       "title": "Programming",
@@ -155,15 +160,15 @@
     },
     {
       "title": "Quantum Software",
-      "summary": "Qiskit & Qiskit Runtime, PennyLane, Cirq, dynamiqs, Kwant, qBraid; IBM Quantum hardware",
+      "summary": "Qiskit & Qiskit Runtime, PennyLane, Cirq, dynamiqs, Kwant, qBraid; IBM\u00a0Quantum hardware",
       "items": [
         {
           "label": "SC Quantathon v3 bootcamp",
-          "note": "Qiskit on qBraid Lab and IBM Quantum hardware"
+          "note": "Qiskit on qBraid Lab and IBM\u00a0Quantum hardware"
         },
         {
           "label": "SC Quantathon v1",
-          "note": "Qiskit Runtime on IBM hardware"
+          "note": "Qiskit\u00a0Runtime on IBM hardware"
         },
         {
           "label": "SC Quantathon v2",
@@ -185,7 +190,7 @@
       "items": [
         {
           "label": "SRNL internship",
-          "note": "VQE for Kitaev chain Hamiltonians"
+          "note": "VQE for Kitaev\u00a0chain Hamiltonians"
         },
         {
           "label": "SC Quantathon v3 bootcamp",
@@ -215,23 +220,23 @@
     },
     {
       "title": "Machine Learning",
-      "summary": "PyTorch, JAX, TensorFlow/Keras, scikit-learn, XGBoost; CNN autoencoders (ResNet-18), attention-based multiple-instance learning, reinforcement learning (PPO, REINFORCE), CMA-ES, Bayesian optimization",
+      "summary": "PyTorch, JAX, TensorFlow/\u2060Keras, scikit-\u2060learn, XGBoost; CNN autoencoders (ResNet-\u206018), attention-based multiple-instance learning, reinforcement learning (PPO, REINFORCE), CMA-\u2060ES, Bayesian optimization",
       "items": [
         {
           "label": "MEDA / MZM detection",
-          "note": "PyTorch, ResNet-18 autoencoder, attention-based multiple-instance learning"
+          "note": "PyTorch, ResNet-\u206018 autoencoder, attention-based multiple-instance learning"
         },
         {
           "label": "YQuantum 2026",
-          "note": "JAX, PPO, REINFORCE, CMA-ES, Bayesian optimization"
+          "note": "JAX, PPO, REINFORCE, CMA-\u2060ES, Bayesian optimization"
         },
         {
           "label": "SC Quantathon v2",
-          "note": "scikit-learn and XGBoost baselines"
+          "note": "scikit-\u2060learn and XGBoost baselines"
         },
         {
           "label": "NeurotiQ",
-          "note": "TensorFlow/Keras"
+          "note": "TensorFlow/\u2060Keras"
         }
       ]
     },
@@ -271,7 +276,7 @@
         },
         {
           "label": "Websites",
-          "note": "GitHub Actions deployment"
+          "note": "GitHub\u00a0Actions deployment"
         }
       ]
     },
@@ -291,7 +296,7 @@
     },
     {
       "title": "Languages",
-      "summary": "English (native), Italian (professional working proficiency), Norwegian (limited working proficiency)",
+      "summary": "English (native), Italian (professional working\u00a0proficiency), Norwegian (limited working\u00a0proficiency)",
       "items": [
         {
           "label": "English",
@@ -299,7 +304,7 @@
         },
         {
           "label": "Italian",
-          "note": "professional working proficiency; minor in Italian Studies"
+          "note": "professional working proficiency; minor\u00a0in\u00a0Italian\u00a0Studies"
         },
         {
           "label": "Norwegian",

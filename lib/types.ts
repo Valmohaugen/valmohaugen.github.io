@@ -47,6 +47,8 @@ export interface Project {
   posterUrl?: string;
   /** Path under /images/thumbnails/, if a thumbnail exists. */
   thumbnail?: string;
+  /** A version of the thumbnail for dark mode (same size), shown instead under a dark color scheme. */
+  thumbnailDark?: string;
   thumbnailAlt?: string;
   /** Shown in the homepage Research Highlights section. */
   highlight?: boolean;
@@ -67,10 +69,12 @@ export interface Publication {
   title: string;
   authors: string;
   venue: string;
+  /** Journal articles are part of a Periodical; conference papers are not. */
+  venueType: 'journal' | 'conference';
   github?: string;
   /**
-   * Paper link — either a DOI URL (rendered as "DOI") or a local PDF under
-   * /papers/ (rendered as "Paper (PDF)").
+   * Paper link — a doi.org URL (rendered as "DOI") or a link to the PDF; any
+   * other URL is rendered as "Paper (PDF)".
    */
   paperUrl?: string;
 }

@@ -20,16 +20,16 @@ export default function ResearchPage() {
 
   return (
     <>
-      <PageHeader title="Research & Projects" />
+      <PageHeader title="Research & Projects" figure="research" />
 
-      <Section wide>
+      <Section>
         {all.map((project, i) => (
           <div key={project.id}>
             {i > 0 && <hr className="research-entry__divider" />}
             <ResearchEntry
               project={project}
               reverse={i % 2 === 1}
-              headingLevel="h2"
+              priority={i === 0}
             />
           </div>
         ))}

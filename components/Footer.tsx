@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import siteConfig from '@/lib/site-config';
 import StarDivider from '@/components/StarDivider';
+import FooterCat from '@/components/cats/FooterCat';
 import { NAV_LINKS } from '@/lib/nav';
-import { SOCIAL_PROFILES, externalLinkProps } from '@/lib/social';
+import NavSocial from '@/components/NavSocial';
 
 export default function Footer() {
   return (
@@ -13,7 +14,7 @@ export default function Footer() {
             {siteConfig.name}
           </Link>
           <p className="footer-descriptor">
-            Quantum ML/AI, cybersecurity &amp; cyber-physical systems
+            Quantum ML/AI, cybersecurity&nbsp;&amp; cyber-physical systems
             researcher at Clemson University.
           </p>
         </div>
@@ -27,19 +28,19 @@ export default function Footer() {
         </nav>
 
         <div className="footer-social">
-          {SOCIAL_PROFILES.map(({ key, label, href, Icon }) => (
-            <a key={key} href={href} {...externalLinkProps(href)} aria-label={label} title={label}>
-              <Icon size={18} />
-            </a>
-          ))}
+          <NavSocial />
         </div>
       </div>
 
       <StarDivider wide />
 
-      <p className="footer-copy">
-        &copy; {new Date().getFullYear()} {siteConfig.name}
-      </p>
+      {/* The cat walks in to its box beside the copyright line. */}
+      <div className="footer-bottom">
+        <FooterCat />
+        <p className="footer-copy">
+          &copy; {new Date().getFullYear()} {siteConfig.name}
+        </p>
+      </div>
     </footer>
   );
 }

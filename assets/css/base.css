@@ -12,15 +12,65 @@
 /* --- 03. Base / Typography --- */
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  /* Anchor targets and focused elements stop below the sticky header, with
+     room for the focus ring. */
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
+  font-size: 100%;
+  background: var(--color-bg);
 }
 
 body {
   font-family: var(--font-body);
   line-height: 1.7;
   color: var(--color-text);
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Short pages (contact, 404): main grows so the dark footer meets the
+   bottom edge. */
+@media screen {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+}
+
+/* Math in running text (components/MathText.tsx). DM Sans has no Greek
+   glyphs, so math is set in the serif, whose Greek face loads only on pages
+   that contain Greek. An expression never breaks across lines. */
+.math {
+  /* Source Serif 4's web subset has no ⟨ ⟩ (U+27E8–27E9) or ≤ ≥ (U+2264–2265):
+     those four come from a self-hosted STIX Two Math subset (app/layout.tsx,
+     unicode-range limited to them), so every platform draws the same glyphs.
+     The serif follows by name, then local math fonts for any other symbol:
+     next/font's fallback face (local Times New Roman, no unicode-range) would
+     otherwise answer for every symbol the subsets lack. */
+  font-family: var(--font-math-brackets), 'Source Serif 4', 'STIX Two Math', 'Cambria Math', var(--font-heading);
+  white-space: nowrap;
+  /* The serif's taller ascent and descent would open the line by 1px. */
+  line-height: 0;
+}
+
+/* Variables: the serif's real italic, not a slanted roman. */
+.math i {
+  font-family: var(--font-math-italic), var(--font-heading);
+  font-style: italic;
+}
+
+/* Scripts sit in the line without opening up its leading, with a hair of
+   space after them (as TeX adds), so a comma after T₂ does not read as a prime. */
+.math sub,
+.math sup {
+  font-size: 0.75em;
+  line-height: 0;
+  margin-inline-end: 0.1em;
 }
 
 a {
@@ -49,6 +99,32 @@ p a:not(.btn):not(.link-inline):focus-visible {
   background-size: 100% 1px;
 }
 
+/* The one link inside running text (the hero intro) keeps a faint line at
+   rest, so colour is never its only cue (WCAG 1.4.1); the full line still
+   slides in over it on hover and focus. */
+.hero-tagline a:not(.btn):not(.link-inline) {
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(color-mix(in oklab, currentColor 40%, transparent), color-mix(in oklab, currentColor 40%, transparent));
+  background-size: 0% 1px, 100% 1px;
+}
+
+.hero-tagline a:not(.btn):not(.link-inline):hover,
+.hero-tagline a:not(.btn):not(.link-inline):focus-visible {
+  background-size: 100% 1px, 100% 1px;
+}
+
+/* Forced colours drop gradient backgrounds, and these lines with them:
+   underline instead, as the nav and the menu rows do. */
+@media (forced-colors: active) {
+  .hero-tagline a:not(.btn):not(.link-inline),
+  p a:not(.btn):not(.link-inline):hover,
+  p a:not(.btn):not(.link-inline):focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -63,8 +139,12 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-/* Fluid scale: tracks the viewport between phone and desktop instead of
-   jumping at breakpoints. */
+/* Heading sizes. At any default text size the h1 and h2 clamps reach their
+   caps below 48em (at 43.75em and about 45.8em), and responsive.css sets both
+   at or below 48em, so they step there (at 16px, 768 → 769px: h1 28 → 37.6px,
+   h2 23.2 → 27.2px). The h3 clamp would ramp from 25em to 50em, but every
+   h3 sets its own size (.highlight-item h3 1.15rem; the skill-card h3 holds
+   a 0.9rem button), so no visible heading ramps. */
 h1 { font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.35rem); margin-bottom: 1rem; font-weight: 700; }
 h2 { font-size: clamp(1.45rem, 1.15rem + 1.2vw, 1.7rem); margin-bottom: 0.75rem; font-weight: 600; }
 h3 { font-size: clamp(1.1rem, 1rem + 0.4vw, 1.2rem); margin-bottom: 0.5rem; font-weight: 600; }
@@ -74,6 +154,38 @@ p {
   text-wrap: pretty;
 }
 
+/* Prose that is not a <p> wraps the same way, so its last line avoids a lone
+   word: captions, list items (news, skill notes) and timeline descriptions. */
+figcaption,
+li,
+.timeline-desc {
+  text-wrap: pretty;
+}
+
+/* Timeline titles and publication titles (a <p role="heading">) are title
+   lines, so they balance like the headings. With a joined name, pretty can
+   still strand the last word ("Realistic Devices" at 730–870px). Their
+   subtitles balance too: pretty strands a joined place on a timeline
+   subtitle's last line ("Clemson, SC" at 450–481px, "Toronto, ON" at 320px)
+   and a word on a page-header tagline ("leadership" at 280–299px), and
+   Firefox has no pretty at all. */
+.timeline-title,
+.timeline-subtitle,
+.pub-title,
+.page-header p {
+  text-wrap: balance;
+}
+
+/* Firefox has no text-wrap: pretty (to 159), so a short fact or sentence
+   could end on one word ("group" in a news row at 1180–1920px, "typo." on
+   the 404 at 1080px): balance those lines there instead. */
+@supports not (text-wrap: pretty) {
+  .news-text,
+  .not-found__text {
+    text-wrap: balance;
+  }
+}
+
 p:last-child {
   margin-bottom: 0;
 }
@@ -81,12 +193,6 @@ p:last-child {
 /* --- 04. Layout --- */
 .container {
   max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.container-wide {
-  max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -102,12 +208,20 @@ p:last-child {
   color: var(--color-on-primary);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   text-decoration: none;
 }
 
 .skip-link:focus {
   top: 0;
+  /* Drawn inside the box: at top: 0 an outset ring is cut by the viewport. */
+  outline-offset: -5px;
+  outline-color: var(--color-on-primary);
+}
+
+/* Keeps its own text colour over a:hover's. */
+.skip-link:hover {
+  color: var(--color-on-primary);
 }
 
 /* Focus indicators: one consistent ring everywhere. No border-radius here;

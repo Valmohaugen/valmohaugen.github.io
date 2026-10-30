@@ -1,0 +1,272 @@
+/* ============================================================
+   Cats: the cartoon Schrödinger's cats (components/cats/*; drawings in
+   lib/cats/art.mjs). Ink lines on the page background. Colour carries the
+   figure's meaning only: a teal tint for amplitudes (ghosts). Every
+   animation is a transform or opacity
+   change, runs only when the component asks (.cat--play, .cat--flick,
+   .cat--flick-again, .footer-cat__walker.is-walking) and never under
+   reduced motion, so each pose's static drawing is its final frame.
+   ============================================================ */
+
+.cat {
+  display: block;
+  overflow: visible;
+  color: var(--color-text);
+}
+
+.cat :is(.cf, .cl) {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.cat .cf,
+.cat .cw {
+  fill: var(--color-bg);
+}
+
+.cat .cl {
+  fill: none;
+}
+
+.cat .ci {
+  fill: currentColor;
+}
+
+.cat .c-shadow {
+  fill: currentColor;
+  opacity: 0.12;
+}
+
+/* A ghost is an amplitude, not a cat: dashed outline, faint teal tint. */
+.cat--ghost .cf {
+  fill: color-mix(in oklab, var(--w-pos) 14%, var(--color-bg));
+}
+
+.cat--ghost :is(.cf, .cl) {
+  stroke-dasharray: 4 3;
+}
+
+/* Animated groups turn about their own boxes (fill-box), which every
+   browser resolves the same way for SVG. */
+.cat :is(.c-leg-a, .c-leg-b, .c-tail) {
+  transform-box: fill-box;
+}
+
+/* A still walker stands mid-stride (reduced motion, or between walks). */
+.cat .c-leg-a,
+.cat .c-leg-b {
+  transform-origin: 50% 0;
+  transform: rotate(12deg);
+}
+
+.cat .c-leg-b {
+  transform: rotate(-12deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Walk: 560 ms stride, legs ±18° in diagonal pairs, 2-unit bob per
+     footfall, tail lagging a quarter stride. */
+  .cat--play .c-leg-a,
+  .cat--play .c-leg-b {
+    animation: cat-leg 280ms var(--ease-unitary) infinite alternate;
+  }
+
+  .cat--play .c-leg-b {
+    animation-direction: alternate-reverse;
+  }
+
+  .cat--play .c-bob {
+    animation: cat-bob 140ms var(--ease-unitary) infinite alternate;
+  }
+
+  .cat--play .c-tail {
+    transform-origin: 100% 100%;
+    animation: cat-tail 280ms var(--ease-unitary) 140ms infinite alternate both;
+  }
+
+}
+
+@keyframes cat-leg {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(18deg); }
+}
+
+@keyframes cat-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2px); }
+}
+
+@keyframes cat-tail {
+  from { transform: rotate(-6deg); }
+  to { transform: rotate(6deg); }
+}
+
+/* ============================================================
+   Homepage cat (components/cats/HomeCat.tsx): two ghost poses at the foot of
+   the hero figure (stage.css places .hero-cat), a hatch between them at
+   opacity 0.5·V.
+   ============================================================ */
+.home-cat {
+  --home-cat: 72px;
+  position: relative;
+  display: block;
+  width: calc(1.65 * var(--home-cat));
+  height: var(--home-cat);
+}
+
+.home-cat .cat {
+  position: absolute;
+  bottom: 0;
+  width: var(--home-cat);
+  height: var(--home-cat);
+  transition: opacity var(--dur-measure) var(--ease-measure);
+}
+
+.home-cat__asleep {
+  left: 0;
+}
+
+.home-cat__awake {
+  left: calc(0.65 * var(--home-cat));
+}
+
+/* Superposition: both poses at half strength. After a measurement one pose
+   is drawn solid and the other is gone. */
+.home-cat--both .cat {
+  opacity: 0.5;
+}
+
+.home-cat--awake .home-cat__asleep,
+.home-cat--asleep .home-cat__awake {
+  opacity: 0;
+}
+
+.home-cat__hatch {
+  position: absolute;
+  bottom: calc(0.1 * var(--home-cat));
+  left: calc(0.65 * var(--home-cat));
+  width: calc(0.35 * var(--home-cat));
+  height: calc(0.8 * var(--home-cat));
+  stroke: var(--w-pos);
+  stroke-width: 1.5;
+}
+
+.home-cat__hatch rect {
+  transition: opacity var(--dur-measure) var(--ease-measure);
+}
+
+/* A measured cat flicks its tail. */
+.cat :is(.c-flick) {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cat--flick .c-flick {
+    animation: cat-flick 300ms var(--ease-measure);
+  }
+
+  /* The same flick under a second name: switching names restarts it. */
+  .cat--flick-again .c-flick {
+    animation: cat-flick-again 300ms var(--ease-measure);
+  }
+}
+
+@keyframes cat-flick {
+  0%, 100% { transform: rotate(0); }
+  35% { transform: rotate(-14deg); }
+  70% { transform: rotate(8deg); }
+}
+
+@keyframes cat-flick-again {
+  0%, 100% { transform: rotate(0); }
+  35% { transform: rotate(-14deg); }
+  70% { transform: rotate(8deg); }
+}
+
+@media (width < 56.25em) {
+  .home-cat {
+    --home-cat: 56px;
+  }
+}
+
+/* ============================================================
+   Footer cat (components/cats/FooterCat.tsx): sits beside a closed box;
+   walks in once per session. White ink on the dark footer.
+   ============================================================ */
+.footer-cat {
+  display: flex;
+}
+
+.footer-cat__scene {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  /* The sitting cat's drawing starts 12px into its 48px sprite and the box's
+     drawing ends 3px before its sprite's edge: pull the scene back by both,
+     so it centres on what is drawn, also on a row of its own (below about
+     325px the copyright wraps under it). The space before the copyright is
+     the .footer-bottom column gap (components.css). */
+  padding: 0;
+  margin-inline: -0.75rem -3px;
+}
+
+.footer-cat .cat {
+  color: var(--color-footer-strong);
+}
+
+.footer-cat .cat :is(.cf, .cw) {
+  fill: var(--color-footer-bg);
+}
+
+/* Forced colours: every cat is ink on Canvas (the footer turns Canvas), and
+   the home cat's teal tint and hatch take system colours like the figure. */
+@media (forced-colors: active) {
+  .footer-cat .cat,
+  .home-cat .cat {
+    color: CanvasText;
+  }
+
+  .footer-cat .cat :is(.cf, .cw),
+  .home-cat .cat :is(.cf, .cw) {
+    fill: Canvas;
+  }
+
+  .home-cat__hatch {
+    stroke: CanvasText;
+  }
+}
+
+.footer-cat__walker {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+}
+
+.footer-cat__walker .cat {
+  position: absolute;
+  inset: 0;
+}
+
+/* display: none (not visibility) so the walk cycle runs only while walking. */
+.footer-cat__walking {
+  display: none;
+}
+
+.footer-cat__walker.is-walking .footer-cat__walking {
+  display: block;
+  animation: footer-cat-walk 2400ms linear both;
+}
+
+.footer-cat__walker.is-walking .footer-cat__sitting {
+  display: none;
+}
+
+@keyframes footer-cat-walk {
+  from { transform: translateX(-140px); }
+  to { transform: translateX(0); }
+}

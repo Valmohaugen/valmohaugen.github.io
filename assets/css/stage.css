@@ -1,0 +1,449 @@
+/* ============================================================
+   Stage: the homepage's full-screen figure and the fallback contour map
+   (components/stage/*). On the homepage the figure is the hero's backdrop: the
+   intro sits over it on a scrim that fades from the page into the figure.
+   Page-header figures sit beside their text.
+   ============================================================ */
+
+/* --- Hero layout (desktop) --- */
+.hero--stage {
+  /* The intro runs past the middle of the page, over the figure. The cap is
+     in rem so a larger default text size widens the panel. */
+  --hero-panel-width: clamp(440px, 58vw, 46rem);
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Most of the screen, with the next section's heading in view. Sized to the
+     wide intro so it has little empty space above and below it. Never a fixed
+     height, so zoom and long text grow the hero instead of clipping it. */
+  min-height: max(540px, calc(100svh - var(--nav-height) - 12rem));
+  padding: 2.5rem 0;
+}
+
+.hero-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* The scrim: the page color behind the intro, held to just past the text's
+   right edge and fading out after it, so the text stays legible over the
+   moving figure in both themes. */
+.hero-stage::after {
+  --text-end: calc(max(0px, (100vw - var(--max-width)) / 2) + 1.5rem + var(--hero-panel-width));
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--color-bg) 92%, transparent) 0,
+    color-mix(in oklab, var(--color-bg) 84%, transparent) calc(var(--text-end) + 1rem),
+    transparent calc(var(--text-end) + 9rem)
+  );
+  pointer-events: none;
+}
+
+/* Forced colours drop the gradient, and the contour fallback would run
+   through the intro: keep the scrim, in system colours (86% below 900px, as
+   in the themes). :root outranks the phone rule further down. */
+@media (forced-colors: active) {
+  :root .hero-stage::after {
+    forced-color-adjust: none;
+    background: linear-gradient(
+      90deg,
+      Canvas 0,
+      Canvas calc(var(--text-end) + 1rem),
+      transparent calc(var(--text-end) + 9rem)
+    );
+  }
+
+  @media (width < 56.25em) {
+    :root .hero-stage::after {
+      background: color-mix(in oklab, Canvas 86%, transparent);
+    }
+  }
+}
+
+/* The vacuum before the figure arrives: a soft Gaussian where the cat will
+   be prepared. A CSS gradient is never the page's largest paint. */
+.hero-stage__placeholder {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 16% 22% at 64.5% 42%,
+    color-mix(in oklab, var(--w-pos) 22%, transparent),
+    transparent 70%
+  );
+}
+
+.hero-stage:has(.figure-fallback) .hero-stage__placeholder {
+  display: none;
+}
+
+/* StageCanvas's host: the canvas is created inside it by the effect. */
+.stage-canvas-host {
+  position: absolute;
+  inset: 0;
+}
+
+.stage-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--dur-measure) var(--ease-measure);
+}
+
+.stage-canvas.is-ready {
+  opacity: 1;
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* No card: the intro sits on the figure's scrim. */
+.hero-panel {
+  container-type: inline-size;
+  width: var(--hero-panel-width);
+}
+
+.hero-id {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* The name block keeps to the avatar's right while the name fits there on
+   one line; only at large text sizes (basis 12rem no longer fits) does it
+   drop below. */
+.hero-id > div {
+  flex: 1 1 12rem;
+}
+
+.hero-avatar {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.hero-id .hero-name {
+  margin-bottom: 0.25rem;
+}
+
+.hero-id .hero-title {
+  margin-bottom: 0;
+}
+
+/* --- The cat, sitting at the figure's foot (components/cats/HomeCat.tsx) --- */
+.hero-cat {
+  position: absolute;
+  right: max(4vw, calc((100vw - var(--max-width)) / 2 + 1.5rem));
+  bottom: 1.5rem;
+  z-index: 2;
+}
+
+/* --- Fallback contour map (no WebGL, lost context, forced colours) --- */
+/* The same frame as the WebGL figure (HeroScene's FRAME_LEFT = 30% of the
+   hero), ending above the cat so the contours clear it. */
+.hero-stage .figure-fallback {
+  position: absolute;
+  top: 1.5rem;
+  right: 4vw;
+  bottom: 6.5rem;
+  left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.figure-fallback svg {
+  width: 100%;
+  height: 100%;
+}
+
+.figure-fallback .c-pos {
+  stroke: var(--w-pos);
+}
+
+.figure-fallback .c-neg {
+  stroke: var(--w-neg);
+}
+
+@media (forced-colors: active) {
+  .figure-fallback :is(.c-pos, .c-neg) {
+    stroke: CanvasText;
+  }
+}
+
+/* --- Page-header figures (components/stage/StageSlot.tsx): the text on the
+   left, the figure on the right; never text over a canvas. --- */
+.page-header__grid,
+.not-found__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+  gap: 2rem;
+  align-items: center;
+}
+
+/* One title position on every subpage, with or without a subtitle: the text
+   hangs from the offset that centres the title and subtitle on the 13rem
+   figure (captions overlay the figure, so every figure is the same height). */
+@media (width >= 56.25em) {
+  .page-header__grid {
+    align-items: start;
+  }
+
+  .page-header__text {
+    padding-top: 4rem;
+  }
+}
+
+/* Beside the 26rem figure the text column must hold the longest title,
+   Outreach & Leadership (25.75rem at the h1's 2.35rem cap), on one line, or
+   it wraps and deepens its header. The figure takes at most what leaves the
+   text 26rem (28rem with the 2rem gap), so it gives way at 900–911px, beside a
+   classic scrollbar, and at every desktop width with a 24px default text size
+   (the content stops at --max-width, 1200px, while the title grows). */
+.page-header__grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(26rem, 100% - 28rem));
+}
+
+.route-figure {
+  position: relative;
+  margin: 0;
+}
+
+.route-figure__stage {
+  position: relative;
+  height: 13rem;
+}
+
+/* Before the figure arrives: soft blobs where its lobes will be. */
+.route-figure__placeholder {
+  --blob: color-mix(in oklab, var(--w-pos) 22%, transparent);
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 14% 22% at 50% 55%, var(--blob), transparent 70%);
+}
+
+.route-figure--research .route-figure__placeholder {
+  background:
+    radial-gradient(ellipse 9% 14% at 30% 42%, var(--blob), transparent 70%),
+    radial-gradient(ellipse 9% 14% at 70% 42%, var(--blob), transparent 70%),
+    radial-gradient(ellipse 9% 14% at 30% 70%, var(--blob), transparent 70%),
+    radial-gradient(ellipse 9% 14% at 70% 70%, var(--blob), transparent 70%);
+}
+
+.route-figure--outreach .route-figure__placeholder {
+  background: radial-gradient(ellipse 34% 30% at 50% 56%, transparent 55%, var(--blob) 72%, transparent 90%);
+}
+
+.route-figure--publications .route-figure__placeholder,
+.route-figure--cv .route-figure__placeholder {
+  background: radial-gradient(ellipse 11% 18% at 70% 55%, var(--blob), transparent 70%);
+}
+
+.route-figure--contact .route-figure__placeholder {
+  background: radial-gradient(ellipse 8% 28% at 50% 55%, var(--blob), transparent 70%);
+}
+
+.route-figure--notFound .route-figure__placeholder {
+  background:
+    radial-gradient(ellipse 11% 18% at 30% 55%, var(--blob), transparent 70%),
+    radial-gradient(ellipse 11% 18% at 70% 55%, var(--blob), transparent 70%);
+}
+
+.route-figure__live {
+  position: absolute;
+  inset: 0;
+}
+
+.route-figure__stage:has(.figure-fallback) .route-figure__placeholder {
+  display: none;
+}
+
+.route-figure__stage .figure-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page-header figure captions (RouteFigure.tsx) show on hover, keyboard
+   focus or a tap, over the figure so nothing around it moves; screen readers
+   always read them. */
+.route-figure__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0.5rem 0.75rem;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  /* Even lines: pretty only rescues a single last word ("is prepared."). */
+  text-wrap: balance;
+  color: var(--color-text-light);
+  background: color-mix(in oklab, var(--color-bg) 94%, transparent);
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transform: translateY(0.25rem);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-measure) var(--ease-measure),
+    transform var(--dur-measure) var(--ease-measure);
+}
+
+.route-figure.is-open .route-figure__caption,
+.route-figure:not(.is-dismissed):has(.route-figure__reveal:focus-visible) .route-figure__caption {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+@media (hover: hover) {
+  .route-figure:hover:not(.is-dismissed) .route-figure__caption {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+/* Covers the figure: takes the tap and the keyboard focus that show the caption. */
+.route-figure__reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: help;
+}
+
+/* --- Phones and narrow windows: the figure fills the hero behind the intro,
+   under an even scrim; the photo, name and title are centred, the profile
+   buttons sit in equal columns, and the cat sits centred at the foot. In em,
+   so a larger default text size also gets this layout (HeroScene.tsx
+   switches the figure at the same width). --- */
+@media (width < 56.25em) {
+  .hero--stage {
+    display: grid;
+    /* One column exactly as wide as the screen: content never widens it. */
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    min-height: 0;
+    padding: 2rem 0 1rem;
+  }
+
+  /* 86%: at tablet widths the figure's peaks sit under the title, which
+     needs 4.5:1 at every phase of the rotation in both themes. */
+  .hero-stage::after {
+    background: color-mix(in oklab, var(--color-bg) 86%, transparent);
+  }
+
+  .hero-layout {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .hero-cat {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: center;
+    margin-top: 0.75rem;
+  }
+
+  .hero-stage__placeholder {
+    background: radial-gradient(
+      ellipse 34% 20% at 50% 45%,
+      color-mix(in oklab, var(--w-pos) 22%, transparent),
+      transparent 70%
+    );
+  }
+
+  .hero-panel {
+    width: auto;
+  }
+
+  .hero-id {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .hero-id > div {
+    flex: none;
+    align-self: stretch;
+  }
+
+  /* Centred, the serif V needs no optical pull to the margin. */
+  .hero-name {
+    text-indent: 0;
+  }
+
+  .hero-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Equal columns: three across where they fit, else two, else one. */
+  .hero-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @container (width >= 30em) {
+    .hero-links {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @container (width < 15em) {
+    .hero-links {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .hero-stage .figure-fallback {
+    inset: 0.5rem;
+  }
+
+  /* Header figures become a 120px strip under the subtitle. */
+  .page-header__grid,
+  .not-found__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .route-figure__stage {
+    height: 120px;
+  }
+
+  .not-found__grid {
+    text-align: center;
+  }
+
+  /* Centred copy: even lines, no stranded last word (the caption already
+     balances everywhere). */
+  .not-found__grid .not-found__text {
+    text-wrap: balance;
+  }
+
+  .not-found__grid .not-found__links {
+    justify-content: center;
+  }
+}

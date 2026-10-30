@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * Re-encode site images: strip all metadata (EXIF/GPS) and emit .webp siblings.
  *
@@ -7,9 +8,13 @@
  * sibling is written next to each for use in <Image> tags (next/image
  * passes src through untouched under `images.unoptimized`).
  *
+ * Size variants (VARIANTS below) are then derived from the cleaned .webp
+ * files: each is rebuilt when its source is newer.
+ *
  * Run: npm run images
+ *      node scripts/optimize-images.mjs --variants   (variants only; originals untouched)
  */
-import { readdir, writeFile } from 'node:fs/promises';
+import { readdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 
@@ -20,15 +25,33 @@ const TARGETS = [
   ),
 ].filter((f) => /\.(jpe?g|png)$/i.test(f));
 
-console.log(`[setup] ${TARGETS.length} images to process`);
+const VARIANTS_ONLY = process.argv.includes('--variants');
+/**
+ * Small copies for slots that never show the full image (source, size in px, output).
+ * @type {Array<[string, number, string]>}
+ */
+const VARIANTS = [['public/images/headshot.webp', 192, 'public/images/headshot-192.webp']];
 
-for (const [i, file] of TARGETS.entries()) {
+console.log(`[setup] ${VARIANTS_ONLY ? 0 : TARGETS.length} images to process, ${VARIANTS.length} variants`);
+
+for (const [i, file] of (VARIANTS_ONLY ? [] : TARGETS).entries()) {
   const ext = path.extname(file).toLowerCase();
   const webpPath = file.replace(/\.(jpe?g|png)$/i, '.webp');
 
+  // Already cleaned (its .webp is at least as new): skip, so a repeat run
+  // does not cost the original another lossy generation.
+  const webpTime = await stat(webpPath).then((s) => s.mtimeMs, () => -1);
+  if (webpTime >= (await stat(file)).mtimeMs) {
+    console.log(`[skip] ${file} already processed`);
+    continue;
+  }
+
   // Decode fully into a raw buffer first so the input file handle is
   // released before we overwrite it in place.
+  // .rotate() with no angle applies the EXIF orientation first: the tag is
+  // stripped on re-encode, so a phone photo would otherwise come out sideways.
   const { data: raw, info } = await sharp(file)
+    .rotate()
     .raw()
     .toBuffer({ resolveWithObject: true });
   const base = () =>
@@ -51,4 +74,16 @@ for (const [i, file] of TARGETS.entries()) {
   );
 }
 
-console.log('[done] all images re-encoded without metadata');
+for (const [source, size, out] of VARIANTS) {
+  // Rebuilt when its source is newer, so a replaced headshot reaches the hero.
+  const outTime = await stat(out).then((s) => s.mtimeMs, () => -1);
+  if (outTime >= (await stat(source)).mtimeMs) {
+    console.log(`[skip] ${out} is current`);
+    continue;
+  }
+  const buffer = await sharp(source).resize(size, size, { fit: 'cover' }).webp({ quality: 82 }).toBuffer();
+  await writeFile(out, buffer);
+  console.log(`[variant] ${out} ${size}x${size} ${(buffer.length / 1024).toFixed(0)}K`);
+}
+
+console.log(VARIANTS_ONLY ? '[done] variants written' : '[done] all images re-encoded without metadata');

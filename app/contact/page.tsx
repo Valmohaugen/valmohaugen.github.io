@@ -13,24 +13,20 @@ export const metadata: Metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <PageHeader title="Contact" subtitle="Get in touch" />
+      <PageHeader title="Contact" subtitle="Get in touch" figure="contact" />
 
       <Section>
         <div className="contact-list">
-          {SOCIAL_PROFILES.map(({ key, contactLabel, displayValue, href, Icon }, i) => (
-            <div
-              className="contact-item reveal"
-              style={{ '--reveal-index': i } as React.CSSProperties}
-              key={key}
-            >
+          {SOCIAL_PROFILES.map(({ key, contactLabel, displayValue, href, Icon }) => (
+            <div className="contact-item" key={key}>
               <div className="contact-icon">
                 <Icon size={20} />
               </div>
               <div>
                 <div className="contact-label">{contactLabel}</div>
                 <div className="contact-value">
-                  <a href={href} {...externalLinkProps(href)}>
-                    {displayValue}
+                  <a href={href} {...externalLinkProps(href)} aria-label={displayValue}>
+                    {displayValue.split(/(?<=[@/-])/).flatMap((part, i) => (i ? [<wbr key={i} />, part] : [part]))}
                   </a>
                 </div>
               </div>

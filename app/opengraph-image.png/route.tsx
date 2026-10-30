@@ -1,3 +1,6 @@
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
 import { ImageResponse } from 'next/og';
 
 export const dynamic = 'force-static';
@@ -8,10 +11,34 @@ export const dynamic = 'force-static';
 // and extensionless files are served as application/octet-stream, which some
 // social scrapers reject. The og:image/twitter:image tags in app/layout.tsx
 // point here explicitly.
-// Echoes the site's dark theme (#0e1117) with a few faint drifting-star specks
-// and the accent blue (#6b9cf7). ImageResponse only supports a flexbox subset,
+// Echoes the site's dark theme (#0e1117) and accent blue (#6b9cf7), with a few
+// faint star specks. ImageResponse only supports a flexbox subset,
 // so the stars are plain absolutely-positioned divs.
 const SIZE = { width: 1200, height: 630 };
+
+// The site's own faces as static OFL TTFs (assets/fonts/og/, read at build
+// time only, never served): next/og reads TTF, OTF or WOFF (not WOFF2) and
+// draws only the default instance of a variable font. Passing fonts replaces
+// next/og's bundled Geist, so together they cover every character on the card
+// (ASCII and the middle dot).
+const FONT_DIR = join(process.cwd(), 'assets/fonts/og');
+
+/** The card's fonts, or undefined (next/og's Geist) with a warning when the files are missing. */
+async function siteFonts() {
+  try {
+    const [serifBold, sansRegular] = await Promise.all([
+      readFile(join(FONT_DIR, 'SourceSerif4-Bold.ttf')),
+      readFile(join(FONT_DIR, 'DMSans-Regular.ttf')),
+    ]);
+    return [
+      { name: 'Source Serif 4', data: serifBold, weight: 700 as const, style: 'normal' as const },
+      { name: 'DM Sans', data: sansRegular, weight: 400 as const, style: 'normal' as const },
+    ];
+  } catch (err) {
+    console.warn(`[warn] og: ${err instanceof Error ? err.message : err}; the card falls back to Geist`);
+    return undefined;
+  }
+}
 
 const STARS = [
   { top: 74, left: 96, r: 4, a: 0.55 },
@@ -22,7 +49,7 @@ const STARS = [
   { top: 96, left: 640, r: 2, a: 0.28 },
 ];
 
-export function GET() {
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -35,6 +62,7 @@ export function GET() {
           backgroundColor: '#0e1117',
           padding: '0 96px',
           position: 'relative',
+          fontFamily: 'DM Sans',
         }}
       >
         {STARS.map((s, i) => (
@@ -54,6 +82,7 @@ export function GET() {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div
             style={{
+              fontFamily: 'Source Serif 4',
               fontSize: 88,
               fontWeight: 700,
               letterSpacing: -1.5,
@@ -72,6 +101,6 @@ export function GET() {
         </div>
       </div>
     ),
-    { ...SIZE }
+    { ...SIZE, fonts: await siteFonts() }
   );
 }

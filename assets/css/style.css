@@ -13,5 +13,8 @@
 @import './layout.css';
 @import './components.css';
 @import './motion.css';
+@import './stage.css';
+@import './cats.css';
+@import './qrng.css';
 @import './responsive.css';
 @import './print.css';

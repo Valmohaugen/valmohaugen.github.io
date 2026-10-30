@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import Section from '@/components/Section';
 import SkillCard from '@/components/SkillCard';
+import Decrypt from '@/components/qrng/Decrypt';
 import TimelineSection from '@/components/TimelineSection';
 import cv from '@/data/cv.json';
 import { pageMetadata } from '@/lib/metadata';
@@ -10,9 +11,9 @@ import type { CvData } from '@/lib/types';
 export const metadata: Metadata = pageMetadata({
   title: 'CV',
   description:
-    'Curriculum Vitae of Valentine Mohaugen, Ph.D. student in quantum ML/AI, cybersecurity, and cyber-physical systems at Clemson University.',
+    'Curriculum Vitae of Valentine Mohaugen, Ph.D. student at Clemson University researching quantum ML/AI, cybersecurity, and cyber-physical systems.',
   ogDescription:
-    'Education, research experience, leadership, presentations, awards, and technical skills of Valentine Mohaugen, Ph.D. student in quantum ML/AI, cybersecurity, and cyber-physical systems at Clemson University.',
+    'Education, research experience, leadership, presentations, awards, and technical skills of Valentine Mohaugen, Ph.D. student at Clemson University researching quantum ML/AI, cybersecurity, and cyber-physical systems.',
   path: '/cv/',
 });
 
@@ -24,6 +25,7 @@ export default function CvPage() {
       <PageHeader
         title="Curriculum Vitae"
         subtitle="Education, research experience, and skills"
+        figure="cv"
       />
 
       <Section>
@@ -39,8 +41,10 @@ export default function CvPage() {
           </p>
         </TimelineSection>
 
-        <div className="cv-section reveal">
-          <h2>Technical Skills</h2>
+        <div className="cv-section">
+          <Decrypt as="h2" trigger="visible">
+            Technical Skills
+          </Decrypt>
           <div className="skills-grid">
             {cvData.skills.map((skill) => (
               <SkillCard key={skill.title} {...skill} />

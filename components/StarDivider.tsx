@@ -3,7 +3,8 @@ interface StarDividerProps {
   wide?: boolean;
 }
 
-// Decorative divider: a single faint hairline spanning most of the width.
+// Decorative divider: a single faint, centred hairline (240px, at most 60% of
+// the row; 300px in the footer).
 // Colors come from theme tokens so light/dark recolor automatically.
 export default function StarDivider({ wide = false }: StarDividerProps) {
   return (

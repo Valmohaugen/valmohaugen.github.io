@@ -11,10 +11,6 @@
   margin-bottom: 2rem;
 }
 
-.highlight-item:last-child {
-  margin-bottom: 0;
-}
-
 .highlight-item h3 {
   font-size: 1.15rem;
   margin-bottom: 0.35rem;
@@ -50,13 +46,25 @@
 .research-entry {
   display: grid;
   grid-template-columns: 320px 1fr;
-  gap: 2.5rem;
+  /* Rows 1.25rem apart, as on phones: the only second row is the revealed
+     details, which belong to their toggle. */
+  gap: 1.25rem 2.5rem;
   align-items: start;
   padding: 2.75rem 0;
 }
 
 .research-entry--reverse {
   grid-template-columns: 1fr 320px;
+}
+
+/* The first entry starts where every other subpage's content starts, and the
+   last one ends on the section's own padding, like every other page. */
+.page-header + .section > * > div:first-child > .research-entry {
+  padding-top: 0;
+}
+
+.page-header + .section > * > div:last-child > .research-entry {
+  padding-bottom: 0;
 }
 
 .research-entry--reverse .research-entry__thumbnail {
@@ -75,13 +83,21 @@
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.research-entry:hover .research-entry__thumbnail img {
-  transform: scale(1.025);
+/* Hover-only decoration: touch screens keep :hover after a tap. */
+@media (hover: hover) {
+  .research-entry:hover .research-entry__thumbnail img {
+    transform: scale(1.025);
+  }
+
+  .research-entry:hover .research-entry__thumbnail {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
 }
 
-.research-entry:hover .research-entry__thumbnail {
-  border-color: var(--color-primary);
-  box-shadow: 0 8px 24px var(--color-shadow);
+/* A thumbnail with a dark-mode version is a <picture> (ResearchEntry.tsx). */
+.research-entry__thumbnail picture {
+  display: block;
 }
 
 .research-entry__thumbnail img {
@@ -89,10 +105,23 @@
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform var(--transition-base);
 }
 
-/* Placeholder thumbnails (SVG gradient fallback) */
+/* The MEDA and SRNL posters are 4:3 with their titles along the top edge:
+   crop from the bottom so the titles stay in frame. */
+[id='mzm-visibility'] .research-entry__thumbnail img,
+[id='srnl-vqe-majorana'] .research-entry__thumbnail img {
+  object-position: 50% 0;
+}
+
+/* The iQuHack 2025 photo has spare chalkboard above the team: crop from the
+   top so their feet stay in frame. */
+[id='iquhack-2025'] .research-entry__thumbnail img {
+  object-position: 50% 100%;
+}
+
+/* Placeholder thumbnail (a project without an image): its title on a CSS gradient */
 .research-entry__thumbnail--placeholder {
   aspect-ratio: 16 / 10;
   display: flex;
@@ -100,14 +129,20 @@
   justify-content: center;
   font-family: var(--font-heading);
   font-size: 1.1rem;
-  font-weight: 700;
+  line-height: 1.25;
+  font-weight: 600;
   color: var(--color-primary);
   background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-primary-light) 100%);
   letter-spacing: -0.01em;
+  /* A wrapped title fills the flex row, so centre its lines and keep them
+     off the border. */
+  padding: 0 var(--space-6);
+  text-align: center;
+  text-wrap: balance;
 }
 
 .research-entry__content {
-  min-height: 200px; /* Match thumbnail: 320px × 10/16 */
+  min-height: calc(318px * 10 / 16 + 2px); /* Match thumbnail: 318px image at 16:10 + border */
   display: flex;
   flex-direction: column;
 }
@@ -115,16 +150,23 @@
 .research-entry__title {
   font-size: 1.35rem;
   margin-bottom: 0.6rem;
-  letter-spacing: -0.015em;
-  color: var(--color-text);
 }
 
 .research-entry__meta {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
   margin-bottom: 0.65rem;
   flex-wrap: wrap;
+}
+
+/* The links share the labels' baseline; their icon stays centred on the text. */
+.research-entry__meta .link-inline {
+  align-items: baseline;
+}
+
+.research-entry__meta .link-inline svg {
+  align-self: center;
 }
 
 .research-entry__year {
@@ -153,12 +195,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  font-family: inherit;
   font-size: 0.85rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
   cursor: pointer;
   border: none;
 }
@@ -169,10 +212,19 @@
   background: transparent;
 }
 
+/* Hover-only: touch screens keep :hover after a tap, and these open a new
+   tab. Without a mouse a tapped button keeps its resting colour (this
+   selector outranks a:hover). */
 .btn-outline:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: var(--color-primary-glow);
+  color: var(--color-text);
+}
+
+@media (hover: hover) {
+  .btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: var(--color-primary-glow);
+  }
 }
 
 .btn-sm {
@@ -190,10 +242,19 @@
   color: var(--color-primary);
 }
 
+/* Hover-only: touch screens keep :hover after a tap, and most of these open a
+   new tab. Without a mouse a tapped link keeps its resting colour (this
+   selector outranks a:hover). */
 .link-inline:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .link-inline:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
 
 /* ============================================================
@@ -201,6 +262,10 @@
    ============================================================ */
 .cv-section {
   margin-bottom: 3rem;
+}
+
+.cv-section:last-child {
+  margin-bottom: 0;
 }
 
 .cv-section h2 {
@@ -220,16 +285,75 @@
   margin-bottom: 0;
 }
 
+/* An entry without a description ends at its subtitle: no margin leaks out. */
+.timeline-item > :last-child {
+  margin-bottom: 0;
+}
+
 .timeline-item::before {
+  /* Centred on the date's line (0.82rem × 1.7 / 2 = 0.697rem) less half the
+     dot, so it stays on the date at any default text size: 6px at a 16px
+     root, 9px at 20px, 12px at 24px. */
+  --node-top: round(calc(0.697rem - 5px), 1px);
   content: '';
   position: absolute;
   left: -6px;
-  top: 6px;
+  top: var(--node-top);
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-bg);
+  /* The second ring reaches the item's top edge, so no rail stub shows
+     above the node. */
+  box-shadow: 0 0 0 3px var(--color-bg), 0 calc(3px - var(--node-top)) 0 3px var(--color-bg);
+}
+
+/* Each node is "measured" as it scrolls in: a dashed, unobserved ring
+   collapses to the solid dot. CSS only, driven by the item's own view
+   timeline. Browsers without scroll timelines and reduced motion both show
+   the solid dot (scroll-driven animations ignore the duration-based guard in
+   motion.css, so this one opts in explicitly). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .timeline-item {
+      view-timeline: --timeline-node block;
+    }
+
+    .timeline-item::before {
+      animation: timeline-measure linear both;
+      animation-timeline: --timeline-node;
+      /* Done as the node's top reaches the rails' pen line, 70% down
+         (DRAW_LINE in lib/motion/scroll.mjs), so the last node also finishes
+         at the end of the page on a tall viewport. */
+      animation-range: entry 0% entry 30vh;
+    }
+  }
+}
+
+/* Forced colours repaint the dot as Canvas, a gap in the rail: draw it in
+   CanvasText with a Canvas ring, and skip the measuring animation. */
+@media (forced-colors: active) {
+  .timeline-item::before {
+    forced-color-adjust: none;
+    background: CanvasText;
+    box-shadow: 0 0 0 3px Canvas, 0 calc(3px - var(--node-top)) 0 3px Canvas;
+    animation: none;
+  }
+}
+
+@keyframes timeline-measure {
+  from {
+    background-color: transparent;
+    outline: 1.5px dashed var(--color-primary);
+    outline-offset: 3px;
+    transform: scale(1.3);
+  }
+  to {
+    background-color: var(--color-primary);
+    outline: 1.5px dashed transparent;
+    outline-offset: -4px;
+    transform: scale(1);
+  }
 }
 
 .timeline-date {
@@ -241,37 +365,73 @@
 
 .timeline-title {
   font-weight: 600;
-  font-size: 1.05rem;
+  /* Below about 325px the column (viewport less 4.5rem of padding and the
+     2px rail) gets narrow and the subtitle and description scale with it
+     (/ 16.5 and / 17.4). The title scales in step (16.5 × 0.95 / 1.05 ≈
+     14.9), so it stays a step above its subtitle, keeps “1st Place & Grand
+     Prize Overall,” and “Clemson Quantum Club” on one line, and always fits
+     its widest unbreakable unit, “Measurement-Efficient” (11.26em at 600). */
+  font-size: min(1.05rem, (100vw - 4.5rem - 2px) / 14.9);
   margin-bottom: 0.15rem;
+  /* A title line, set like the paper titles (.pub-title). */
+  line-height: 1.4;
 }
 
 .timeline-subtitle {
   color: var(--color-text-light);
-  font-size: 0.95rem;
+  /* The advisor’s joined name opens a CV subtitle (“Dr. Mashrur “Ronnie”
+     Chowdhury’s”, 15.6em): below about 325px the subtitle scales just enough
+     that it fits the column, and the description scales with it, so it stays
+     a step below the subtitle. */
+  font-size: min(0.95rem, (100vw - 4.5rem - 2px) / 16.5);
   margin-bottom: 0.5rem;
 }
 
 .timeline-desc {
   color: var(--color-text-light);
-  font-size: 0.9rem;
+  font-size: min(0.9rem, (100vw - 4.5rem - 2px) / 17.4);
 }
 
 /* Honor-society line under the Awards timeline */
 .cv-societies {
-  margin-top: 1.25rem;
-  font-size: 0.9rem;
+  /* The line holds joined society names (“American Society of Civil
+     Engineers”, 16.8em): it scales like the timeline descriptions above it,
+     so the longest name always fits the column. */
+  font-size: min(0.9rem, (100vw - 4.5rem - 2px) / 17.4);
   color: var(--color-text-light);
 }
 
 .cv-societies strong {
   color: var(--color-text);
+  font-weight: 600;
 }
 
 /* Skills grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* Eight cards fill every row: 4 columns, 2 below 56.25em, 1 at 480px and
+     below (responsive.css), and 2 whenever the row is under 52em: it stops at
+     --max-width (1200px), so at a 24px default text size four toggles would
+     split "Scientific Computing" and "Quantum Software". */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
+}
+
+.cv-section:has(> .skills-grid) {
+  container-type: inline-size;
+}
+
+@container (width < 52em) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Equal heights while every card is closed; once one opens, each card keeps
+   its own height, so the open card's neighbours do not stretch into empty
+   tiles. */
+.skills-grid:has(.skill-category--open) {
+  align-items: start;
 }
 
 .skill-category {
@@ -283,10 +443,14 @@
   transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.skill-category:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px var(--color-shadow);
+/* The card lifts while its toggle, the title row, is hovered: the rest of
+   the card does not toggle. Hover-only: touch screens keep :hover after a tap. */
+@media (hover: hover) {
+  .skill-category:has(.skill-category__toggle:hover) {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 /* The heading wraps a full-width button so the whole title row toggles;
@@ -297,7 +461,9 @@
 
 .skill-category__toggle {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  /* A step above the 0.85rem summary and the 0.82rem item labels; at 15px
+     "Scientific Computing" would wrap in the 164px toggle at 900–916px. */
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-text);
   background: none;
@@ -319,20 +485,23 @@
   height: 6px;
   border-right: 2px solid var(--color-text-light);
   border-bottom: 2px solid var(--color-text-light);
-  transform: rotate(45deg);
-  transition: transform 0.25s ease;
+  transform: translateY(0) rotate(45deg);
+  transition: transform var(--transition-base);
   flex-shrink: 0;
   margin-left: 0.5rem;
 }
 
+/* Turned up, the strokes ride about 2.8px higher: drop 3px so the open
+   chevron sits where the closed one does (as the research details chevron). */
 .skill-category__toggle[aria-expanded="true"]::after {
-  transform: rotate(-135deg);
+  transform: translateY(3px) rotate(-135deg);
 }
 
 .skill-category__summary {
   font-size: 0.85rem;
   color: var(--color-text-light);
   line-height: 1.55;
+  margin-bottom: 0;
 }
 
 .skill-details {
@@ -350,10 +519,13 @@
   color: var(--color-text-light);
   padding: 0.2rem 0;
   line-height: 1.5;
+  /* Short notes in a narrow card: pretty leaves a lone last word here. */
+  text-wrap: balance;
 }
 
 .skill-details li strong {
   color: var(--color-text);
+  font-weight: 600;
 }
 
 /* ============================================================
@@ -365,7 +537,8 @@
 
 .news-item {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 5rem 1fr;
+  align-items: baseline;
   gap: 1rem;
   padding: 0.65rem 0;
   border-bottom: 1px solid var(--color-border);
@@ -376,11 +549,20 @@
   border-bottom: none;
 }
 
+/* The last row's bottom padding already separates the list from its link. */
+.news-list + .highlight-more {
+  margin-top: calc(2rem - 0.65rem);
+}
+
+/* The news archive (app/news/page.tsx): one list per year. */
+.news-year + .news-year {
+  margin-top: 2.5rem;
+}
+
 .news-date {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-primary);
-  font-variant: small-caps;
 }
 
 .news-text {
@@ -396,7 +578,7 @@
   background: none;
   border: 0;
   cursor: pointer;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-primary);
   display: inline-flex;
@@ -407,30 +589,49 @@
   user-select: none;
 }
 
-.research-entry__details-toggle:hover {
-  color: var(--color-primary-dark);
+/* Hover-only: touch screens keep :hover after a tap. */
+@media (hover: hover) {
+  .research-entry__details-toggle:hover {
+    color: var(--color-primary-dark);
+  }
 }
 
 .research-entry__details-chevron {
-  font-size: 0.75em;
-  line-height: 1;
+  /* ▾/▴ are not in DM Sans: hide the glyph and draw the skill-card chevron. */
+  font-size: 0;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--transition-base);
+}
+
+.research-entry__details-toggle[aria-expanded="true"] .research-entry__details-chevron {
+  transform: translateY(1px) rotate(-135deg);
 }
 
 .research-entry__details-body {
   grid-column: 1 / -1;
   order: 3;
-  padding: 0.25rem 0 0.25rem;
+  padding: 0.25rem 0;
 }
 
 .research-entry__details-body p {
   font-size: 0.95rem;
   color: var(--color-text-light);
-  line-height: 1.7;
+  line-height: 1.85;
   margin-bottom: 1rem;
 }
 
 .research-entry__details-body p:last-child {
   margin-bottom: 0.25rem;
+}
+
+.research-entry__details-body strong {
+  color: var(--color-text);
+  font-weight: 600;
 }
 
 
@@ -454,16 +655,22 @@
   border-bottom: none;
 }
 
+/* Like the first research entry: the first paper starts where every other
+   subpage's content starts. */
+.pub-section > .pub-entry:first-child {
+  padding-top: 0;
+}
+
 .pub-year {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-primary);
-  padding-top: 0.1rem;
+  padding-top: 0.063rem;
 }
 
 .pub-title {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--fs-md);
   margin-bottom: 0.2rem;
   line-height: 1.4;
 }
@@ -488,12 +695,11 @@
 
 .pub-links {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
 .pub-profiles {
-  margin-top: 2.5rem;
   padding: 2rem;
   background: var(--color-bg-alt);
   border-radius: var(--radius-md);
@@ -504,6 +710,8 @@
 .pub-profiles p {
   color: var(--color-text-light);
   margin-bottom: 1rem;
+  /* Centred and short: even lines, never a lone “citations:”. */
+  text-wrap: balance;
 }
 
 .pub-profiles__links {
@@ -518,14 +726,13 @@
    ============================================================ */
 .contact-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
   gap: 1rem;
-  max-width: 720px;
 }
 
 .contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   min-width: 0;
   padding: 1.15rem;
@@ -535,13 +742,18 @@
   transition: border-color var(--transition-fast);
 }
 
-.contact-item:hover {
-  border-color: var(--color-primary);
-}
-
 /* Text column shrinks below its content so long values wrap, not overflow. */
 .contact-item > div:last-child {
   min-width: 0;
+}
+
+/* Under 17.5em the card's padding and gap left the value 95px, narrower than
+   "ResearchGate" and "linkedin.com/". */
+@media (width < 17.5em) {
+  .contact-item {
+    padding: 0.9rem;
+    gap: 0.75rem;
+  }
 }
 
 .contact-icon {
@@ -556,14 +768,38 @@
   transition: background var(--transition-fast);
 }
 
-.contact-item:hover .contact-icon {
+/* Only the value link is clickable, so the card lights up while that link is
+   hovered or focused. Hover-only: touch screens keep :hover after a tap. */
+.contact-item:has(a:focus-visible) {
+  border-color: var(--color-primary);
+}
+
+.contact-item:has(a:focus-visible) .contact-icon {
   background: var(--color-primary-glow);
+}
+
+@media (hover: hover) {
+  .contact-item:has(a:hover) {
+    border-color: var(--color-primary);
+  }
+
+  .contact-item:has(a:hover) .contact-icon {
+    background: var(--color-primary-glow);
+  }
 }
 
 .contact-icon svg {
   width: 20px;
   height: 20px;
   color: var(--color-primary);
+}
+
+/* Forced colours: an svg that sets its own colour keeps it (preserve-parent-color),
+   so the icon inherits the system text colour like the label beside it. */
+@media (forced-colors: active) {
+  .contact-icon svg {
+    color: inherit;
+  }
 }
 
 .contact-label {
@@ -578,13 +814,21 @@
   overflow-wrap: anywhere;
 }
 
-.contact-value a {
-  color: var(--color-text);
-  transition: color var(--transition-fast);
+/* The ORCID iD breaks at its middle hyphen, never before its last group.
+   Only there: balanced, "Google Scholar Profile" would split the name. */
+.contact-value:has(> a[href*="orcid.org"]) {
+  text-wrap: balance;
 }
 
-.contact-value a:hover {
-  color: var(--color-primary);
+.contact-value a {
+  color: var(--color-text);
+}
+
+/* Hover-only, like the card's glow: touch screens keep :hover after a tap. */
+@media (hover: hover) {
+  .contact-value a:hover {
+    color: var(--color-primary);
+  }
 }
 
 /* ============================================================
@@ -595,9 +839,18 @@
   width: 240px;
   max-width: 60%;
   height: auto;
-  margin: 0 auto;
+  /* Centred between the Latest band and the next heading: each margin is half
+     that section's top padding (4rem), so the page height is unchanged. */
+  margin: 2rem auto -2rem;
   color: var(--color-text-light);
   opacity: 0.55;
+}
+
+@media (max-width: 48em) {
+  /* Sections pad 2.75rem on top here. */
+  .star-divider:not(.star-divider--wide) {
+    margin: 1.375rem auto -1.375rem;
+  }
 }
 
 .star-divider--wide {
@@ -613,6 +866,18 @@
   opacity: 0.55;
 }
 
+/* Forced colours repaint the dark footer as Canvas: mark its top edge, and
+   draw its divider in CanvasText (the footer-text grey vanishes on Canvas). */
+@media (forced-colors: active) {
+  .footer {
+    border-top: 1px solid CanvasText;
+  }
+
+  .star-divider--wide {
+    color: CanvasText;
+  }
+}
+
 /* ============================================================
    18. Footer
    ============================================================ */
@@ -622,12 +887,32 @@
   padding: 3rem 0 1.5rem;
 }
 
+/* The footer is dark in both themes: the primary ring is 2.87:1 on it in
+   light mode, so its focus rings are white. */
+.footer :focus-visible {
+  outline-color: var(--color-footer-strong);
+}
+
 .footer-inner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  /* First lines share a baseline: the nav and icons sit on the name's. */
+  align-items: baseline;
   flex-wrap: wrap;
   gap: 2rem;
+}
+
+/* One row: equal outer columns, so the nav sits on the page's axis like the
+   divider and the cat row below it (the brand is 340px, the icons 238px). */
+@media (width >= 56.25em) {
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .footer-social {
+    justify-self: end;
+  }
 }
 
 .footer-brand {
@@ -643,7 +928,7 @@
 }
 
 .footer-name:hover {
-  color: var(--color-primary);
+  color: var(--color-footer-text);
 }
 
 .footer-descriptor {
@@ -662,7 +947,6 @@
 .footer-nav a {
   color: var(--color-footer-text);
   font-size: 0.88rem;
-  transition: color var(--transition-fast);
 }
 
 .footer-nav a:hover {
@@ -671,23 +955,46 @@
 
 .footer-social {
   display: flex;
-  gap: 1rem;
+  /* 44 × 44 px targets, like the menu's icons: the negative margin takes
+     back the extra padding, so the row keeps its 26 px height and baseline
+     and the outer icons meet the content edges. Six 18 px icons and ten side
+     paddings must fit the column (100vw less 3rem): below about 286px the
+     side padding narrows, so the row never widens the page. */
+  --social-pad-x: min(13px, (100vw - 3rem - 108px) / 10);
+  margin: -9px calc(-1 * var(--social-pad-x));
 }
 
 .footer-social a {
   color: var(--color-footer-text);
   display: inline-flex;
-  padding: 0.25rem;
+  padding: 13px var(--social-pad-x);
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-.footer-social a:hover {
-  color: var(--color-footer-strong);
-  transform: translateY(-2px);
+/* Hover-only: touch screens keep :hover after a tap. */
+@media (hover: hover) {
+  .footer-social a:hover {
+    color: var(--color-footer-strong);
+    transform: translateY(-2px);
+  }
 }
 
-.footer-copy {
+/* The last row: the cat and its box, then the copyright, centred as one
+   group. The text sits on the drawings' floor line. */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.25rem 1.45rem;
+  margin-top: 0.5rem;
+  padding: 0 1.5rem;
+}
+
+/* p. ties base.css p:last-child and comes later, like p.not-found__code. The
+   negative margin sets the baseline on the drawings' floor (y = 92). */
+p.footer-copy {
   text-align: center;
   font-size: 0.8rem;
-  margin: 0.75rem 0 0;
+  margin: 0 0 -0.18rem;
 }
