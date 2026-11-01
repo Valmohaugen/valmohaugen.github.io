@@ -247,9 +247,10 @@
 }
 
 .hero-tagline {
-  /* The joined advisor name and its period are 15.1em: below about 295px the
-     intro shrinks just enough that it fits the panel (a container). */
-  font-size: min(1.02rem, 100cqi / 15.2);
+  /* The widest unbreakable unit is the joined advisor name, “Dr. Mashrur
+     Chowdhury’s” (11.5em): below about 237px the intro shrinks just enough
+     that it fits the panel (a container). */
+  font-size: min(1.02rem, 100cqi / 11.6);
   color: var(--color-text);
   margin-bottom: 1.75rem;
   line-height: 1.75;

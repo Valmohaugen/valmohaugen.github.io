@@ -23,7 +23,7 @@
     {
       "date": "Aug 2026 – Present",
       "title": "Graduate Research Assistant",
-      "subtitle": "Dr.\u00a0Mashrur\u00a0“Ronnie”\u00a0Chowdhury’s group · National Center for Transportation Cybersecurity and Resiliency (TraCR), Clemson University, Clemson, SC",
+      "subtitle": "Dr.\u00a0Mashrur\u00a0Chowdhury’s group · National Center for Transportation Cybersecurity and Resiliency (TraCR), Clemson University, Clemson, SC",
       "desc": "Develop machine learning and AI models that use quantum computing for cybersecurity and cyber-physical systems, with applications to securing critical\u00a0infrastructure."
     },
     {
@@ -276,7 +276,7 @@
         },
         {
           "label": "Websites",
-          "note": "GitHub\u00a0Actions deployment"
+          "note": "deployed with GitHub\u00a0Actions"
         }
       ]
     },

@@ -379,10 +379,10 @@
 
 .timeline-subtitle {
   color: var(--color-text-light);
-  /* The advisor’s joined name opens a CV subtitle (“Dr. Mashrur “Ronnie”
-     Chowdhury’s”, 15.6em): below about 325px the subtitle scales just enough
-     that it fits the column, and the description scales with it, so it stays
-     a step below the subtitle. */
+  /* The description below scales like the societies line (16.8em units, see
+     .cv-societies), and the subtitle scales with it, so it stays a step above
+     the description below about 325px. Its widest unit, “Wright-Patterson
+     AFB, OH” (12.1em), fits the column at every width. */
   font-size: min(0.95rem, (100vw - 4.5rem - 2px) / 16.5);
   margin-bottom: 0.5rem;
 }

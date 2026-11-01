@@ -89,7 +89,7 @@
     "github": "https://www.github.com/valmohaugen/iQuHack-2026",
     "highlight": true,
     "thumbnail": "/images/thumbnails/iquhack-2026.webp",
-    "thumbnailAlt": "The Clemson group for MIT’s iQuHack 2026",
+    "thumbnailAlt": "The Clemson group at the airport, back from MIT’s iQuHack 2026",
     "challenge": "Superquantum challenge"
   },
   {
@@ -184,7 +184,7 @@
     "year": "Oct 2024",
     "blurb": "Award-winning quantum random number generation (QRNG) project for the inaugural SC Quantathon. Implemented, characterized, and verified QRNG on IBM quantum processors through a five-stage challenge spanning circuit design, ML-based quantum vs. classical discrimination, hardware noise characterization ($T_1/T_2$, gate errors), and Toeplitz/von Neumann entropy extraction. Won 1st\u00a0place and the Grand\u00a0Prize\u00a0Overall.",
     "details": [
-      "True random number generation is fundamentally impossible with classical deterministic hardware, but quantum measurement provides a physical source of randomness through the Born rule. This project implements a complete QRNG pipeline on IBM quantum processors, from raw bitstring generation to post-processed, verified random output.",
+      "Classical deterministic hardware can only produce pseudo-random numbers, but quantum measurement provides a physical source of randomness through the Born rule. This project implements a complete QRNG pipeline on IBM quantum processors, from raw bitstring generation to post-processed, verified random output.",
       "The five-stage challenge progresses from basic QRNG circuit design (Hadamard gates producing superposition-based random bits) through increasingly sophisticated analysis. Stage 2 trains an SVM classifier achieving 75%+ accuracy at distinguishing QRNG output from classical pseudo-random sequences, confirming measurable statistical differences. Stage 3 characterizes hardware noise through $T_1/T_2$ decoherence measurements, gate error rates, and readout assignment error matrices across IBM backends (Brisbane, Sherbrooke).",
       "Stage 4 applies entropy extraction techniques (Toeplitz matrix hashing, von Neumann extraction, and parity-based debiasing) to purify raw quantum randomness from measurement bias and hardware noise. Stage 5 re-evaluates the extracted output, confirming improved statistical quality. The pipeline supports configurable shot counts and includes HPCG benchmark integration via a C shared library shim replacing rand() calls with quantum-sourced randomness.",
       "Four bitstring extraction methods (Mod2 XOR, iteration with chunking, concatenation, and combined) are compared across simulator and real hardware backends. The project won the inaugural SC Quantathon competition."

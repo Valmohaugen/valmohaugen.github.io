@@ -45,8 +45,8 @@ export default function HomePage() {
               </div>
               <p className="hero-tagline">
                 I&rsquo;m a first-year Ph.D.&nbsp;student in Civil Engineering at {siteConfig.affiliation}{' '}
-                and a Graduate Research Assistant at the National Center for
-                Transportation Cybersecurity and Resiliency (TraCR), advised by {siteConfig.advisor}.
+                and a Graduate Research Assistant in {siteConfig.advisor}&rsquo;s group at the
+                National Center for Transportation Cybersecurity and Resiliency (TraCR).
                 My
                 research is in quantum ML/AI, cybersecurity, and
                 cyber-&#8288;physical systems, with applications to securing critical
