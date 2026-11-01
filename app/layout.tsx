@@ -69,6 +69,23 @@ const mathBrackets = localFont({
   adjustFontFallback: false,
 });
 
+// The subscript digits in chemical formulas (AgCrP₂Se₆), U+2080–2089, which
+// Source Serif 4's web files lack: a 2.7 KB STIX Two Text subset per heading
+// weight (assets/fonts/, OFL), listed first in --font-heading (tokens.css) and
+// limited by unicode-range, so every platform draws the inferiors macOS draws
+// from its own STIX Two Text. No fallback face and no preload, as above.
+const subscripts = localFont({
+  src: [
+    { path: '../assets/fonts/STIXTwoText-Subscripts-Regular.otf', weight: '100 500', style: 'normal' },
+    { path: '../assets/fonts/STIXTwoText-Subscripts-SemiBold.otf', weight: '600', style: 'normal' },
+    { path: '../assets/fonts/STIXTwoText-Subscripts-Bold.otf', weight: '700 900', style: 'normal' },
+  ],
+  variable: '--font-subscripts',
+  declarations: [{ prop: 'unicode-range', value: 'U+2080-2089' }],
+  preload: false,
+  adjustFontFallback: false,
+});
+
 /**
  * Research topics, used for the keywords meta tag and the Person JSON-LD
  * `knowsAbout`. Covers the usual phrasings of quantum + AI so the site matches
@@ -156,7 +173,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${dmSansItalic.variable} ${sourceSerif.variable} ${sourceSerifItalic.variable} ${mathBrackets.variable}`}
+      className={`${dmSans.variable} ${dmSansItalic.variable} ${sourceSerif.variable} ${sourceSerifItalic.variable} ${mathBrackets.variable} ${subscripts.variable}`}
       // Keeps CSS smooth scrolling for in-page links while letting Next 16
       // jump instantly to the top on navigation.
       data-scroll-behavior="smooth"

@@ -49,6 +49,10 @@ export interface Project {
   thumbnail?: string;
   /** A version of the thumbnail for dark mode (same size), shown instead under a dark color scheme. */
   thumbnailDark?: string;
+  /** Larger copies for 2x and 3x screens, as a srcset ("/a.webp 680w, /a-1360.webp 1360w"). */
+  thumbnailSrcSet?: string;
+  /** The same for the dark-mode thumbnail (thumbnailDark). */
+  thumbnailDarkSrcSet?: string;
   thumbnailAlt?: string;
   /** Shown in the homepage Research Highlights section. */
   highlight?: boolean;

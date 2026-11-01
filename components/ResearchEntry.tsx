@@ -7,6 +7,9 @@ import { GitHubIcon, ExternalIcon, DownloadIcon } from '@/components/icons';
 import Decrypt from '@/components/qrng/Decrypt';
 import MathText from '@/components/MathText';
 
+/** The thumbnail's rendered width: the 320px column, or the full column when entries stack below 48em. */
+const THUMBNAIL_SIZES = '(max-width: 48em) calc(100vw - 3rem), 320px';
+
 interface ResearchEntryProps {
   project: Project;
   /** Alternate thumbnail side on desktop. */
@@ -36,7 +39,15 @@ export default function ResearchEntry({
           // With a dark-mode version, the browser downloads only the one its
           // color scheme shows.
           <picture>
-            {project.thumbnailDark && <source srcSet={project.thumbnailDark} media="(prefers-color-scheme: dark)" />}
+            {project.thumbnailDark && (
+              <source
+                srcSet={project.thumbnailDarkSrcSet ?? project.thumbnailDark}
+                sizes={project.thumbnailDarkSrcSet ? THUMBNAIL_SIZES : undefined}
+                media="(prefers-color-scheme: dark)"
+              />
+            )}
+            {/* Larger copies for 2x and 3x screens; stacked below 48em, the thumbnail spans the column. */}
+            {project.thumbnailSrcSet && <source srcSet={project.thumbnailSrcSet} sizes={THUMBNAIL_SIZES} />}
             <Image
               src={project.thumbnail}
               alt={project.thumbnailAlt ?? project.title}

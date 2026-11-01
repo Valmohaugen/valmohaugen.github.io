@@ -6,14 +6,14 @@
     "predev": "npm run figures",
     "dev": "next dev",
     "prebuild": "npm run verify && npm run figures",
-    "build": "next build && touch out/.nojekyll && node scripts/measure-size.mjs",
+    "build": "next build && touch out/.nojekyll && node scripts/preload-404-fonts.mjs && node scripts/measure-size.mjs",
     "lint": "eslint .",
     "images": "node scripts/optimize-images.mjs",
     "verify": "node scripts/verify-motion.mjs && node scripts/verify-wigner.mjs && node scripts/verify-states.mjs && node scripts/verify-cameras.mjs && node scripts/verify-stage.mjs && node scripts/verify-contours.mjs && node scripts/verify-qrng.mjs && node scripts/verify-cats.mjs && node scripts/verify-decrypt.mjs",
     "figures": "node scripts/build-figures.mjs"
   },
   "dependencies": {
-    "next": "^16.3.8",
+    "next": "^16.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -22,7 +22,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^16.3.8",
+    "eslint-config-next": "^16.4.3",
     "sharp": "^0.35.5",
     "typescript": "^5.7.0"
   }

@@ -30,7 +30,7 @@ export default function HomePage() {
               <div className="hero-id">
                 <Image
                   className="hero-avatar"
-                  src="/images/headshot-192.webp"
+                  src="/images/headshot-240.webp"
                   alt="Portrait photo of Valentine Mohaugen"
                   width={96}
                   height={96}

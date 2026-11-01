@@ -41,10 +41,11 @@
   /* Font families are provided by next/font in app/layout.tsx via CSS
      variables; the literal names remain as fallbacks for tooling. */
   --font-body: var(--font-dm-sans, 'DM Sans'), system-ui, -apple-system, sans-serif;
-  /* STIX Two Text (local, no request) answers only for glyphs that the served
-     subsets and their Times New Roman fallback lack: the inferiors in
-     “AgCrP₂Se₆”, which Georgia draws as baseline old-style figures. */
-  --font-heading: var(--font-source-serif, 'Source Serif 4'), 'STIX Two Text', 'Georgia', serif;
+  /* The inferiors in “AgCrP₂Se₆” (U+2080–2089) are missing from the served
+     Source Serif 4 files, and Georgia would draw them as baseline old-style
+     figures: a self-hosted STIX Two Text subset (app/layout.tsx), limited to
+     those ten characters by unicode-range, answers for them first. */
+  --font-heading: var(--font-subscripts), var(--font-source-serif, 'Source Serif 4'), 'Georgia', serif;
   --max-width: 1200px;
   --nav-max-width: var(--max-width);
   --nav-height: 64px;

@@ -28,9 +28,10 @@ const TARGETS = [
 const VARIANTS_ONLY = process.argv.includes('--variants');
 /**
  * Small copies for slots that never show the full image (source, size in px, output).
+ * The hero avatar (app/page.tsx) shows at 80 CSS px on phones, so 240 px covers 3x.
  * @type {Array<[string, number, string]>}
  */
-const VARIANTS = [['public/images/headshot.webp', 192, 'public/images/headshot-192.webp']];
+const VARIANTS = [['public/images/headshot.webp', 240, 'public/images/headshot-240.webp']];
 
 console.log(`[setup] ${VARIANTS_ONLY ? 0 : TARGETS.length} images to process, ${VARIANTS.length} variants`);
 

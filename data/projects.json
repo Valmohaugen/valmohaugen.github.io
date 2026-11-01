@@ -13,6 +13,7 @@
     ],
     "keyTools": "PyTorch\u00a02.x, Kwant, NumPy, SciPy, h5py, Matplotlib, SLURM/HPC",
     "thumbnail": "/images/thumbnails/mzm-visibility.webp",
+    "thumbnailSrcSet": "/images/thumbnails/mzm-visibility.webp 680w, /images/thumbnails/mzm-visibility-1360.webp 1360w",
     "thumbnailAlt": "MEDA research poster: Measurement-Efficient Disorder-Aware Majorana Zero Mode Detection in Realistic Devices",
     "highlight": true,
     "paperUrl": "https://www.arxiv.org/abs/2607.26208",
@@ -33,6 +34,7 @@
     "github": "https://www.github.com/valmohaugen/DuQuantum-2026",
     "highlight": true,
     "thumbnail": "/images/thumbnails/duquantum-2026.webp",
+    "thumbnailSrcSet": "/images/thumbnails/duquantum-2026.webp 680w, /images/thumbnails/duquantum-2026-1080.webp 1080w",
     "thumbnailAlt": "The DuQuantum 2026 logo",
     "challenge": "Google Quantum AI challenge"
   },
@@ -51,6 +53,7 @@
     "github": "https://www.github.com/ClemsonQuantum/SC-Quantathon-v3-2026",
     "live": "https://www.clemsonquantum.com/events/hackathons/sc-quantathon-v3-2026/",
     "thumbnail": "/images/thumbnails/sc-quantathon-v3.webp",
+    "thumbnailSrcSet": "/images/thumbnails/sc-quantathon-v3.webp 680w, /images/thumbnails/sc-quantathon-v3-1080.webp 1080w",
     "thumbnailAlt": "SC Quantathon v3 event banner: September 25–27 at Clemson University, presented by Clemson Quantum Club and South Carolina Quantum"
   },
   {
@@ -104,6 +107,7 @@
     "keyTools": "Qiskit\u00a02.x, Cirq, PennyLane, PyTorch, scikit-\u2060learn, XGBoost, LightGBM, imbalanced-learn",
     "github": "https://www.github.com/valmohaugen/SC-Quantathon-v2-2025",
     "thumbnail": "/images/thumbnails/sc-quantathon.webp",
+    "thumbnailSrcSet": "/images/thumbnails/sc-quantathon.webp 680w, /images/thumbnails/sc-quantathon-1360.webp 1360w",
     "thumbnailAlt": "SC Quantathon v2 event poster: International Quantum Circuit Championship",
     "challenge": "Tornado challenge"
   },
@@ -119,6 +123,7 @@
     ],
     "keyTools": "VQE, Kitaev chain model, classical optimization",
     "thumbnail": "/images/thumbnails/srnl-vqe-majorana.webp",
+    "thumbnailSrcSet": "/images/thumbnails/srnl-vqe-majorana.webp 680w, /images/thumbnails/srnl-vqe-majorana-1360.webp 1360w",
     "thumbnailAlt": "SRNL research poster: Advancing Materials Development with Quantum AI and VQE Simulations of Majorana Edge States and Topological Phases",
     "posterUrl": "/posters/SRNL-Poster-2025.pdf"
   },
@@ -168,7 +173,9 @@
     "keyTools": "Next.js\u00a015, React\u00a019, TypeScript\u00a05.7, React-\u2060Markdown, GitHub\u00a0Actions, GitHub Pages",
     "live": "https://www.clemsonquantum.com",
     "thumbnail": "/images/thumbnails/clemson-quantum-website-light.webp",
+    "thumbnailSrcSet": "/images/thumbnails/clemson-quantum-website-light.webp 680w, /images/thumbnails/clemson-quantum-website-light-1360.webp 1360w",
     "thumbnailDark": "/images/thumbnails/clemson-quantum-website.webp",
+    "thumbnailDarkSrcSet": "/images/thumbnails/clemson-quantum-website.webp 680w, /images/thumbnails/clemson-quantum-website-1360.webp 1360w",
     "thumbnailAlt": "Clemson Quantum Club logo: the letters CQC inside atomic orbits"
   },
   {
@@ -186,6 +193,7 @@
     "github": "https://www.github.com/valmohaugen/SC-Quantathon-v1-2024",
     "highlight": true,
     "thumbnail": "/images/thumbnails/sc-quantathon-v1.webp",
+    "thumbnailSrcSet": "/images/thumbnails/sc-quantathon-v1.webp 680w, /images/thumbnails/sc-quantathon-v1-1360.webp 1360w",
     "thumbnailAlt": "The team working late at SC Quantathon v1",
     "challenge": "DoraHacks challenge"
   },
